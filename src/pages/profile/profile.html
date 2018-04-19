@@ -1,0 +1,318 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" padding>
+	
+
+	<!-- <ion-grid>
+  		<ion-row>
+    		<ion-col>
+        		<ion-label item-left>Marriage</ion-label>
+	  			<ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
+    		</ion-col>
+    		
+    		<ion-col>
+          		<ion-label item-left>Re-marriage</ion-label>
+	  			<ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
+    		</ion-col>
+  		</ion-row>
+	</ion-grid>
+-->
+
+<!--  	<ion-list radio-group>
+  		<ion-list-header>
+   			 Desire
+  		</ion-list-header>
+
+  		<ion-item>
+    		<ion-label>Marriage</ion-label>
+    		<ion-radio checked="true" value="marriage"></ion-radio>
+  		</ion-item>
+
+  		<ion-item>
+    		<ion-label>Re-marriage</ion-label>
+    		<ion-radio value="re-marriage"></ion-radio>
+  		</ion-item>
+
+   </ion-list> -->
+
+
+
+
+
+   <ion-card>
+    <ion-card-header>
+      DESTINATION
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row radio-group [(ngModel)]="profile.target">
+
+       <ion-col>
+        <ion-item>
+         <ion-label>Marriage</ion-label>
+         <ion-radio checked="true" value="marriage"></ion-radio>
+       </ion-item>
+
+     </ion-col>
+
+     <ion-col>
+      <ion-item>
+       <ion-label>Re-marriage</ion-label>
+       <ion-radio value="re-marriage"></ion-radio>
+     </ion-item>
+
+   </ion-col>
+
+
+ </ion-row>
+</ion-card-content>
+
+</ion-card>
+
+
+
+
+
+<ion-card>
+  <ion-card-header>
+    PERSONAL
+  </ion-card-header>
+  <ion-card-content>
+
+  	<ion-row>
+  		<ion-col>
+  			<ion-item>
+          <ion-label fixed>Username</ion-label>
+          <ion-input [(ngModel)]="profile.username"></ion-input>
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+       <ion-item>
+        <ion-label fixed>First Name</ion-label>
+        <ion-input [(ngModel)]="profile.firstName"></ion-input>
+      </ion-item>
+
+
+    </ion-col>
+    <ion-col>
+     <ion-item>
+      <ion-label fixed>Last Name</ion-label>
+      <ion-input [(ngModel)]="profile.lastName"></ion-input>
+    </ion-item>
+
+
+  </ion-col>
+
+</ion-row>
+
+
+<ion-item>
+  <ion-label>Birthday</ion-label>
+  <ion-datetime displayFormat="MMMM YYYY" min="1950" max="2018" [(ngModel)]="profile.age"></ion-datetime>
+</ion-item>
+
+
+<ion-item>
+  <ion-label>Gender</ion-label>
+  <ion-select [(ngModel)]="profile.gender">
+    <ion-option value="female">Female</ion-option>
+    <ion-option value="male">Male</ion-option>
+  </ion-select>
+</ion-item>
+
+
+
+<ion-item>
+  <ion-label>HomeTown</ion-label>
+
+  <ion-select [(ngModel)]="profile.city" placeholder="city">
+    <ion-option value="seoul">Seoul</ion-option>
+    <ion-option value="busan">Busan</ion-option>
+    <ion-option value="incheon">Incheon</ion-option>
+    <ion-option value="daegu">Daegu</ion-option>
+    <ion-option value="daejeon">Daejeon</ion-option>
+    <ion-option value="gwangju">Gwangjiu</ion-option>
+    <ion-option value="ulsan">Ulsan</ion-option>
+    <ion-option value="suwon">Suwon</ion-option>
+    <ion-option value="goyangsi">GoyangSi</ion-option>
+    <ion-option value="seongnamsi">SeongnamSi</ion-option>
+
+
+  </ion-select>
+
+
+  <ion-select [(ngModel)]="district" placeholder="district">
+    <ion-option>A</ion-option>
+    <ion-option>B</ion-option>
+    <ion-option>C</ion-option>
+    <ion-option>D</ion-option>
+    <ion-option>E</ion-option>
+    <ion-option>H</ion-option>
+    <ion-option>I</ion-option>
+    <ion-option>K</ion-option>
+    <ion-option>L</ion-option>
+    <ion-option>M</ion-option>
+    <ion-option>N</ion-option>
+  </ion-select>
+</ion-item>
+
+</ion-card-content>
+
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    EDUCATION
+  </ion-card-header>
+  <ion-card-content>
+
+    <ion-list radio-group [(ngModel)]="profile.education">
+
+      <ion-item>
+        <ion-label>HighSchool</ion-label>
+        <ion-radio checked="true" value="highschool"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Master</ion-label>
+        <ion-radio value="master"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>PhD</ion-label>
+        <ion-radio value="phd"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+  </ion-card-content>
+
+</ion-card>
+
+
+
+<!-- JOB -->
+
+<ion-card>
+  <ion-card-header>
+    JOB
+  </ion-card-header>
+  <ion-card-content>
+
+    <ion-list radio-group [(ngModel)]="job">
+
+      <ion-item>
+        <ion-label>Artist</ion-label>
+        <ion-radio value="Artist"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Engineering</ion-label>
+        <ion-radio value="engineering"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Bussiness</ion-label>
+        <ion-radio value="bussiness"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+  </ion-card-content>
+
+</ion-card>
+
+
+<!-- CHARACTERISTIC -->
+
+<ion-card>
+  <ion-card-header>
+    CHARACTERISTICS
+  </ion-card-header>
+  <ion-card-content>
+
+
+    <ion-list>
+  <ion-item>
+    <ion-label>Toppings</ion-label>
+      <ion-select  multiple="true" cancelText="NO" okText="OK!">
+      <ion-option value="Clumsy">Clumsy</ion-option>
+      <ion-option value="Diligent">Diligent</ion-option>
+      <ion-option value="Lazy">Lazy</ion-option>
+      <ion-option value="Strong">Strong</ion-option>
+      <ion-option value="Active">Active</ion-option>
+      <ion-option value="Polite">Polite</ion-option>
+      <ion-option value="Careful">Careful</ion-option>
+      <ion-option value="Generous">Generous</ion-option>
+      <ion-option value="Brave">Brave</ion-option>
+      <ion-option value="Kind">Kind</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+    
+
+  </ion-card-content>
+
+</ion-card>
+
+<!-- about Family -->
+
+<ion-card>
+  <ion-card-header>
+    FAMILY
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row radio-group [(ngModel)]="parents">
+
+     <ion-col>
+      <ion-item>
+       <ion-label>Both Alive</ion-label>
+       <ion-radio checked="true" value="bothalive"></ion-radio>
+     </ion-item>
+
+   </ion-col>
+
+   <ion-col>
+    <ion-item>
+     <ion-label>Father Only</ion-label>
+     <ion-radio value="fatheronly"></ion-radio>
+   </ion-item>
+
+ </ion-col>
+
+ <ion-col>
+  <ion-item>
+   <ion-label>Mother Only</ion-label>
+   <ion-radio value="motheronly"></ion-radio>
+ </ion-item>
+
+</ion-col>
+
+
+</ion-row>
+</ion-card-content>
+
+</ion-card>
+
+<ion-item>
+  <ion-label> Agree all conditions to use </ion-label>
+  <ion-toggle checked="false"></ion-toggle>
+</ion-item>
+
+<button ion-button color="secondary" round full (click)="createProfile()">Create Profile</button>
+
+</ion-content>

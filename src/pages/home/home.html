@@ -1,14 +1,169 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
+	<ion-navbar color='primary'>
+		<ion-title>Home</ion-title>
+	</ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<!-- <ion-toolbar>
+
+
+</ion-toolbar> -->
+
+
+
+<ion-content >
+
+<!-- Filtering here -->
+		<ion-grid   style="position: fixed; background: rgba(206, 255, 51, 0.7); padding-top: 0px">
+			<ion-row>
+				
+				<!-- Filter based on target property -->
+				<ion-col>
+					<ion-item>
+						<ion-label>Target:</ion-label>
+						<ion-select [(ngModel)]="f_target" name="f_target" (ionChange) ="applyFilters1(f_target, f_city, f_education)" interface="popover">
+							<ion-option value="all" selected="true">All</ion-option>
+							<ion-option value="marriage">Marriage</ion-option>
+							<ion-option value="re-marriage">Re-marriage</ion-option>
+							<ion-option value="secret">Secret</ion-option>
+
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+				<!-- filtering based on Region -->
+				<ion-col>
+					<ion-item>
+						<ion-label>Region:</ion-label>
+						<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange) ="applyFilters2(f_target, f_city, f_education)">
+							<ion-option value="all" selected="true">All</ion-option>
+							<ion-option value="seoul">Seoul</ion-option>
+							<ion-option value="busan">Busan</ion-option>
+							<ion-option value="incheon">Incheon</ion-option>
+							<ion-option value="daegu">Daegu</ion-option>
+							<ion-option value="daejeon">Daejeon</ion-option>
+							<ion-option value="gwangju">Gwangjiu</ion-option>
+							<ion-option value="ulsan">Ulsan</ion-option>
+							<ion-option value="suwon">Suwon</ion-option>
+							<ion-option value="goyangsi">GoyangSi</ion-option>
+							<ion-option value="seongnamsi">SeongnamSi</ion-option>
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+
+				<!-- Fitering based on education property -->
+
+				<ion-col>
+					<ion-item>
+						<ion-label>Education:</ion-label>
+						<ion-select [(ngModel)]="f_education" name="f_education" interface="popover" (ionChange) ="applyFilters3(f_target, f_city, f_education)">
+							<ion-option value="all" selected="true">All</ion-option>
+							<ion-option value="highschool">HighSchool</ion-option>
+							<ion-option value="master">Master</ion-option>
+							<ion-option value="phd">PhD</ion-option>
+
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+
+		</ion-grid>
+
+
+
+	<ion-list>
+
+	<ion-row style="height: 60px"></ion-row>
+
+
+
+		<ion-card *ngFor= "let item of profileitems | async">
+			<!-- <h2>Last Name: {{item.target}}</h2>
+			<h2>Last Name: {{item.username}}</h2>
+			<h2>First Name: {{item.firstName}}</h2>
+			<h2>Last Name: {{item.lastName}}</h2>
+			<h2>Last Name: {{item.gender}}</h2>
+			<h2>Last Name: {{item.age}}</h2>
+			<h2>Last Name: {{item.education}}</h2>
+			<h2>Last Name: {{item.city}}</h2> -->
+
+			<ion-row>
+				<ion-col>
+
+					<ion-item>
+						<ion-avatar item-start>
+							<img src="assets/imgs/avatar-luke.png">
+						</ion-avatar>
+						<h2>nick: {{item.username}}</h2>
+						<h2>full name: {{item.firstName}} {{item.lastName}}</h2>
+						<p>birthday: {{item.age}}</p>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						
+
+						<ion-icon name="pin"></ion-icon>
+						<h2>{{item.city}}</h2> 
+					</ion-item>
+					
+
+				</ion-col>
+
+				<ion-col>
+					<ion-item>
+						<ion-icon name="heart" color="danger"></ion-icon>
+						<h2>{{item.target}}</h2>
+					</ion-item>
+
+				</ion-col>
+
+
+
+			</ion-row>
+
+			<img src="assets/imgs/home2.jpg">
+
+			<ion-card-content>
+				<p>This is the lastest status. Make friends</p>
+			</ion-card-content>
+
+
+			<ion-row>
+
+				<ion-col>
+					<button ion-button icon-left clear small>
+						<ion-icon name="thumbs-up"></ion-icon>
+						<div>0 Likes</div>
+					</button>
+				</ion-col>
+				<ion-col>
+					<button ion-button icon-left clear small>
+						<ion-icon name="text"></ion-icon>
+						<div>0 Comments</div>
+					</button>
+				</ion-col>
+				<ion-col center text-center>
+					<ion-note>
+						2 days ago
+					</ion-note>
+				</ion-col>
+			</ion-row>
+
+		</ion-card>
+
+	</ion-list>
+	
+
+
 </ion-content>
