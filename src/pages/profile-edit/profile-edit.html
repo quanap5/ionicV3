@@ -7,7 +7,10 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Profile</ion-title>
+    <ion-title>ProfileEdit</ion-title>
+    <ion-buttons end>
+			<button ion-button (click)="closeModal()">Close</button>
+		</ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -119,14 +122,14 @@
   		<ion-col>
   			<ion-item>
           <!-- <ion-label fixed>Username</ion-label> -->
-          <ion-input [(ngModel)]="profile.username" placeholder = "User Name"></ion-input>
+          <ion-input [(ngModel)]="profile.username" type="text" value={{profile.username}} placeholder = "User Name"></ion-input>
         </ion-item>
 
       </ion-col>
       <ion-col>
        <ion-item>
         <!-- <ion-label fixed>First Name</ion-label> -->
-        <ion-input [(ngModel)]="profile.firstName" placeholder = "First Name"></ion-input>
+        <ion-input [(ngModel)]="profile.firstName" value={profile.firstName} placeholder = "First Name"></ion-input>
       </ion-item>
 
 
@@ -134,7 +137,7 @@
     <ion-col>
      <ion-item>
       <!-- <ion-label fixed>Last Name</ion-label> -->
-      <ion-input [(ngModel)]="profile.lastName" placeholder = "Last Name"></ion-input>
+      <ion-input [(ngModel)]="profile.lastName" type="text" value={profile.lastName} placeholder = "Last Name"></ion-input>
     </ion-item>
 
 
@@ -366,11 +369,8 @@
 
 </ion-card>
 
-<ion-item>
-  <ion-label> Agree all conditions to use </ion-label>
-  <ion-toggle checked="false"></ion-toggle>
-</ion-item>
 
-<button ion-button color="secondary" round full (click)="createProfile()">Create Profile</button>
+
+<button ion-button color="secondary" round full (click)="updateProfile()">Update Profile</button>
 
 </ion-content>

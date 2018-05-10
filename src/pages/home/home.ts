@@ -26,6 +26,10 @@ import 'rxjs/add/operator/filter'
    profileListRef: AngularFireList<Profile[]>;
    profileitems: Observable<any[]>;
 
+// Use for filtering
+   public search_citys: any[];
+   public sSearch_city: any;
+
     /// Unwrapped arrayy from firebase
     profiles: Observable<any[]>;
     filterEDProfile: Observable<any[]>;
@@ -45,11 +49,12 @@ import 'rxjs/add/operator/filter'
     //this.profileListRef.valueChanges().subscribe(data => console.log(data));
     this.profileitems = this.profileListRef.valueChanges();
 
-   //console.log(this.profileitems);
+   console.log(this.profileitems);
     //this.profiles = this.profileitems;
     //this.applyFilters("marriage");
     // this.First();
-    this.afDatabase.list('profile')
+    this.afDatabase.list('profile');
+    this.initializeSearch_city();
 
   }
 
@@ -156,5 +161,31 @@ import 'rxjs/add/operator/filter'
     
     // });
   }
+
+initializeSearch_city(){
+    this.search_citys = [
+    {id: 1, name: 'Seoul'},
+    {id: 2, name: 'Gyeonggi'},
+    {id: 3, name: 'Incheon'},
+    {id: 4, name: 'Daejeon'},
+    {id: 5, name: 'Daegu'},
+    {id: 6, name: 'Busan'},
+    {id: 7, name: 'Gwangju'},
+    {id: 8, name: 'Sejong'},
+    {id: 9, name: 'Ulsan'},
+    {id: 10, name: 'Chungbuk'},
+    {id: 11, name: 'Chungnam'},
+    {id: 11, name: 'Cheonbuk'},
+    {id: 11, name: 'Chonnam'},
+    {id: 11, name: 'Gyungbuk'},
+    {id: 11, name: 'Gyungnam'},
+    {id: 11, name: 'Gangwon'},
+    {id: 11, name: 'Jeju'},
+    {id: 11, name: 'NorthKorea'},
+    {id: 11, name: 'Foreigner'},];
+
+  }
+
+
 
 }

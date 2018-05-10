@@ -6,13 +6,117 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>My</ion-title>
-  </ion-navbar>
+	<ion-navbar color="primary">
+		<ion-title>My</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+
+
+	<ion-card class="ion-card">
+		<img [src]="'./assets/imgs/covers/'+ (myProfile_ | async)?.city + '.png'"/>
+		<div class="card-name">{{(myProfile_ | async)?.lastName}} {{(myProfile_ | async)?.firstName}}</div>
+		<div class="card-sex">
+			<ion-icon [name]=" ((myProfile_ | async)?.gender == 'male' ) ? 'male': 'female'" ></ion-icon>
+
+		{{(myProfile_ | async)?.gender}}</div>
+		<div class="card-age">
+			<ion-icon name="calendar"></ion-icon>
+		{{(myProfile_ | async)?.birth}} ages</div>
+
+
+
+	</ion-card>
+
+<!-- Row for edit profile and prefer -->
+<!-- <ion-card class="ion-card2"> -->
+	<ion-row>
+		<ion-col col-6>
+			<button ion-button block color="light" style="width:100%;  border-radius: 20px" float-center (click)="prefer_Setting()">
+				<div>Preference</div>
+			</button>
+
+		</ion-col>
+
+		<ion-col col-6>
+			<button ion-button block color="light" style="width:100%; border-radius: 20px" float-center (click)="edit_Profile()">
+				<div>Edit profile</div>
+			</button>
+
+		</ion-col>
+
+	</ion-row>
+<!-- </ion-card> -->
+
+
+	<ion-card>
+
+		<ion-item class="card-avatar">
+			<ion-avatar>
+				<img class="avatar-size" src={{imgSourceAvar}} (click)="takephoto()">
+			</ion-avatar>
+		</ion-item>
+
+	</ion-card>
+
+	
+
+	<ion-card>
+		<ion-card-header>
+			Personal Detals
+		</ion-card-header>
+		<ion-card-content>   	
+
+			<h2>
+				<ion-icon name="contact">	full name: {{(myProfile_ | async)?.firstName}} {{(myProfile_ | async)?.lastName}}</ion-icon>
+			</h2>
+			<h2>
+
+				<ion-icon name="bowtie">	birthday: {{(myProfile_ | async)?.age}}</ion-icon>
+			</h2>
+			<h2>
+
+				<ion-icon name="bookmarks">		{{(myProfile_ | async)?.education}}</ion-icon>
+			</h2>
+			<h2>
+
+				<ion-icon name="locate">	{{(myProfile_ | async)?.city}}</ion-icon>
+			</h2>
+
+
+
+		</ion-card-content>
+
+	</ion-card>
+
+
+<!-- 	
+	<h2>Purpose: {{(myProfile_| async)?.target}}</h2>
+	<h2>Username: {{(myProfile_ | async)?.username}}</h2>
+	<h2>First Name: {{(myProfile_ | async)?.firstName}}</h2>
+	<h2>Last Name: {{(myProfile_ | async)?.lastName}}</h2>
+	<h2>Sex: {{(myProfile_ | async)?.gender}}</h2>
+	<h2>Birthday: {{(myProfile_ | async)?.age}}</h2>
+	<h2>Education: {{(myProfile_ | async)?.education}}</h2>
+	<h2>Hometown: {{(myProfile_ | async)?.city}}</h2>
+
+-->
+<ion-card>
+	<ion-card-header>
+			Gallery
+	</ion-card-header>
+  <ion-slides class="image-slide" loop="true" slidesPerView="3">
+    <ion-slide *ngFor="let img of images">
+      <img src={{imgSourceImg}} class="thumb-img" imageViewer/>
+      <div class="upload_image" (click)= "upload_Image(img)">
+			<ion-icon name="add-circle"></ion-icon>
+	  </div>
+    </ion-slide>
+  </ion-slides>
+</ion-card>
 
 </ion-content>

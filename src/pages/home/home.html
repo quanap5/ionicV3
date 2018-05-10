@@ -45,16 +45,8 @@
 						<ion-label>Region:</ion-label>
 						<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange) ="applyFilters2(f_target, f_city, f_education)">
 							<ion-option value="all" selected="true">All</ion-option>
-							<ion-option value="seoul">Seoul</ion-option>
-							<ion-option value="busan">Busan</ion-option>
-							<ion-option value="incheon">Incheon</ion-option>
-							<ion-option value="daegu">Daegu</ion-option>
-							<ion-option value="daejeon">Daejeon</ion-option>
-							<ion-option value="gwangju">Gwangjiu</ion-option>
-							<ion-option value="ulsan">Ulsan</ion-option>
-							<ion-option value="suwon">Suwon</ion-option>
-							<ion-option value="goyangsi">GoyangSi</ion-option>
-							<ion-option value="seongnamsi">SeongnamSi</ion-option>
+							<ion-option [value]="sSearch_city.name" *ngFor = "let sSearch_city of search_citys">{{sSearch_city.name}}</ion-option>
+							
 
 						</ion-select>
 					</ion-item>

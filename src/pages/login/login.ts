@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Loading } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player'
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,8 +20,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
  export class LoginPage {
 
    user = {} as User;
-   constructor(private afAuth: AngularFireAuth, private toastCrt: ToastController,
+
+   // video: any = {
+   //      url: 'https://www.youtube.com/embed/MLleDRkSuvk',
+   //      title: 'Awesome video'
+   //  };
+
+   
+   constructor(private afAuth: AngularFireAuth, private toastCrt: ToastController, 
      public navCtrl: NavController, public navParams: NavParams) {
+
    }
 
 
@@ -26,14 +37,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
    async login(user: User){
      try {
-       const result= this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+       const result= await this.afAuth.auth.signInWithEmailAndPassword(user.email+'@'+user.type, user.password);
        console.log(result);
        if (result) {
          
          //this.navCtrl.setRoot('HomePage');
          this.navCtrl.setRoot('TabsPage');
+         //this.navCtrl.setRoot('MyPage');
+         // this.navCtrl.setRoot('PreferencePage');
        }
-       else {
+       else { 
          this.toastCrt.create({
            message: `Failing`,
            duration: 3000
@@ -71,6 +84,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
      this.navCtrl.push('PasswordresetPage')
      //this.navCtrl.push('TabsPage')
    }
+
+   // playVideo(a:string){
+   //   this.youtube.openVideo('a');
+   //   console.log('running run');
+   // }
+
+
 
    
  }

@@ -1,0 +1,158 @@
+<!--
+  Generated template for the PreferenceSub1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title>preference_sub1</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="closeModal()">Close</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<!--Height-->
+	<ion-card>
+
+		<ion-card-header>
+			Height
+		</ion-card-header>
+
+		<ion-card-content>
+			<ion-row>
+
+				<ion-col>
+					<ion-item>
+						<ion-label>min</ion-label>
+
+						<ion-select [(ngModel)]="data2.height.min" placeholder="cm" (ionChange)="setmax_height(data2.height.min)" interface="popover">
+							<ion-option [value]="smin_Height" *ngFor = "let smin_Height of height">{{smin_Height}} cm</ion-option>
+
+
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label>max</ion-label>
+
+						<!--   <ion-label stacked>Select your District</ion-label> -->
+						<ion-select [(ngModel)]="data2.height.max" placeholder="cm" interface="popover">
+							<ion-option [value]="smax_Height" *ngFor = "let smax_Height of selectedmax_Height">{{smax_Height}} cm</ion-option>
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+
+			</ion-row>
+		</ion-card-content>
+
+	</ion-card>
+
+	<!--Weight-->
+	<ion-card>
+
+		<ion-card-header>
+			Weight
+		</ion-card-header>
+
+		<ion-card-content>
+			<ion-row>
+
+				<ion-col>
+					<ion-item>
+						<ion-label>min</ion-label>
+
+						<ion-select [(ngModel)]="data2.weight.min" placeholder="kg" (ionChange)="setmax_weight(data2.weight.min)" interface="popover">
+							<ion-option [value]="smin_Weight" *ngFor = "let smin_Weight of weight">{{smin_Weight}} kg</ion-option>
+
+
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label>max</ion-label>
+
+						<!--   <ion-label stacked>Select your District</ion-label> -->
+						<ion-select [(ngModel)]="data2.weight.max" placeholder="kg" interface="popover">
+							<ion-option [value]="smax_Weight" *ngFor = "let smax_Weight of selectedmax_Weight">{{smax_Weight}} kg</ion-option>
+
+						</ion-select>
+					</ion-item>
+				</ion-col>
+
+			</ion-row>
+		</ion-card-content>
+
+	</ion-card>
+	<!--Attractiveness-->
+	<ion-card>
+		<ion-card-header>
+			Attractiveness
+		</ion-card-header>
+
+		<ion-card-content>
+			<ion-item>
+				<ion-range dualKnobs="true" pin="true" min="1" max="4" step="1" snap="true" [(ngModel)]="structure" color="primary">
+					<!-- <ion-icon range-left small color="danger" name="thermometer"></ion-icon> -->
+					<!-- <ion-icon range-right color="danger" name="thermometer"></ion-icon> -->
+				</ion-range>
+				
+			</ion-item>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-3 item-left style="text-align: left;"> under average </ion-col>
+					<ion-col col-3 item-center style="text-align: center;"> average </ion-col>
+					<ion-col col-3 iten-center style="text-align: center;"> above average </ion-col>
+					<ion-col col-3 item-right style="text-align: right;"> hot </ion-col>
+				</ion-row>
+			</ion-grid>
+			
+		</ion-card-content>
+	</ion-card>
+
+
+
+	<!--Body-->
+	<ion-card>
+		<ion-card-header>
+			Body
+		</ion-card-header>
+
+		<ion-list radio-group [(ngModel)]="body">
+
+
+			<ion-item  class="item2">
+				<ion-label>Thin</ion-label>
+				<ion-radio value="thin"></ion-radio>
+			</ion-item>
+
+			<ion-item  class="item2">
+				<ion-label>Fit</ion-label>
+				<ion-radio value="fit"></ion-radio>
+			</ion-item>
+
+			<ion-item  class="item2">
+				<ion-label>Average</ion-label>
+				<ion-radio value="average"></ion-radio>
+			</ion-item>
+
+			<ion-item  class="item2">
+				<ion-label>Fat</ion-label>
+				<ion-radio value="fat"></ion-radio>
+			</ion-item>
+		</ion-list>
+	</ion-card>
+
+</ion-content>

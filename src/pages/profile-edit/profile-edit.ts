@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from "../../models/profile";
 import { AngularFireDatabase } from 'angularfire2/database';
+
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the ProfilePage page.
@@ -13,11 +15,14 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html',
+  selector: 'page-profile-edit',
+  templateUrl: 'profile-edit.html',
 })
-export class ProfilePage {
+export class ProfileEditPage {
 	profile = {} as Profile ;
+
+  public myProfile_: Observable<any>;
+
 
   // create 2 associated selection\
 
@@ -36,6 +41,7 @@ export class ProfilePage {
   public year: number;
 
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private toastCrt: ToastController,
+    private view: ViewController,
   	public navCtrl: NavController, public navParams: NavParams) {
     let init_height={height: {min: 0, max: 1}}
 
@@ -48,10 +54,14 @@ export class ProfilePage {
     // this.profile.preference.height.max=0;
     var currentTime = new Date();
     this.year = currentTime.getFullYear();
+
+    this.loadProfile( navParams.get('current_profile'));
+
+    console.log(this.profile);
     
   }
 
-  createProfile() {
+  updateProfile() {
 
     var toaster = this.toastCrt.create({
       duration: 4000,
@@ -74,9 +84,9 @@ export class ProfilePage {
     } else  {
       // code...
       this.string2Age();
-        this.afAuth.authState.take(1).subscribe(auth => {
+      this.afAuth.authState.take(1).subscribe(auth => {
       this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-      .then(() => this.navCtrl.setRoot('TabsPage', {my: this.profile} ));
+      .then(() => this.navCtrl.setRoot('TabsPage'));
 
     })
     
@@ -246,4 +256,26 @@ export class ProfilePage {
     
   }
 
+
+
+  closeModal(){
+  
+
+    this.view.dismiss();
+
+  }
+
+  loadProfile(myProfile_: Observable<Profile>){
+
+    //  this.profile.target = myProfile_.target;
+    // this.profile.username = "{{(myProfile_ | async)?.username}}";
+    // this.profile.firstName = "{{(myProfile_ | async)?.firstName}}";
+    // this.profile.lastName = "{{(myProfile_ | async)?.lastName}}";
+    // this.profile.age = "{{(myProfile_ | async)?.age}}";
+    // this.profile.education = "{{(myProfile_ | async)?.education}}";
+
+
+
+  }
 }
+

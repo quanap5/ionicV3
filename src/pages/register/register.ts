@@ -26,14 +26,15 @@ export class RegisterPage {
 
 
   async register(user: User){
-  	  //this.navCtrl.setRoot('ProfilePage');
+  	 // this.navCtrl.setRoot('ProfilePage');
 
   	  var toaster = this.toastCtrl.create({
   	  	duration: 4000,
   	  	position: 'bottom'
   	  });
 
-  	  if (user.email =='' || user.password == '' || user.password == null ) { 
+  	  if (user.email =='' || user.password == '' || user.type ==''
+        || user.password == null ) { 
   	  	// code...
   	  	toaster.setMessage('All field should be not blank');
   	  	toaster.present();
@@ -51,7 +52,7 @@ export class RegisterPage {
   	  	// loader.present();
 
   	  	  try {
-	  	const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+	  	const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email+'@'+user.type, user.password);
 	  	console.log(result);
 	  	this.navCtrl.setRoot('ProfilePage');
 	  }
