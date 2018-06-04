@@ -1,0 +1,16 @@
+{
+    "login": {
+        "LOGIN_header": "Login",
+        "LOGIN": "LOGIN",
+        "REGISTER": "REGISTER",
+        "Forgot_login_details": "Forgot login details",
+        "Get_Help": "Get Help",
+        "email": "Email",
+        "Password": "Password"
+    },
+    "register": {
+        "Email": "Email",
+        "Password": "Password",
+        "Register": "Register"
+    }
+}

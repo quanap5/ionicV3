@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
+import { UserProvider } from '../../providers/user/user';
+import { TranslateService } from '@ngx-translate/core';
+import { ProfilepicPage } from '../profilepic/profilepic';
 
 
 /**
@@ -19,9 +22,12 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class RegisterPage {
 
 	user = {}  as User;
+  newuser= {} as User;
 
   constructor(private afAuth: AngularFireAuth, private toastCtrl: ToastController, private loadingCrt: LoadingController,
-  	public navCtrl: NavController, public navParams: NavParams) {
+    public userservice: UserProvider, public loadingCtrl: LoadingController, 
+    public navCtrl: NavController, public navParams: NavParams,
+    private translate: TranslateService) {
   }
 
 
@@ -54,7 +60,8 @@ export class RegisterPage {
   	  	  try {
 	  	const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email+'@'+user.type, user.password);
 	  	console.log(result);
-	  	this.navCtrl.setRoot('ProfilePage');
+	  	this.navCtrl.setRoot('ProfilePage');// code version1
+      //this.navCtrl.setRoot('ProfilepicPage'); // new code
 	  }
 	  catch (e) {
 	  	console.error(e);
@@ -66,5 +73,43 @@ export class RegisterPage {
 	
 
   }
+
+
+
+  /*
+  This code is for signup using user service version2
+
+  */
+
+
+  signup() {
+    var toaster = this.toastCtrl.create({
+      duration: 3000,
+      position: 'bottom'
+    });
+    if (this.user.email == '' || this.user.password == '' || this.user.type == '') {
+      toaster.setMessage('All fields are required dude');
+      toaster.present();
+    }
+    else if (this.user.password.length < 6) {
+      toaster.setMessage('Password is not strong. Try giving more than six characters');
+      toaster.present();
+    }
+    else {
+      let loader = this.loadingCtrl.create({
+        content: 'Please wait'
+      });
+      loader.present();
+      this.userservice.adduser(this.user).then((res: any) => {
+        loader.dismiss();
+        if (res.success)
+          this.navCtrl.setRoot( ProfilepicPage , {init_user: this.user});
+        //this.navCtrl.setRoot('ProfilePage');
+
+        else
+          alert('Error' + res);
+      })
+    }
+  }  
 
 }

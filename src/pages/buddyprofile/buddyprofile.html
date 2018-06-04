@@ -1,0 +1,158 @@
+<!--
+  Generated template for the MyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+		<ion-navbar color="primary">
+			<ion-title>My</ion-title>
+		</ion-navbar>
+	
+	</ion-header>
+	
+	
+	<ion-content>
+	
+		<ion-card class="ion-card">
+			<img [src]="'./assets/imgs/covers/'+ my_City.name + '.png'" />
+			<div class="card-name">{{my_Profile.lastName}} {{my_Profile.firstName}}</div>
+			<div class="card-username" (click)="editname()">{{myUser.displayName}}</div>
+			<div class="card-sex">
+				<ion-icon [name]= "(my_Profile.gender == 'male') ? 'male': 'female'"></ion-icon>
+	
+				{{my_Profile.gender}}</div>
+			<div class="card-age">
+				<ion-icon name="calendar"></ion-icon>
+				{{my_Profile.birth}} ages</div>
+	
+	
+	
+		</ion-card>
+	
+		<!-- Row for edit profile and prefer -->
+		<!-- <ion-card class="ion-card2"> -->
+		<ion-row>
+			<ion-col col-6>
+				<button ion-button block color="light" style="width:100%;  border-radius: 20px" float-center (click)="x()">
+					<div>Book Mark</div>
+				</button>
+	
+			</ion-col>
+	
+			<ion-col col-6>
+				<button ion-button block color="light" style="width:100%; border-radius: 20px" float-center (click)="xx()">
+					<div>Messages</div>
+				</button>
+	
+			</ion-col>
+	
+		</ion-row>
+		<!-- </ion-card> -->
+	
+	
+		<ion-card>
+	
+			<ion-item class="card-avatar">
+				<ion-avatar>
+					<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
+					<img src={{my_Profile.photoURL}} (click)="clickAvarOfBuddy()">
+				</ion-avatar>
+			</ion-item>
+
+			<ion-item class="card-avatar">
+				<ion-avatar>
+					<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
+					<img [src]="(hiddenHoroscope)? my_Profile.zodiac :''"  (click)="clickAvarOfBuddy()">
+					
+				</ion-avatar>
+			</ion-item>
+	
+		</ion-card>
+	
+		<!-- Display personal information of user -->
+	
+		<ion-card>
+			<ion-card-header>
+				Personal Detals
+			</ion-card-header>
+			<ion-card-content>
+				<h2>
+					<ion-icon name="contact"> full name: {{my_Profile.firstName}} {{my_Profile.lastName}}</ion-icon>
+				</h2>
+				<h2>
+					<ion-icon name="bowtie"> birthday: {{my_Profile.age}}</ion-icon>
+				</h2>
+				<h2>
+					<ion-icon name="bookmarks"> {{my_Profile.education}}</ion-icon>
+				</h2>
+				<h2>
+					<ion-icon name="locate"> {{my_City.name}}</ion-icon>
+				</h2>
+	
+			</ion-card-content>
+	
+		</ion-card>
+	
+		<!-- card for displaying profile image. Always be 4 picture in our application
+	Idea - user can upload video or animation for payment version -->
+	
+		<ion-card>
+			<ion-card-header>
+				Gallery
+			</ion-card-header>
+			<ion-slides class="image-slide">
+				<ion-slide>
+					<img src={{my_Profile.profileURL1}} class="thumb-img" imageViewer/>
+					<div class="upload_image">
+						<ion-icon name="add-circle"></ion-icon>
+					</div>
+	
+					<div class="capture_image">
+						<ion-icon name="camera"></ion-icon>
+					</div>
+	
+				</ion-slide>
+	
+				<ion-slide>
+					<img src={{my_Profile.profileURL2}} class="thumb-img" imageViewer/>
+					<div class="upload_image">
+						<ion-icon name="add-circle"></ion-icon>
+					</div>
+	
+					<div class="capture_image">
+						<ion-icon name="camera"></ion-icon>
+					</div>
+	
+				</ion-slide>
+	
+				<ion-slide>
+					<img src={{my_Profile.profileURL3}} class="thumb-img" imageViewer/>
+					<div class="upload_image">
+						<ion-icon name="add-circle"></ion-icon>
+					</div>
+	
+					<div class="capture_image">
+						<ion-icon name="camera"></ion-icon>
+					</div>
+	
+				</ion-slide>
+	
+				<ion-slide>
+					<img src={{my_Profile.profileURL4}} class="thumb-img" imageViewer/>
+					<div class="upload_image">
+						<ion-icon name="add-circle"></ion-icon>
+					</div>
+	
+					<div class="capture_image">
+						<ion-icon name="camera"></ion-icon>
+					</div>
+	
+				</ion-slide>
+			</ion-slides>
+		</ion-card>
+	
+		
+	
+	</ion-content>

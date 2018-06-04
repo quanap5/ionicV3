@@ -19,68 +19,177 @@
 
 
 
-<ion-content >
+<ion-content>
 
-<!-- Filtering here -->
-		<ion-grid   style="position: fixed; background: rgba(206, 255, 51, 0.7); padding-top: 0px">
-			<ion-row>
-				
-				<!-- Filter based on target property -->
-				<ion-col>
-					<ion-item>
-						<ion-label>Target:</ion-label>
-						<ion-select [(ngModel)]="f_target" name="f_target" (ionChange) ="applyFilters1(f_target, f_city, f_education)" interface="popover">
-							<ion-option value="all" selected="true">All</ion-option>
-							<ion-option value="marriage">Marriage</ion-option>
-							<ion-option value="re-marriage">Re-marriage</ion-option>
-							<ion-option value="secret">Secret</ion-option>
+	<!-- Filtering here -->
 
+	<ion-grid style="position: fixed; z-index: 9999; background:  rgba(51, 255, 112, 1); padding-top: 0px">
+		<ion-row>
 
-						</ion-select>
-					</ion-item>
-				</ion-col>
-				<!-- filtering based on Region -->
-				<ion-col>
-					<ion-item>
-						<ion-label>Region:</ion-label>
-						<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange) ="applyFilters2(f_target, f_city, f_education)">
-							<ion-option value="all" selected="true">All</ion-option>
-							<ion-option [value]="sSearch_city.name" *ngFor = "let sSearch_city of search_citys">{{sSearch_city.name}}</ion-option>
-							
-
-						</ion-select>
-					</ion-item>
-				</ion-col>
-
-				<!-- Fitering based on education property -->
-
-				<ion-col>
-					<ion-item>
-						<ion-label>Education:</ion-label>
-						<ion-select [(ngModel)]="f_education" name="f_education" interface="popover" (ionChange) ="applyFilters3(f_target, f_city, f_education)">
-							<ion-option value="all" selected="true">All</ion-option>
-							<ion-option value="highschool">HighSchool</ion-option>
-							<ion-option value="master">Master</ion-option>
-							<ion-option value="phd">PhD</ion-option>
+			<!-- Filter based on target property -->
+			<ion-col>
+				<ion-item>
+					<ion-label>Target:</ion-label>
+					<ion-select [(ngModel)]="f_target" name="f_target" (ionChange)="applyFilters1(f_target, f_city)" interface="popover">
+						<ion-option value="all" selected="true">All</ion-option>
+						<ion-option value="marriage">Marriage</ion-option>
+						<ion-option value="re-marriage">Re-marriage</ion-option>
+						<ion-option value="secret">Secret</ion-option>
 
 
-						</ion-select>
-					</ion-item>
-				</ion-col>
-			</ion-row>
+					</ion-select>
+				</ion-item>
+			</ion-col>
+			<!-- filtering based on Region -->
+			<ion-col>
+				<ion-item>
+					<ion-label>Region:</ion-label>
+					<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange)="applyFilters1(f_target, f_city)" interface="popover">
+						<ion-option value="all" selected="true">All</ion-option>
+						<ion-option [value]="sSearch_city.name" *ngFor="let sSearch_city of search_citys">{{sSearch_city.name}}</ion-option>
 
-		</ion-grid>
+
+					</ion-select>
+				</ion-item>
+			</ion-col>
+
+			<!-- Fitering based on education property -->
+
+			<ion-col>
+				<ion-item>
+					<ion-label>Education:</ion-label>
+					<ion-select [(ngModel)]="f_education" name="f_education" interface="popover" (ionChange)="applyFilters3(f_target, f_city, f_education)" interface="popover">
+						<ion-option value="all" selected="true">All</ion-option>
+						<ion-option value="highschool">HighSchool</ion-option>
+						<ion-option value="master">Master</ion-option>
+						<ion-option value="phd">PhD</ion-option>
 
 
+					</ion-select>
+				</ion-item>
+			</ion-col>
+		</ion-row>
 
-	<ion-list>
-
-	<ion-row style="height: 60px"></ion-row>
+	</ion-grid>
 
 
 
-		<ion-card *ngFor= "let item of profileitems | async">
-			<!-- <h2>Last Name: {{item.target}}</h2>
+	<ion-list no-lines>
+
+		<ion-row style="height: 60px"></ion-row>
+
+		<ion-item-sliding *ngFor="let key of filteredusers">
+			<ion-item>
+
+				<ion-card>
+
+					<ion-row>
+						<ion-col col-6>
+
+							<ion-item class="card-avatar">
+								<ion-avatar item-left (click)="gotobuddiProfile(key.uid)">
+									<img [src]=" key.profile.photoURL ">
+								</ion-avatar>
+								<h2>nick: {{key.displayName}}</h2>
+								<h2>full name: {{key.profile.firstName}} {{key.profile.lastName}}</h2>
+								<p>birthday: {{key.profile.age}}</p>
+							</ion-item>
+						</ion-col>
+						<ion-col>
+							<ion-item>
+
+
+								<ion-icon name="pin"></ion-icon>
+								<h2>{{key.profile.city.name}}</h2>
+							</ion-item>
+
+
+						</ion-col>
+
+						<ion-col>
+							<ion-item>
+								<ion-icon name="heart" color="danger"></ion-icon>
+								<h2>{{key.profile.target}}</h2>
+							</ion-item>
+
+						</ion-col>
+
+
+
+					</ion-row>
+
+					<!-- <img src="assets/imgs/home2.jpg"> -->
+
+					<ion-row>
+						<img [src]="'./assets/imgs/covers/'+ key.profile.city.name + '.png'">
+					</ion-row>
+
+
+
+
+					<!-- <ion-card-content>
+						<p>This is the lastest status. Make friends</p>
+					</ion-card-content> -->
+
+
+					<ion-row>
+
+						<ion-col>
+							<button ion-button icon-left clear small>
+								<ion-icon name="thumbs-up"></ion-icon>
+								<div>0 Likes</div>
+							</button>
+						</ion-col>
+						<ion-col>
+							<button ion-button icon-left clear small>
+								<ion-icon name="text"></ion-icon>
+								<div>0 Comments</div>
+							</button>
+						</ion-col>
+						<ion-col center text-center>
+							<ion-note>
+								2 days ago
+							</ion-note>
+						</ion-col>
+					</ion-row>
+
+
+
+				</ion-card>
+			</ion-item>
+
+			<ion-item-options slide="left">
+				<button ion-button color="primary" (click)="sendreq(key)">
+					<ion-icon name="person-add"></ion-icon>
+					Add
+				</button>
+
+				<button ion-button color="danger" (click)="Skip(key)">
+					<ion-icon name="trash"></ion-icon>
+					Skip
+				</button>
+			</ion-item-options>
+
+
+			<!-- <ion-item-options slide="right">
+				<button ion-button color="primary" (click)="Skip(key)">
+					<ion-icon name="trash"></ion-icon>
+					Skip
+				</button>
+			</ion-item-options> -->
+
+			<!-- This ion-item-option for add friend for message -->
+
+
+		</ion-item-sliding>
+
+
+
+
+
+
+		<!-- <ion-card *ngFor= "let item of profileitems | async"> -->
+		<!-- <h2>Last Name: {{item.target}}</h2>
 			<h2>Last Name: {{item.username}}</h2>
 			<h2>First Name: {{item.firstName}}</h2>
 			<h2>Last Name: {{item.lastName}}</h2>
@@ -89,7 +198,7 @@
 			<h2>Last Name: {{item.education}}</h2>
 			<h2>Last Name: {{item.city}}</h2> -->
 
-			<ion-row>
+		<!-- 	<ion-row>
 				<ion-col>
 
 					<ion-item>
@@ -152,10 +261,12 @@
 				</ion-col>
 			</ion-row>
 
-		</ion-card>
+		</ion-card> -->
+
+
 
 	</ion-list>
-	
+
 
 
 </ion-content>

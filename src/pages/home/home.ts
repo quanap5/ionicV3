@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable'
 //import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { Profile } from "../../models/profile";
 import * as _ from 'lodash';
-import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/filter';
+
+import { UserProvider } from '../../providers/user/user';
+import { RequestsProvider } from '../../providers/requests/requests';
+import { connreq } from '../../models/request';
+import firebase from 'firebase';
 
 /**
  * Generated class for the HomePage page.
@@ -42,19 +47,45 @@ import 'rxjs/add/operator/filter'
 
   filters = {}
 
+
+  newrequest = {} as connreq;
+  temparr = [];
+  filteredusers = [];
+
+  filterprofiles= [] ;
+
+
+  fireprofiles = firebase.database().ref('/profile');
+
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private toast: ToastController,
-  	public navCtrl: NavController, public navParams: NavParams) {
+  	public navCtrl: NavController, public navParams: NavParams,
+    public userservice: UserProvider, public alertCtrl: AlertController,
+    public requestservice: RequestsProvider) {
 
     this.profileListRef= this.afDatabase.list('/profile');
     //this.profileListRef.valueChanges().subscribe(data => console.log(data));
     this.profileitems = this.profileListRef.valueChanges();
 
-   console.log(this.profileitems);
+   //console.log(this.profileitems);
     //this.profiles = this.profileitems;
     //this.applyFilters("marriage");
     // this.First();
     this.afDatabase.list('profile');
     this.initializeSearch_city();
+
+    /////from source codo v2
+
+     this.userservice.getallusers().then((res: any) => {
+     this.filteredusers = res;
+     console.log(this.filteredusers);
+   })
+
+   //   this.userservice.getallprofiles('w2voD0eg8mRlq9OZm5KlgoGgPXM2').then((res: any) => {
+   //   this.filterprofiles = res;
+     
+   // })
+
+    //console.log(this.filteredusers);
 
   }
 
@@ -76,7 +107,7 @@ import 'rxjs/add/operator/filter'
   // }
 
 
-  public applyFilters1(f1: string, f2: string, f3: string){
+  public applyFilters1____(f1: string, f2: string, f3: string){
 
     if (f1=="all") { 
       // code...
@@ -91,6 +122,18 @@ import 'rxjs/add/operator/filter'
       
       
     }
+  }
+
+
+  
+  public applyFilters1(f1: string, f2: string){
+
+      
+    this.userservice.filterUsers(f1, f2).then((res: any) => {
+      this.filteredusers = res;
+      //this.temparr = res;
+    })
+   
   }
 
   
@@ -160,6 +203,8 @@ import 'rxjs/add/operator/filter'
     // 	}
     
     // });
+    // console.log(this.filteredusers)
+
   }
 
 initializeSearch_city(){
@@ -185,6 +230,48 @@ initializeSearch_city(){
     {id: 11, name: 'Foreigner'},];
 
   }
+
+
+
+
+  ///////////////////////////////////////////////////
+
+
+   sendreq(recipient) {
+    this.newrequest.sender = firebase.auth().currentUser.uid;
+    this.newrequest.recipient = recipient.uid;
+    if (this.newrequest.sender === this.newrequest.recipient)
+      alert('You are your friend always');
+    else {
+      let successalert = this.alertCtrl.create({
+        title: 'Request sent',
+        subTitle: 'Your request was sent to ' + recipient.displayName,
+        buttons: ['ok']
+      });
+    
+      this.requestservice.sendrequest(this.newrequest).then((res: any) => {
+        if (res.success) {
+          successalert.present();
+          let sentuser = this.filteredusers.indexOf(recipient);
+          this.filteredusers.splice(sentuser, 1);
+        }
+      }).catch((err) => {
+        alert(err);
+      })
+    }
+  }
+
+
+  gotobuddiProfile(key: string){
+
+     this.navCtrl.push('BuddyprofilePage', {buddyUid: key })
+  }
+
+  debug(key: any){
+    console.log(key);
+    
+  }
+
 
 
 

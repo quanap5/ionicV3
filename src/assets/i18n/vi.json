@@ -1,0 +1,17 @@
+{
+    "login": {
+        "LOGIN_header": "Đăng nhập",
+        "LOGIN": "ĐĂNG NHẬP",
+        "REGISTER": "ĐĂNG KÝ",
+        "Forgot_login_details": "Tôi đã quên chi tiết",
+        "Get_Help": "Cần trợ giúp",
+        "email": "Thư điện tử",
+        "Password": "Mật khẩu"
+    },
+    "register": {
+        "Email": "Thư điện tử",
+        "Password": "Mật khẩu",
+        "Register": "ĐĂNG KÝ"
+    }
+
+}

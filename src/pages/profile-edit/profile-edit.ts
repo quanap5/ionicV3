@@ -2,9 +2,15 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from "../../models/profile";
+import { Fullprofile } from '../../models/fullprofile';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { UserProvider } from '../../providers/user/user';
 
 import { Observable } from 'rxjs/Observable';
+import { City } from "../../models/profile";
+import { TabsPage } from '../tabs/tabs';
+//import { TabsPage } from '../tabs/tabs';
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -26,7 +32,7 @@ export class ProfileEditPage {
 
   // create 2 associated selection\
 
-  public citys: any[];
+  public citys: City [];
   public districts: any[];
 
   public selectedDistricts: any[];
@@ -40,9 +46,17 @@ export class ProfileEditPage {
 
   public year: number;
 
+
+  loadUser = {} as Fullprofile;
+  //load_Profile = {} as Profile;
+  load_City = {} as City;
+  _load_City = {} as City;
+
+  
+  
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private toastCrt: ToastController,
     private view: ViewController,
-  	public navCtrl: NavController, public navParams: NavParams) {
+  	public navCtrl: NavController, public navParams: NavParams, public userservice: UserProvider) {
     let init_height={height: {min: 0, max: 1}}
 
     this.initializeCity();
@@ -55,45 +69,95 @@ export class ProfileEditPage {
     var currentTime = new Date();
     this.year = currentTime.getFullYear();
 
-    this.loadProfile( navParams.get('current_profile'));
-
+    //this.loadProfile( navParams.get('current_profile'));
+    this.loadUser = navParams.get('current_profile');
+    this.profile = this.loadUser.profile;
+    this.load_City = this.profile.city;
     console.log(this.profile);
+    this.profile.target = this.profile.target;
+
+    if (this.profile.gender == 'male') {
+      this.selectedMale = true;
+      
+    }
+    else {
+      this.selectedFemale = true;
+    }
+    //console.log(this.profile);
     
   }
 
-  updateProfile() {
+  // updateProfile() {
 
-    var toaster = this.toastCrt.create({
-      duration: 4000,
-      position: 'bottom'
-    });
+  //   var toaster = this.toastCrt.create({
+  //     duration: 4000,
+  //     position: 'bottom'
+  //   });
 
 
-    if (this.profile.username == '' || this.profile.username == null ||
-      this.profile.firstName == '' || this.profile.firstName == null ||
-      this.profile.lastName == '' || this.profile.lastName == null ||
-      this.profile.target == '' || this.profile.target == null ||
-      this.profile.gender == '' || this.profile.gender == null ||
-      this.profile.age == '' || this.profile.age == null ||
-      this.profile.education== '' || this.profile.education == null ||
-      this.profile.city == '' || this.profile.city == null) { 
-      // code...
-      toaster.setMessage('All fields should be not blank');
-      toaster.present();
+  //   if (this.profile.username == '' || this.profile.username == null ||
+  //     this.profile.firstName == '' || this.profile.firstName == null ||
+  //     this.profile.lastName == '' || this.profile.lastName == null ||
+  //     this.profile.target == '' || this.profile.target == null ||
+  //     this.profile.gender == '' || this.profile.gender == null ||
+  //     this.profile.age == '' || this.profile.age == null ||
+  //     this.profile.education== '' || this.profile.education == null ||
+  //     this.profile.city == '' || this.profile.city == null) { 
+  //     // code...
+  //     toaster.setMessage('All fields should be not blank');
+  //     toaster.present();
 
-    } else  {
-      // code...
-      this.string2Age();
-      this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-      .then(() => this.navCtrl.setRoot('TabsPage'));
+  //   } else  {
+  //     // code...
+  //     this.string2Age();
+  //     this.afAuth.authState.take(1).subscribe(auth => {
+  //     //this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+  //     this.afDatabase.object(`users/${auth.uid}`).set(this.profile)
+  //     .then(() => this.navCtrl.setRoot('TabsPage'));
 
-    })
+  //   })
     
-    } 
+  //   } 
 
 
   
+  // }
+
+
+  updateProfile() {
+
+   
+      // code...
+      this.string2Age();
+      //     this.afAuth.authState.take(1).subscribe(auth => {
+      //       // them vao
+      //   //this.afDatabase.object(`users/${auth.uid}`).set(this.profile);
+
+      //   this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+      //   .then(() => this.navCtrl.setRoot('TabsPage', {my: this.profile} ));
+
+      // })
+
+      // this.afAuth.authState.take(1).subscribe(auth => {
+      //   this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+      // }) // add profile object to firebasee
+
+      // Call userservice to add profile that use one parameter transfered from previous page (profilepic)
+
+      this.userservice.addfulluser(this.profile, this.profile.photoURL).then((res: any) => {
+
+        if (res.success)
+          this.navCtrl.setRoot(TabsPage);
+        //this.navCtrl.setRoot('ProfilePage');
+
+        else
+          alert('Error' + res);
+      })
+
+    
+
+
+
   }
 
    // <!-- <ion-option value="seoul">Seoul</ion-option>
@@ -200,9 +264,12 @@ export class ProfileEditPage {
   }
 
   setDistrictValues(sCity){
+
+    console.log(this.load_City);
     this.selectedDistricts = this.districts.filter(district => district.city_id == sCity.id);
-    this.profile.city=sCity.name;
-    console.log(this.profile.city)
+    // this.profile.city=sCity.name;
+    this.profile.city=sCity;
+    console.log(sCity.id)
 
   }
 
@@ -252,6 +319,7 @@ export class ProfileEditPage {
       // code...
       this.profile.birth = this.year - parseInt(this.profile.age.substring(0, 4));
       console.log(this.profile.birth);
+      this.profile.zodiac = this.userservice.birth2zodiac(this.profile.age);
     }
     
   }
@@ -261,7 +329,8 @@ export class ProfileEditPage {
   closeModal(){
   
 
-    this.view.dismiss();
+    //this.view.dismiss();
+    this.navCtrl.setRoot(TabsPage)
 
   }
 

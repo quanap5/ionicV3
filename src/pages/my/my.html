@@ -15,25 +15,24 @@
 
 <ion-content>
 
-
-
 	<ion-card class="ion-card">
-		<img [src]="'./assets/imgs/covers/'+ (myProfile_ | async)?.city + '.png'"/>
-		<div class="card-name">{{(myProfile_ | async)?.lastName}} {{(myProfile_ | async)?.firstName}}</div>
+		<img [src]="'./assets/imgs/covers/'+ my_City.name + '.png'" />
+		<div class="card-name">{{my_Profile.lastName}} {{my_Profile.firstName}}</div>
+		<div class="card-username" (click)="editname()">{{myUser.displayName}}</div>
 		<div class="card-sex">
-			<ion-icon [name]=" ((myProfile_ | async)?.gender == 'male' ) ? 'male': 'female'" ></ion-icon>
+			<ion-icon [name]=" (my_Profile.gender == 'male' ) ? 'male': 'female'"></ion-icon>
 
-		{{(myProfile_ | async)?.gender}}</div>
+			{{my_Profile.gender}}</div>
 		<div class="card-age">
 			<ion-icon name="calendar"></ion-icon>
-		{{(myProfile_ | async)?.birth}} ages</div>
+			{{my_Profile.birth}} ages</div>
 
 
 
 	</ion-card>
 
-<!-- Row for edit profile and prefer -->
-<!-- <ion-card class="ion-card2"> -->
+	<!-- Row for edit profile and prefer -->
+	<!-- <ion-card class="ion-card2"> -->
 	<ion-row>
 		<ion-col col-6>
 			<button ion-button block color="light" style="width:100%;  border-radius: 20px" float-center (click)="prefer_Setting()">
@@ -50,73 +49,101 @@
 		</ion-col>
 
 	</ion-row>
-<!-- </ion-card> -->
+	<!-- </ion-card> -->
 
 
 	<ion-card>
 
 		<ion-item class="card-avatar">
 			<ion-avatar>
-				<img class="avatar-size" src={{imgSourceAvar}} (click)="takephoto()">
+				<img src={{my_Profile.photoURL}} (click)="takephoto()">
 			</ion-avatar>
 		</ion-item>
 
 	</ion-card>
 
-	
+	<!-- Display personal information of user -->
 
 	<ion-card>
 		<ion-card-header>
 			Personal Detals
 		</ion-card-header>
-		<ion-card-content>   	
-
+		<ion-card-content>
 			<h2>
-				<ion-icon name="contact">	full name: {{(myProfile_ | async)?.firstName}} {{(myProfile_ | async)?.lastName}}</ion-icon>
+				<ion-icon name="contact"> full name: {{my_Profile.firstName}} {{my_Profile.lastName}}</ion-icon>
 			</h2>
 			<h2>
-
-				<ion-icon name="bowtie">	birthday: {{(myProfile_ | async)?.age}}</ion-icon>
+				<ion-icon name="bowtie"> birthday: {{my_Profile.age}}</ion-icon>
 			</h2>
 			<h2>
-
-				<ion-icon name="bookmarks">		{{(myProfile_ | async)?.education}}</ion-icon>
+				<ion-icon name="bookmarks"> {{my_Profile.education}}</ion-icon>
 			</h2>
 			<h2>
-
-				<ion-icon name="locate">	{{(myProfile_ | async)?.city}}</ion-icon>
+				<ion-icon name="locate"> {{my_City.name}}</ion-icon>
 			</h2>
-
-
 
 		</ion-card-content>
 
 	</ion-card>
 
+	<!-- card for displaying profile image. Always be 4 picture in our application
+Idea - user can upload video or animation for payment version -->
 
-<!-- 	
-	<h2>Purpose: {{(myProfile_| async)?.target}}</h2>
-	<h2>Username: {{(myProfile_ | async)?.username}}</h2>
-	<h2>First Name: {{(myProfile_ | async)?.firstName}}</h2>
-	<h2>Last Name: {{(myProfile_ | async)?.lastName}}</h2>
-	<h2>Sex: {{(myProfile_ | async)?.gender}}</h2>
-	<h2>Birthday: {{(myProfile_ | async)?.age}}</h2>
-	<h2>Education: {{(myProfile_ | async)?.education}}</h2>
-	<h2>Hometown: {{(myProfile_ | async)?.city}}</h2>
-
--->
-<ion-card>
-	<ion-card-header>
+	<ion-card>
+		<ion-card-header>
 			Gallery
-	</ion-card-header>
-  <ion-slides class="image-slide" loop="true" slidesPerView="3">
-    <ion-slide *ngFor="let img of images">
-      <img src={{imgSourceImg}} class="thumb-img" imageViewer/>
-      <div class="upload_image" (click)= "upload_Image(img)">
-			<ion-icon name="add-circle"></ion-icon>
-	  </div>
-    </ion-slide>
-  </ion-slides>
-</ion-card>
+		</ion-card-header>
+		<ion-slides class="image-slide">
+			<ion-slide>
+				<img src={{my_Profile.profileURL1}} class="thumb-img" imageViewer/>
+				<div class="upload_image" (click)="upload_Image(img)">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image" (click)="takephoto1('1')">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL2}} class="thumb-img" imageViewer/>
+				<div class="upload_image" (click)="upload_Image(img)">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image" (click)="takephoto1('2')">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL3}} class="thumb-img" imageViewer/>
+				<div class="upload_image" (click)="upload_Image(img)">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image" (click)="takephoto1('3')">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL4}} class="thumb-img" imageViewer/>
+				<div class="upload_image" (click)="upload_Image(img)">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image" (click)="takephoto1('4')">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+		</ion-slides>
+	</ion-card>
+
+	<button ion-button color="secondary" round full (click)="logout()">LogOut</button>
 
 </ion-content>

@@ -16,18 +16,18 @@
 <ion-content class="background" padding>
 	<ion-card>
 		<ion-card-header>
-			Login
+				{{ 'login.LOGIN_header' | translate }}
 		</ion-card-header>
 
 		<ion-card-content>
-			
+
 			<ion-list no-lines>
 				<ion-row>
 					<ion-col>
-						
-						<ion-item >
+
+						<ion-item>
 							<!-- <ion-label fixed>Email</ion-label> -->
-							<ion-input type = "email" [(ngModel)] = "user.email" placeholder="Email"></ion-input>
+							<ion-input type="email" [(ngModel)]="user.email" placeholder= "{{ 'login.email' | translate }}" ></ion-input>
 						</ion-item>
 					</ion-col>
 
@@ -40,7 +40,7 @@
 								<ion-option value="hanmail.com">hanmail.com</ion-option>
 								<ion-option value="hotmail.com">hotmail.com</ion-option>
 								<ion-option value="test.com">test.com</ion-option>
-								
+
 							</ion-select>
 						</ion-item>
 					</ion-col>
@@ -52,55 +52,79 @@
 					<ion-col>
 						<ion-item>
 							<!-- <ion-label fixed>Password</ion-label> -->
-							<ion-input type = "password" [(ngModel)] = "user.password" placeholder="Password"></ion-input>
+							<ion-input type="password" [(ngModel)]="user.password" placeholder= "{{ 'login.Password' |translate }}" ></ion-input>
 						</ion-item>
 					</ion-col>
 				</ion-row>
 
 
-				<button ion-button full round color="secondary" (click)="login(user)">
-					<ion-icon name="ios-eye"></ion-icon> Login
+				<button ion-button full round color="secondary" (click)="signin()">
+					<ion-icon name="ios-eye"></ion-icon> {{ 'login.LOGIN' | translate }}
 				</button>
-				
+
 
 
 				<ion-fab center bottom>
-					<button ion-fab color="danger"><ion-icon name="aperture"></ion-icon></button>
+					<button ion-fab color="danger">
+						<ion-icon name="aperture"></ion-icon>
+					</button>
 					<ion-fab-list side="top">
-						<button ion-fab color="primary"><ion-icon name="logo-vimeo"></ion-icon></button>
+						<button ion-fab color="primary">
+							<ion-icon name="logo-vimeo"></ion-icon>
+						</button>
 					</ion-fab-list>
 					<ion-fab-list side="top">
-						<button ion-fab color="secondary"><ion-icon name="logo-facebook"></ion-icon></button>
+						<button ion-fab color="secondary">
+							<ion-icon name="logo-facebook"></ion-icon>
+						</button>
 					</ion-fab-list>
 					<ion-fab-list side="left">
-						<button ion-fab color="light"><ion-icon name="logo-googleplus"></ion-icon></button>
+						<button ion-fab color="light">
+							<ion-icon name="logo-googleplus"></ion-icon>
+						</button>
 					</ion-fab-list>
 					<ion-fab-list side="right">
-						<button ion-fab color="dark"><ion-icon name="logo-twitter"></ion-icon></button>
+						<button ion-fab color="dark">
+							<ion-icon name="logo-twitter"></ion-icon>
+						</button>
 					</ion-fab-list>
 				</ion-fab>
 
 				<div class="spacer" style="height: 10px;"></div>
-				<a (click)="passwordreset()">Forgot login details ? <b> Get Help </b></a>
+				<a (click)="passwordreset()"> {{ 'login.Forgot_login_details' | translate }} ?
+					<b> {{ 'login.Get_Help' | translate }}</b>
+				</a>
 
 
-				<button ion-button  full round color="secondary" (click)="register()">
-					<ion-icon name="logo-android"></ion-icon> Register
+				<button ion-button full round color="secondary" (click)="register()">
+					<ion-icon name="logo-android"></ion-icon> {{ 'login.REGISTER' | translate }}
 				</button>
 
 
-				
+
 			</ion-list>
 		</ion-card-content>
 
 	</ion-card>
-	
-	
+
+	<ion-item class="item-languge">
+		<ion-label>Language</ion-label>
+		<ion-select [(ngModel)]="lang" (ionChange)="switchLanguage()">
+			<ion-option value="en">English</ion-option>
+			<ion-option value="kor">Korean</ion-option>
+			<ion-option value="vi">Vietnamese</ion-option>
+		</ion-select>
+	</ion-item>
+
+	<!-- <button ion-button>{{ 'LOGIN_header' | translate }}</button>
+    <button ion-button>{{ 'REGISTER' | translate }}</button> -->
 
 
 
 
-	
+
+
+
 
 
 </ion-content>

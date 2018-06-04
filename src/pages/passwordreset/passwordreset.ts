@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user'
+import { LoginPage } from '../login/login';
 //import { User } from "../../models/user";
 
 
@@ -19,15 +21,37 @@ export class PasswordresetPage {
 	email: string;
 
   constructor(//public uSer: User, public alertCtrl: AlertController,
-  	public navCtrl: NavController, public navParams: NavParams) {
+  	public navCtrl: NavController, public navParams: NavParams,
+    public userservice: UserProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PasswordresetPage');
   }
 
+ // reset the pass using email
+ reset(){
+   let alert = this.alertCtrl.create({
+     buttons: ['OK']
+   });
+
+   this.userservice.passwordreset(this.email).then((res: any) => {
+     if (res.success) { 
+       // code...
+       alert.setTitle('Email Sent');
+       alert.setSubTitle('Please follow the instruction detailed in email');
+     } else {
+       // code...
+       alert.setTitle('Failled');
+     }
+   })
+ }
+
+
+
+//  come back the login activity
   goback() {
-    this.navCtrl.setRoot('LoginPage');
+    this.navCtrl.setRoot(LoginPage);
   }
 
 

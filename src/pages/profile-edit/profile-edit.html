@@ -129,7 +129,7 @@
       <ion-col>
        <ion-item>
         <!-- <ion-label fixed>First Name</ion-label> -->
-        <ion-input [(ngModel)]="profile.firstName" value={profile.firstName} placeholder = "First Name"></ion-input>
+        <ion-input [(ngModel)]="profile.firstName" value={{profile.firstName}} placeholder = "First Name"></ion-input>
       </ion-item>
 
 
@@ -137,7 +137,7 @@
     <ion-col>
      <ion-item>
       <!-- <ion-label fixed>Last Name</ion-label> -->
-      <ion-input [(ngModel)]="profile.lastName" type="text" value={profile.lastName} placeholder = "Last Name"></ion-input>
+      <ion-input [(ngModel)]="profile.lastName" type="text" value={{profile.lastName}} placeholder = "Last Name"></ion-input>
     </ion-item>
 
 
@@ -149,7 +149,8 @@
   <ion-col>
     <ion-item>
       <ion-label>Birthday</ion-label>
-      <ion-datetime displayFormat="MMMM YYYY" min="1950" max="2018" [(ngModel)]="profile.age"></ion-datetime>
+      <!-- <ion-datetime displayFormat="MMMM YYYY" min="1950" max="2018" [(ngModel)]="profile.age" ></ion-datetime> -->
+      <ion-datetime displayFormat="YYYY-MMMM-DDDD" min="1950" max="2018" [(ngModel)]="profile.age"></ion-datetime>
     </ion-item>
   </ion-col>
 </ion-row>
@@ -197,7 +198,7 @@
     <ion-item>
       <ion-label>Select your City</ion-label>
 
-      <ion-select [(ngModel)]="city" placeholder="city" (ionChange)="setDistrictValues(city)" interface="popover">
+      <ion-select [(ngModel)]="_load_City" [placeholder]="profile.city.name" (ionChange)="setDistrictValues(_load_City)" interface="popover">
         <ion-option [value]="sCity" *ngFor = "let sCity of citys">{{sCity.name}}</ion-option>
     <!-- <ion-option value="seoul">Seoul</ion-option>
     <ion-option value="busan">Busan</ion-option>
@@ -217,7 +218,7 @@
 <ion-col>
   <ion-item>
     <!--   <ion-label stacked>Select your District</ion-label> -->
-    <ion-select [(ngModel)]="district" placeholder="district" interface="popover">
+    <ion-select [(ngModel)]="district" [placeholder]="profile.district.name" interface="popover">
       <ion-option [value]="sDistrict" *ngFor = "let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option>
 
     </ion-select>
@@ -243,7 +244,7 @@
         <ion-radio checked="true" value="highschool"></ion-radio>
       </ion-item>
 
-       <ion-item>
+      <ion-item>
         <ion-label>University</ion-label>
         <ion-radio value="university"></ion-radio>
       </ion-item>
@@ -256,6 +257,17 @@
       <ion-item>
         <ion-label>PhD</ion-label>
         <ion-radio value="phd"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Postdoc</ion-label>
+        <ion-radio value="postdoc"></ion-radio>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Professor</ion-label>
+        <ion-radio value="professor"></ion-radio>
       </ion-item>
     </ion-list>
 
@@ -289,7 +301,75 @@
         <ion-label>Bussiness</ion-label>
         <ion-radio value="bussiness"></ion-radio>
       </ion-item>
+
+      <ion-item>
+        <ion-label>Officer</ion-label>
+        <ion-radio value="officer"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Other</ion-label>
+        <ion-radio value="other"></ion-radio>
+      </ion-item>
+
+
     </ion-list>
+
+  </ion-card-content>
+
+</ion-card>
+
+
+<!--  -->
+
+
+
+<ion-card>
+  <ion-card-header>
+    FINANCIAL
+  </ion-card-header>
+  <ion-card-content>
+
+
+    <ion-row>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>Your balance</ion-label>
+
+          <ion-select [(ngModel)]="balance" placeholder="milion won" interface="popover">
+            <!-- <ion-option [value]="sCity" *ngFor = "let sCity of citys">{{sCity.name}}</ion-option> -->
+            <ion-option value="20">20 milions</ion-option>
+            <ion-option value="50">50 milions</ion-option>
+            <ion-option value="100">100 milions</ion-option>
+            <ion-option value="200">200 milions</ion-option>
+            <ion-option value="500">500 milions</ion-option>
+            <ion-option value="1000">1000 milions</ion-option>
+            <ion-option value="2000">2000 milions</ion-option>
+            <ion-option value="5000">5000 milions</ion-option>
+
+
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>Your salary per month</ion-label>
+          <ion-select [(ngModel)]="salary" placeholder="milion" interface="popover">
+            <!--  <ion-option [value]="sDistrict" *ngFor = "let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option> -->
+            <ion-option value="<2">less 2 milions/month</ion-option>
+            <ion-option value="2">more 2 milions/month</ion-option>
+            <ion-option value="3">more 3 milions/month</ion-option>
+            <ion-option value="4">more 4 milions/month</ion-option>
+            <ion-option value="10">more 10 milions</ion-option>
+
+
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
 
   </ion-card-content>
 
@@ -308,7 +388,7 @@
     <ion-list>
       <ion-item>
         <ion-label>Select multiple</ion-label>
-        <ion-select  multiple="true" cancelText="NO" okText="OK!">
+        <ion-select multiple="true" cancelText="NO" okText="OK!">
           <ion-option value="Clumsy">Clumsy</ion-option>
           <ion-option value="Diligent">Diligent</ion-option>
           <ion-option value="Lazy">Lazy</ion-option>
@@ -323,11 +403,99 @@
       </ion-item>
     </ion-list>
 
-    
+
 
   </ion-card-content>
 
 </ion-card>
+
+<!-- ////////////////////////////////////////// -->
+<ion-card>
+  <ion-card-header>
+    APPEARANCE
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row radio-group [(ngModel)]="appearance">
+
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Under Average</ion-label>
+          <ion-radio value="under_average"></ion-radio>
+        </ion-item>
+
+      </ion-col>
+
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Average</ion-label>
+          <ion-radio value="average"></ion-radio>
+        </ion-item>
+
+      </ion-col>
+
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Above Average</ion-label>
+          <ion-radio value="above_average"></ion-radio>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Hot</ion-label>
+          <ion-radio value="hot"></ion-radio>
+        </ion-item>
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-card-content>
+
+</ion-card>
+
+
+
+<ion-card>
+
+  <ion-card-header>
+    HEIGHT & WEIGHT
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>height</ion-label>
+
+          <ion-select [(ngModel)]="height" placeholder="cm" interface="popover">
+            <ion-option [value]="sHeight" *ngFor="let sHeight of rangeHeight">{{sHeight}} cm</ion-option>
+
+
+
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>weight</ion-label>
+
+          <!--   <ion-label stacked>Select your District</ion-label> -->
+          <ion-select [(ngModel)]="weight" placeholder="kg" interface="popover">
+            <ion-option [value]="sWeight" *ngFor="let sWeight of rangeWeight">{{sWeight}} Kg</ion-option>
+
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-card-content>
+
+</ion-card>
+
+
 
 <!-- about Family -->
 
@@ -339,36 +507,35 @@
   <ion-card-content>
     <ion-row radio-group [(ngModel)]="parents">
 
-     <ion-col>
-      <ion-item style="border-radius: 10px">
-       <ion-label>Both Alive</ion-label>
-       <ion-radio checked="true" value="bothalive"></ion-radio>
-     </ion-item>
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Both Alive</ion-label>
+          <ion-radio checked="true" value="bothalive"></ion-radio>
+        </ion-item>
 
-   </ion-col>
+      </ion-col>
 
-   <ion-col>
-    <ion-item style="border-radius: 10px">
-     <ion-label>Father Only</ion-label>
-     <ion-radio value="fatheronly"></ion-radio>
-   </ion-item>
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Father Only</ion-label>
+          <ion-radio value="fatheronly"></ion-radio>
+        </ion-item>
 
- </ion-col>
+      </ion-col>
 
- <ion-col>
-  <ion-item style="border-radius: 10px">
-   <ion-label>Mother Only</ion-label>
-   <ion-radio value="motheronly"></ion-radio>
- </ion-item>
+      <ion-col>
+        <ion-item style="border-radius: 10px">
+          <ion-label>Mother Only</ion-label>
+          <ion-radio value="motheronly"></ion-radio>
+        </ion-item>
 
-</ion-col>
+      </ion-col>
 
 
-</ion-row>
-</ion-card-content>
+    </ion-row>
+  </ion-card-content>
 
 </ion-card>
-
 
 
 <button ion-button color="secondary" round full (click)="updateProfile()">Update Profile</button>
