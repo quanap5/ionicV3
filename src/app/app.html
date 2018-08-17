@@ -1,1 +1,51 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>{{ 'home.Menu' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <button ion-item menuToggle (click)="openMessage()">
+                <ion-icon name="mail"></ion-icon>
+                {{ 'home.Message' | translate }}
+            </button>
+            <button ion-item menuToggle (click)="openPage(friendsPage)">
+                <ion-icon name="at"></ion-icon>
+                {{ 'home.Secret' | translate }}
+            </button>
+            <button ion-item menuToggle (click)="openPage(eventsPage)">
+                <ion-icon name="attach"></ion-icon>
+
+                {{ 'home.ViewMy' | translate }}
+            </button>
+            <button ion-item menuToggle (click)="closeMenu()">
+                <ion-icon name="happy"></ion-icon>
+                {{ 'home.InterestedMe' | translate }}
+            </button>
+            <button ion-item menuToggle (click)="closeMenu()">
+                <ion-icon name="card"></ion-icon>
+                {{ 'home.NewMember' | translate }}
+            </button>
+            <button ion-item menuToggle (click)="closeMenu()">
+                <ion-icon name="chatbubbles"></ion-icon>
+                {{ 'home.Notice' | translate }}
+
+            </button>
+            <button ion-item menuToggle (click)="closeMenu()">
+                <ion-icon name="color-wand"></ion-icon>
+                {{ 'home.Thanks' | translate }}
+            </button>
+
+            <button ion-item menuToggle (click)="openViewmore()">
+                <ion-icon name="glasses"></ion-icon>
+                {{ 'home.ViewMore' | translate }}
+            </button>
+
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

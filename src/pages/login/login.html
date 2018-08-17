@@ -16,7 +16,7 @@
 <ion-content class="background" padding>
 	<ion-card>
 		<ion-card-header>
-				{{ 'login.LOGIN_header' | translate }}
+			{{ 'login.LOGIN_header' | translate }}
 		</ion-card-header>
 
 		<ion-card-content>
@@ -27,7 +27,7 @@
 
 						<ion-item>
 							<!-- <ion-label fixed>Email</ion-label> -->
-							<ion-input type="email" [(ngModel)]="user.email" placeholder= "{{ 'login.email' | translate }}" ></ion-input>
+							<ion-input type="email" [(ngModel)]="user.email" placeholder="{{ 'login.email' | translate }}"></ion-input>
 						</ion-item>
 					</ion-col>
 
@@ -52,19 +52,19 @@
 					<ion-col>
 						<ion-item>
 							<!-- <ion-label fixed>Password</ion-label> -->
-							<ion-input type="password" [(ngModel)]="user.password" placeholder= "{{ 'login.Password' |translate }}" ></ion-input>
+							<ion-input type="password" [(ngModel)]="user.password" placeholder="{{ 'login.Password' |translate }}"></ion-input>
 						</ion-item>
 					</ion-col>
 				</ion-row>
 
 
-				<button ion-button full round color="secondary" (click)="signin()">
-					<ion-icon name="ios-eye"></ion-icon> {{ 'login.LOGIN' | translate }}
+				<button ion-button large block round outline color="secondary" (click)="signin()">
+						<ion-icon name="log-in"></ion-icon> {{ 'login.LOGIN' | translate }}
 				</button>
 
 
-
-				<ion-fab center bottom>
+<!-- using fab button at center -->
+				<!-- <ion-fab center bottom>
 					<button ion-fab color="danger">
 						<ion-icon name="aperture"></ion-icon>
 					</button>
@@ -88,7 +88,7 @@
 							<ion-icon name="logo-twitter"></ion-icon>
 						</button>
 					</ion-fab-list>
-				</ion-fab>
+				</ion-fab> -->
 
 				<div class="spacer" style="height: 10px;"></div>
 				<a (click)="passwordreset()"> {{ 'login.Forgot_login_details' | translate }} ?
@@ -96,8 +96,8 @@
 				</a>
 
 
-				<button ion-button full round color="secondary" (click)="register()">
-					<ion-icon name="logo-android"></ion-icon> {{ 'login.REGISTER' | translate }}
+				<button ion-button large full round color="pink" (click)="register()">
+						<ion-icon name="brush"></ion-icon> {{ 'login.REGISTER' | translate }}
 				</button>
 
 
@@ -107,14 +107,63 @@
 
 	</ion-card>
 
+	<!-- this is for registration using SNS account in login activity -->
+
+	<ion-item style="background-color: rgba(255, 255, 255, 0); border-bottom: none ">
+		<!-- add string as description -->
+		<ion-row style="justify-content: center; align-content: center; align-items: center; color: rgb(12, 23, 58)">
+			<img style="height: 2px; width: 30px;" src='./assets/imgs/line_login1.jpg'>{{ 'login.descriptionSNS' | translate }}
+			<img style="height: 2px; width: 30px;" src='./assets/imgs/line_login1.jpg'>
+		</ion-row>
+
+		<ion-row>
+
+			<!-- Add button corresponded to each SNS account (Kakao, Naver, Facebook) -->
+			<ion-col col-4>
+				<button ion-button full color="kakao" (click)="kakao()">
+					<img style="height: 50%; width: 12%;" src='./assets/imgs/ico_sc_kko.png'>
+					<div> Kakao Talk</div>
+				</button>
+			</ion-col>
+
+			<ion-col col-4>
+				<button ion-button full color="naver" (click)="naver()">
+					<img style="height: 40%; width: 12%;" src='./assets/imgs/ico_sc_nv.png'>
+					<div> Naver</div>
+				</button>
+			</ion-col>
+
+			<ion-col col-4>
+				<button ion-button full color="facebook" (click)="loginFacebook()">
+					<img style="height: 40%; width: 12%;" src='./assets/imgs/ico_sc_fb.png'>
+					<div> Facebook</div>
+				</button>
+			</ion-col>
+
+		</ion-row>
+	</ion-item>
+
+
+	<!-- This item for selecting language -->
 	<ion-item class="item-languge">
-		<ion-label>Language</ion-label>
+		<ion-label>{{ 'login.LANGUAGE' | translate }}</ion-label>
 		<ion-select [(ngModel)]="lang" (ionChange)="switchLanguage()">
 			<ion-option value="en">English</ion-option>
 			<ion-option value="kor">Korean</ion-option>
 			<ion-option value="vi">Vietnamese</ion-option>
 		</ion-select>
 	</ion-item>
+
+	<!-- This is report of the number of user on each categration- male, female, matched couple -->
+	<div class="card-report" align="center">
+		{{ 'login.Romeo_Juliet_Nobless_Matching_have' | translate }} {{ report.sumUser }} {{ 'login.users' | translate }}; {{ 'login.while_users'
+		| translate }}
+		<ion-icon name="female"></ion-icon>{{ 'login.have' | translate }} {{ report.femaleUser }}; {{ 'login.users' | translate }}
+		<ion-icon name="male"></ion-icon>{{ 'login.have' | translate }} {{ report.maleUser }}; {{ 'login.and_couple' | translate }}
+		<ion-icon name="heart"></ion-icon>{{ 'login.have' | translate }} {{ report.matchedUser }}
+
+	</div>
+
 
 	<!-- <button ion-button>{{ 'LOGIN_header' | translate }}</button>
     <button ion-button>{{ 'REGISTER' | translate }}</button> -->

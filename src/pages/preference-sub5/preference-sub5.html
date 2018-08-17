@@ -1,0 +1,102 @@
+<!--
+  Generated template for the PreferenceSub5Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Vices</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="closeModal()">Close</button>
+        </ion-buttons>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!--SMOKE-->
+	<ion-card>
+      <ion-card-header>
+        Smokes
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-range dualKnobs="true" pin="true" min="1" max="4" step="1" snap="true" [(ngModel)]="smoke" color="primary">
+            <!-- <ion-icon range-left small color="danger" name="thermometer"></ion-icon> -->
+            <!-- <ion-icon range-right color="danger" name="thermometer"></ion-icon> -->
+          </ion-range>
+          
+        </ion-item>
+  
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3 item-left style="text-align: left;"> Never </ion-col>
+            <ion-col col-3 item-center style="text-align: center;"> Sometimes </ion-col>
+            <ion-col col-3 iten-center style="text-align: center;"> Often </ion-col>
+            <ion-col col-3 item-right style="text-align: right;"> Addiction </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </ion-card-content>
+    </ion-card>
+
+    <!--DRINK-->
+	<ion-card>
+      <ion-card-header>
+        Drinks
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-range dualKnobs="true" pin="true" min="1" max="4" step="1" snap="true" [(ngModel)]="drink" color="primary">
+            <!-- <ion-icon range-left small color="danger" name="thermometer"></ion-icon> -->
+            <!-- <ion-icon range-right color="danger" name="thermometer"></ion-icon> -->
+          </ion-range>
+          
+        </ion-item>
+  
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3 item-left style="text-align: left;"> Never </ion-col>
+            <ion-col col-3 item-center style="text-align: center;"> Sometimes </ion-col>
+            <ion-col col-3 iten-center style="text-align: center;"> Often </ion-col>
+            <ion-col col-3 item-right style="text-align: right;"> Addiction </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </ion-card-content>
+    </ion-card>
+
+    <!--Drugs-->
+	<ion-card>
+      <ion-card-header>
+        Drugs
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-range dualKnobs="true" pin="true" min="1" max="4" step="1" snap="true" [(ngModel)]="drug" color="primary">
+            <!-- <ion-icon range-left small color="danger" name="thermometer"></ion-icon> -->
+            <!-- <ion-icon range-right color="danger" name="thermometer"></ion-icon> -->
+          </ion-range>
+          
+        </ion-item>
+  
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3 item-left style="text-align: left;"> Never </ion-col>
+            <ion-col col-3 item-center style="text-align: center;"> Sometimes </ion-col>
+            <ion-col col-3 iten-center style="text-align: center;"> Often </ion-col>
+            <ion-col col-3 item-right style="text-align: right;"> Addiction </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -21,6 +21,7 @@ import { City } from "../../models/profile";
 import { ProfileEditPage } from '../profile-edit/profile-edit';
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
+import { ParseLocation } from '@angular/compiler';
 
 
 
@@ -60,6 +61,8 @@ export class MyPage {
   myUser = {};
   my_Profile = {} as Profile;
   my_City = {} as City;
+
+  dis_FromSeoul: any;
 
 
 
@@ -145,6 +148,9 @@ export class MyPage {
         this.my_Profile = res.profile;
         this.my_City = this.my_Profile.city;
         //console.log(this.my_Profile.city.name);
+
+       
+        this.dis_FromSeoul = this.distance(this.my_Profile.latitude, this.my_Profile.longtitude, 37.5665, 126.9780, 'K')
       })
 
     })
@@ -297,6 +303,8 @@ export class MyPage {
       // this.getMyURL();  
       // this.loaduserdetails();   })
       this.getMyURL1(index);
+      this.updatenoPhoto(firebase.auth().currentUser.uid);
+
       this.loaduserdetails();
       this.navCtrl.setRoot(TabsPage);
 
@@ -432,5 +440,63 @@ export class MyPage {
       this.navCtrl.parent.parent.setRoot(LoginPage);
     })
   }
+
+/**function to calculate distance */
+
+  distance(lat1, lon1, lat2, lon2, unit) {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
+  }
+
+  updatenoPhoto(uid: string){
+
+        
+    // this.userservice.updatenoPhoto_Provider(uid).then((res_: any) => {
+    //   this.my_Profile.noPhoto = res_;
+    //   //console.log(this.filteredusers);
+    // }); fir-auth-d753b.appspot.com
+
+    this.my_Profile.noPhoto = 0; // reset and check it again
+
+    if (this.my_Profile.profileURL1.indexOf("profileimages") !=-1 )   
+      this.my_Profile.noPhoto =  this.my_Profile.noPhoto+1;
+
+    if (this.my_Profile.profileURL2.indexOf("profileimages") !=-1 )   
+      this.my_Profile.noPhoto =  this.my_Profile.noPhoto+1;
+    
+    if (this.my_Profile.profileURL3.indexOf("profileimages")  !=-1)   
+      this.my_Profile.noPhoto =  this.my_Profile.noPhoto+1;
+    
+    if (this.my_Profile.profileURL4.indexOf("profileimages") !=-1 )   
+      this.my_Profile.noPhoto =  this.my_Profile.noPhoto+1;
+
+
+
+
+    this.userservice.addfulluser(this.my_Profile, this.my_Profile.photoURL).then((res: any) => {
+
+      if (res.success)
+      //  this.navCtrl.setRoot(TabsPage);
+      //this.navCtrl.setRoot('ProfilePage');
+      {
+
+      }
+
+      else
+        alert('Error' + res);
+    })
+
+  }
+
+
 
 }

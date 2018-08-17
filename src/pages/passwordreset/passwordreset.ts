@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user'
 import { LoginPage } from '../login/login';
+import { TranslateService } from '@ngx-translate/core';
 //import { User } from "../../models/user";
+
+
 
 
 /**
@@ -21,6 +24,7 @@ export class PasswordresetPage {
 	email: string;
 
   constructor(//public uSer: User, public alertCtrl: AlertController,
+    private translate: TranslateService,
   	public navCtrl: NavController, public navParams: NavParams,
     public userservice: UserProvider, public alertCtrl: AlertController) {
   }
@@ -51,7 +55,7 @@ export class PasswordresetPage {
 
 //  come back the login activity
   goback() {
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.popToRoot();
   }
 
 

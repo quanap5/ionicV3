@@ -7,7 +7,19 @@
 <ion-header>
 
 	<ion-navbar color='primary'>
+
+
+		<button ion-button menuToggle icon-only>
+			<ion-icon name='menu'></ion-icon>
+		</button>
+
 		<ion-title>Home</ion-title>
+
+		<ion-buttons end>
+			<button ion-button round style="width: 100px; background-color:rgb(206, 74, 162)" block menuToggle>{{ 'home.ViewAll' | translate }}
+			</button>
+
+		</ion-buttons>
 	</ion-navbar>
 
 </ion-header>
@@ -29,8 +41,8 @@
 			<!-- Filter based on target property -->
 			<ion-col>
 				<ion-item>
-					<ion-label>Target:</ion-label>
-					<ion-select [(ngModel)]="f_target" name="f_target" (ionChange)="applyFilters1(f_target, f_city)" interface="popover">
+					<ion-label>{{ 'home.Target' | translate }}:</ion-label>
+					<ion-select [(ngModel)]="f_target" name="f_target" (ionChange)="applyFilters1(f_target, f_city, my_Profile2)" interface="popover">
 						<ion-option value="all" selected="true">All</ion-option>
 						<ion-option value="marriage">Marriage</ion-option>
 						<ion-option value="re-marriage">Re-marriage</ion-option>
@@ -43,8 +55,9 @@
 			<!-- filtering based on Region -->
 			<ion-col>
 				<ion-item>
-					<ion-label>Region:</ion-label>
-					<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange)="applyFilters1(f_target, f_city)" interface="popover">
+					<ion-label>{{ 'home.Region' | translate }}:</ion-label>
+					<ion-select [(ngModel)]="f_city" name="f_city" interface="popover" (ionChange)="applyFilters1(f_target, f_city, my_Profile2)"
+					 interface="popover">
 						<ion-option value="all" selected="true">All</ion-option>
 						<ion-option [value]="sSearch_city.name" *ngFor="let sSearch_city of search_citys">{{sSearch_city.name}}</ion-option>
 
@@ -57,16 +70,30 @@
 
 			<ion-col>
 				<ion-item>
-					<ion-label>Education:</ion-label>
-					<ion-select [(ngModel)]="f_education" name="f_education" interface="popover" (ionChange)="applyFilters3(f_target, f_city, f_education)" interface="popover">
-						<ion-option value="all" selected="true">All</ion-option>
-						<ion-option value="highschool">HighSchool</ion-option>
-						<ion-option value="master">Master</ion-option>
-						<ion-option value="phd">PhD</ion-option>
-
+					<ion-label>{{ 'home.Distance' | translate }}:</ion-label>
+					<ion-select [(ngModel)]="ref_Dist" name="f_education" interface="popover" (ionChange)="applyFilters2(ref_Dist, my_Profile2)"
+					 interface="popover">
+						<ion-option value=0 selected="true">All</ion-option>
+						<ion-option value=1>1 KM</ion-option>
+						<ion-option value=2>2 KM</ion-option>
+						<ion-option value=50>50 KM</ion-option>
+						<ion-option value=100>100 KM</ion-option>
+						<ion-option value=200>200 KM</ion-option>
+						<ion-option value=300>300 KM</ion-option>
+						<ion-option value=500>500 KM</ion-option>
+						<ion-option value=1000>1000 KM</ion-option>
 
 					</ion-select>
 				</ion-item>
+			</ion-col>
+
+			<!-- Additional search -->
+			<ion-col>
+
+				<button ion-button block round style="background-color:rgb(206, 74, 162);" (click)="openAdditionalSearch()">{{ 'home.AdditionalSearch' | translate }}
+				</button>
+
+
 			</ion-col>
 		</ion-row>
 
@@ -78,7 +105,7 @@
 
 		<ion-row style="height: 60px"></ion-row>
 
-		<ion-item-sliding *ngFor="let key of filteredusers">
+		<ion-item-sliding *ngFor="let key of filteredusers; let i = index">
 			<ion-item>
 
 				<ion-card>
@@ -89,10 +116,13 @@
 							<ion-item class="card-avatar">
 								<ion-avatar item-left (click)="gotobuddiProfile(key.uid)">
 									<img [src]=" key.profile.photoURL ">
+									<ion-badge color="danger">{{key.profile.noPhoto}}</ion-badge>
 								</ion-avatar>
-								<h2>nick: {{key.displayName}}</h2>
-								<h2>full name: {{key.profile.firstName}} {{key.profile.lastName}}</h2>
-								<p>birthday: {{key.profile.age}}</p>
+								<h2>{{ 'home.Nick' | translate }}: {{key.displayName}}</h2>
+								<h2>{{ 'home.Name' | translate }}:
+									<ion-icon name="md-help-circle"></ion-icon>
+									<ion-icon name="md-help-circle"></ion-icon> {{key.profile.lastName}}</h2>
+								<p>{{ 'home.Birthday' | translate }}: {{key.profile.age}}</p>
 							</ion-item>
 						</ion-col>
 						<ion-col>
@@ -101,6 +131,8 @@
 
 								<ion-icon name="pin"></ion-icon>
 								<h2>{{key.profile.city.name}}</h2>
+
+								<h2> {{disTance[i].value/1000}} km</h2>
 							</ion-item>
 
 
@@ -124,6 +156,15 @@
 						<img [src]="'./assets/imgs/covers/'+ key.profile.city.name + '.png'">
 					</ion-row>
 
+					<ion-row>
+						<ion-item text-wrap>
+							<ion-badge color="danger">{{ 'home.Introduction' | translate }}</ion-badge>
+							<h2>{{key.profile.introduction1}}</h2>
+
+						</ion-item>
+
+					</ion-row>
+
 
 
 
@@ -137,13 +178,13 @@
 						<ion-col>
 							<button ion-button icon-left clear small>
 								<ion-icon name="thumbs-up"></ion-icon>
-								<div>0 Likes</div>
+								<div>{{key.profile.beliked}} {{ 'home.Like' | translate }}</div>
 							</button>
 						</ion-col>
 						<ion-col>
 							<button ion-button icon-left clear small>
-								<ion-icon name="text"></ion-icon>
-								<div>0 Comments</div>
+								<ion-icon name="eye"></ion-icon>
+								<div>{{key.profile.beviewed}} {{ 'home.View' | translate }}</div>
 							</button>
 						</ion-col>
 						<ion-col center text-center>
@@ -266,6 +307,108 @@
 
 
 	</ion-list>
+
+	<!-- Add fab button for instant function -->
+	<ion-fab left bottom>
+		<button ion-fab color="pink">
+			<ion-icon name="arrow-dropup"></ion-icon>
+		</button>
+		<ion-fab-list side="top">
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="cart"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.Purchase' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="brush"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.WriteandUp' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="contact"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.MyProfile' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="headset"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.Inquiry' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="information-circle"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.ContactUs' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+			<ion-row style="width: 500px; height: 60px ;">
+				<ion-col col-2>
+					<button small ion-fab (click)="openSocial()">
+						<ion-icon name="notifications"></ion-icon>
+					</button>
+				</ion-col>
+
+				<ion-col col-10>
+					<div style="background-color: rgba(255, 255, 255, 0); color:rgb(206, 74, 162)">
+						<h3>{{ 'home.NotificationSetting' | translate }}</h3>
+					</div>
+				</ion-col>
+
+			</ion-row>
+
+		</ion-fab-list>
+	</ion-fab>
 
 
 

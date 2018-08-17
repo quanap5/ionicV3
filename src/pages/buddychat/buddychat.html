@@ -27,6 +27,7 @@
       </ion-avatar>
       <div class="bubble me" *ngIf="item.sentby === buddy.uid">
         <h3 *ngIf="!imgornot[i]">{{item.message}}</h3>
+        <span class="msg-date">{{item.sendDate | date:'short'}}</span>
         <img src="{{item.message}}" *ngIf="imgornot[i]">
       </div>
       <ion-avatar item-right *ngIf="item.sentby != buddy.uid">
@@ -34,6 +35,7 @@
       </ion-avatar>
       <div class="bubble you" *ngIf="item.sentby != buddy.uid">
         <h3 *ngIf="!imgornot[i]">{{item.message}}</h3>
+        <span class="msg-date">{{item.sendDate | date:'short'}}</span>
         <img src="{{item.message}}" *ngIf="imgornot[i]">
       </div>
     </ion-item>

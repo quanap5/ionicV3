@@ -6,55 +6,86 @@
 -->
 <ion-header>
 
-  <ion-navbar color ='primary'>
-    <ion-title>Register</ion-title>
-  </ion-navbar>
+	<ion-navbar color='primary'>
+		<ion-title>Register</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="background" padding>
 
+	<!-- this is logo of login  -->
+	<ion-item no-lines class="avatar_login">
+		<ion-avatar>
+			<img src='./assets/imgs/img_login2.png'>
+		</ion-avatar>
+	</ion-item>
+	<!-- this is form of login: email and password input -->
+	<ion-card class="loginform">
+		<img style="align-items: center;" src='./assets/imgs/img_login4.png'>
+		<ion-row>
+			<ion-col>
 
+				<ion-item>
+					<ion-label fixed> {{ 'register.Email' | translate }} </ion-label>
+					<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+				</ion-item>
+			</ion-col>
 
+			<ion-col>
+				<ion-item>
+					<ion-label>@</ion-label>
+					<ion-select [(ngModel)]="user.type" interface="popover">
+						<ion-option value="gmail.com">gmail.com</ion-option>
+						<ion-option value="naver.com">naver.com</ion-option>
+						<ion-option value="hanmail.com">hanmail.com</ion-option>
+						<ion-option value="hotmail.com">hotmail.com</ion-option>
+						<ion-option value="test.com">test.com</ion-option>
 
+					</ion-select>
+				</ion-item>
+			</ion-col>
 
-	<ion-row>
-		<ion-col>
-				
-			<ion-item >
-				<ion-label fixed> {{ 'register.Email' | translate }} </ion-label>
-				<ion-input type = "text" [(ngModel)] = "user.email"></ion-input>
-			</ion-item>
-		</ion-col>
+		</ion-row>
 
-		<ion-col>
-			<ion-item>
-		      	<ion-label>@</ion-label>
-		      	<ion-select [(ngModel)]="user.type" interface="popover">
-		        	<ion-option value="gmail.com">gmail.com</ion-option>
-		        	<ion-option value="naver.com">naver.com</ion-option>
-		        	<ion-option value="hanmail.com">hanmail.com</ion-option>
-		        	<ion-option value="hotmail.com">hotmail.com</ion-option>
-		        	<ion-option value="test.com">test.com</ion-option>
-		        		
-		      	</ion-select>
-		    </ion-item>
-	    </ion-col>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label fixed> {{ 'register.Password' | translate }} </ion-label>
+					<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
 
-    </ion-row>
+		<!-- <button ion-button full round color = "primary" (click)="register(user)">Register</button> -->
+		<button ion-button large full round color="pink" (click)="signup()"> <ion-icon name="brush"></ion-icon> {{ 'register.Register' | translate }}</button>
+	</ion-card>
 
-    <ion-row>
-    	<ion-col>
-			<ion-item>
-				<ion-label fixed> {{ 'register.Password' | translate }} </ion-label>
-				<ion-input type = "password" [(ngModel)] = "user.password"></ion-input>
-			</ion-item>
-		</ion-col>
-	</ion-row>
+	<!-- Registration via SNS accounts -->
+	<ion-card class="sns_buttons">
+		<ion-list>
+			<ion-row style="justify-content: center; align-content: center; align-items: center; color: black">
+					<img style="height: 2px; width: 30px;" src='./assets/imgs/line_login1.jpg'>
+					{{ 'register.descriptionSNS' | translate }}
+					<img style="height: 2px; width: 30px;" src='./assets/imgs/line_login1.jpg'> 
+			</ion-row>
 
-	<!-- <button ion-button full round color = "primary" (click)="register(user)">Register</button> -->
-	<button ion-button full round color = "primary" (click)="signup()">{{ 'register.Register' | translate }}</button>
+			<button ion-button color="kakao" (click)="kakao()">
+					<img style="height: 50%; width: 12%;" src='./assets/imgs/ico_sc_kko.png'> 
+					<div> Kakao Talk</div>
+			</button>
 
+			<button ion-button color="naver" (click)="naver()">
+					<img style="height: 40%; width: 12%;" src='./assets/imgs/ico_sc_nv.png'>
+					<div> Naver</div>
+			</button>
+
+			<button ion-button color="facebook" (click)="facebook()">
+					<img style="height: 40%; width: 12%;" src='./assets/imgs/ico_sc_fb.png'>
+					<div> Facebook</div>
+			</button>
+		</ion-list>
+	</ion-card>
 
 </ion-content>

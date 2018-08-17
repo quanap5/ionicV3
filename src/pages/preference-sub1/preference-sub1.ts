@@ -30,6 +30,7 @@ export class PreferenceSub1Page {
 
   structure: any = {lower: 1, upper: 1};
 
+
   constructor(public navCtrl: NavController, private navParams: NavParams, private view: ViewController,
   	) {
   	this.data2=navParams.get('data2')

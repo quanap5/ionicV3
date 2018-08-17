@@ -1,0 +1,151 @@
+<!--
+  Generated template for the PreferenceSub2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Background</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- This is for Ethnicity -->
+  <ion-card>
+
+    <ion-list radio-group [(ngModel)]="ethnicity">
+      <ion-list-header>
+        Ethnicity
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Asian</ion-label>
+        <ion-radio value="asian" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-radio value="black"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hispanic/Latink</ion-label>
+        <ion-radio value="hispanic"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Indian</ion-label>
+        <ion-radio value="indian"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Middle Eastern</ion-label>
+        <ion-radio value="middleEastern"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Native American</ion-label>
+        <ion-radio value="native American"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pacific Islander</ion-label>
+        <ion-radio value="pacificIslander"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>White</ion-label>
+        <ion-radio value="white"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Other</ion-label>
+        <ion-radio value="other"></ion-radio>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <!-- This is for Religion -->
+  <ion-card>
+
+    <ion-list radio-group [(ngModel)]="religion">
+      <ion-list-header>
+        Religion
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Agnostic</ion-label>
+        <ion-radio value="agnostic" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Atheist</ion-label>
+        <ion-radio value="atheist"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Buddhist</ion-label>
+        <ion-radio value="buddhist"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Catholic</ion-label>
+        <ion-radio value="catholic"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Christian</ion-label>
+        <ion-radio value="christian"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hindu</ion-label>
+        <ion-radio value="hindu"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Jewish</ion-label>
+        <ion-radio value="jewish"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Muslim</ion-label>
+        <ion-radio value="muslim"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sikh</ion-label>
+        <ion-radio value="sikh"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Other</ion-label>
+        <ion-radio value="other"></ion-radio>
+      </ion-item>
+
+
+    </ion-list>
+
+  </ion-card>
+
+  <!-- This is for language -->
+
+  <ion-card>
+
+    <ion-list radio-group [(ngModel)]="language">
+      <ion-list-header>
+        Language
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>English</ion-label>
+        <ion-radio value="english" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Korea</ion-label>
+        <ion-radio value="korea"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Vietnamese</ion-label>
+        <ion-radio value="vietnamese"></ion-radio>
+      </ion-item>
+     
+
+    </ion-list>
+
+  </ion-card>
+
+</ion-content>

@@ -6,12 +6,202 @@
         "Forgot_login_details": "Tôi đã quên chi tiết",
         "Get_Help": "Cần trợ giúp",
         "email": "Thư điện tử",
-        "Password": "Mật khẩu"
+        "Password": "Mật khẩu",
+        "LANGUAGE": "Ngôn ngữ",
+        "Romeo_Juliet_Nobless_Matching_have": "Romeo Juliet Nobless Matching có",
+        "users": "người",
+        "while_users": "trong đó người",
+        "have": "có",
+        "and_couple": "và cặp đôi",
+        "descriptionSNS": "Đăng ký sử dụng tài khoản SNS"
+
+
+
     },
     "register": {
         "Email": "Thư điện tử",
         "Password": "Mật khẩu",
-        "Register": "ĐĂNG KÝ"
+        "Register": "ĐĂNG KÝ",
+        "descriptionSNS": "Đăng ký sử dụng tài khoản SNS"
+
+    },
+
+    "passwordreset": {
+        "Password_reset": "Khôi phục mật khẩu",
+        "Email": "Thư điện tử",
+        "RESET_MY_PASSWORD": "KHÔI PHỤC MẬT KHẨU CỦA TÔI",
+        "GO_BACK": "QUAY LẠI"
+    },
+
+    "my":{
+        "Male": "nam",
+        "Female": "nữ",
+        "Ages": "tuổi",
+        "Preference": "Kì Vọng",
+        "EditProfile": "Chỉnh sửa hồ sơ",
+        "PersonalDetails": "Thông tin cá nhân",
+
+        "Name": "Họ và tên",
+        "Age": "Tuổi tác",
+        "DateOfBirth": "Ngày sinh",
+        "Education": "Trình độ học vấn",
+        "Hometown": "Quê quán",
+        "Distance": "Khoảng cách",
+        "Job": "Nghề nghiệp",
+        "Salary": "Thu nhập",
+        "Property": "Tài sản",
+        "StudyExperience": "Đi du học",
+        "Vehicle": "Xe",
+        "Religion": "Tôn giáo",
+
+        "Appearance": "Ngoại hình/ Sở thích/ Khác",
+        "HeightWeight": "Chiều cao/ Cân nặng",
+        "Smoking": "Hút thuốc",
+        "Drinking": "Uống bia rượu",
+        "Style": "Phong cách",
+        "FashionStyle": "Thời trang",
+        "Blood": "Nhóm máu",
+        "Characteristic": "Tính cách",
+        "FavoriteFood": "Món ăn ưu thích",
+        "Hobbies": "Sở thích",
+
+
+        "YourParents": "Bố mẹ?",
+        "AreyouParentAlive": "Bố mẹ khỏe mạnh ko ?",
+        "Spouse": "Tôi có bao nhiêu vợ chồng?",
+        "WhenMarry": "Khi nào bạn định lập gia đình?",
+        "Iplan": "Tôi dự tính kết hôn",
+        "IntheFuture": "trong tương lai",
+        "SelfIntroduction": "Tự giới thiệu",
+        "FamilyIntroduction": "Giới thiệu gia đình",
+        "Photo": "Ảnh",
+        "Voice": "Tiếng nói",
+        "Video": "Video",
+        "Logout": "Đăng xuất"
+
+
+    },
+
+    "profile":{
+        "Destination": "Mục tiêu",
+        "Marrige": "Kết hôn",
+        "ReMarriage": "Tái hôn",
+
+        "Personal": "Thông tin cá nhân",
+        "UserName": "Tên người dùng",
+        "FisrtName": "Tên riêng",
+        "LastName": "Họ",
+        "Bithday": "Sinh nhật",
+        "Gender": "Giới tính",
+        "SelectYourCity": "Chọn thành phố của bạn",
+        
+        "JobProfession": "Nghề nghiệp",
+        "SelectyourCurrentJob": "Chọn công việc hiện tại của bạn",
+
+        "StudyExperience": "Kinh nghiệm học tập",
+        "HaveYouOversea": "Bạn đã học ở nước ngoài chưa?",
+
+        "Education": "Học vấn",
+        "YourLevelEducation": "Trình độ của bạn trong giáo dục?",
+
+        "Financial": "Tài chính",
+        "YourBalance": "Số dư của bạn",
+        "YourSalary": "Mức lương của bạn mỗi tháng",
+
+        "Style": "Phong cách",
+        "YourStyle": "Phong cách của bạn",
+
+        "FashionStyle": "Phong cách thời trang",
+        "YoucanSelectMultiple": "Bạn có thể chọn nhiều",
+
+        "Appearance": "Vẻ đẹp",
+        "UnderAverage": "Dưới trung bình",
+        "Average": "Trung bình",
+        "AboveAverage": "Trên mức trung bình",
+        "Hot": "Quá đẹp",
+
+        "HeightandWeight": "Chiều cao & cân nặng",
+        "Height": "Chiều cao",
+        "Weight": "Cân nặng",
+
+        "Smoking": "Hút thuốc",
+        "DoYouSmoke": "Bạn có hút thuốc không?",
+        "Frequency1": "Tần suất",
+
+        "Drinking": "Uống rượu",
+        "DoYouDrink": "Bạn có uống bia rượu không?",
+        "Frequency2": "Tần suất",
+
+        "Blood": "Loại máu / Tôn giáo",
+        "WhatisYourBlood": "Loại máu của bạn là gì?",
+        "WhatisYourReligion": "Tôn giáo của bạn là gì?",
+
+        "Vehicle": "Thông tin xe",
+        "YourCar": "Xe hơi của bạn",
+
+        "Characteristic": "Tính cách",
+        "SelectMultiple1": "Bạn có thể chọn nhiều",
+
+        "Hobby": "Sở thích",
+        "SelectMultiple2": "Bạn có thể chọn nhiều",
+
+        "FavoriteFood": "Đồ ăn yêu thích",
+        "SelectMultiple3": "Bạn có thể chọn nhiều",
+
+        "Family": "Gia đình",
+        "BothAlive": "Bố mẹ con khỏe",
+        "FatherOnly": "Chỉ còn Bố",
+        "MotherOnly": "Chỉ còn mẹ",
+
+        "Divorce": "Ly hôn",
+        "Yes": "Vâng",
+        "NotReport": "Tôi không báo cáo cuộc hôn nhân của tôi",
+        "Bereavement": "Bế tắc",
+
+        "SelfIntroduction": "Tự giới thiệu",
+        "FamilyIntroduction": "Giới thiệu về gia đình",
+
+        "WhenMarry": "Khi nào sẽ kết hôn",
+        "With3month": "Trong 3 tháng",
+        "With6month": "Trong 6 tháng",
+        "With1year": "Trong 1 năm",
+        "AnyTime": "Bất cứ lúc nào",
+
+        "CreateProfile": "Tạo hồ sơ"
+
+
+    },
+
+     "home":{
+        "ViewAll": "Xem tất cả",
+        "Target": "Mục tiêu",
+        "Region": "Quê quán",
+        "Distance": "Chỉ khoảng cách",
+        "AdditionalSearch": "Tìm kiếm bổ sung",
+        "Nick": "Nick",
+        "Name": "Tên",
+        "Birthday": "Sinh nhật",
+        "Introduction": "Giới thiệu",
+        "Like": "Lượt thích",
+        "View": "Lượt xem",
+
+        "NotificationSetting": "Cài đặt thông báo",
+        "ContactUs": "Liên hệ với chúng tôi",
+        "Inquiry": "Truy vấn",
+        "MyProfile": "Hồ sơ của tôi",
+        "WriteandUp": "Write/ Up",
+        "Purchase": "Quản lý / Mua hàng",
+
+        "Menu": "Menu",
+        "Message": "Tin nhắn",
+        "Secret": "Bí mật",
+        "ViewMy": "Xem thành viên tiểu sử của tôi",
+        "InterestedMe": "Mọi người quan tâm đến tôi",
+        "NewMember": "Thành viên mới",
+        "Notice": "Thông báo",
+        "Thanks": "Cảm ơn",
+        "ViewMore": "Xem thêm"
     }
+
 
 }

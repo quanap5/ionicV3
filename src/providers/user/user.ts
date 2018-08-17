@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import { Profile } from "../../models/profile";
+import { Facebook } from '@ionic-native/facebook';
 
 
 /*
@@ -15,9 +16,10 @@ export class UserProvider {
 
   firedata = firebase.database().ref('/users');
   fireprofiles = firebase.database().ref('/profile');
+  firestore = firebase.storage().ref('/profileimages');
   //fireprefers = firebase.database().ref('/prefer');
 
-  constructor(public afireauth: AngularFireAuth) {
+  constructor(public afireauth: AngularFireAuth, private facebook: Facebook) {
     console.log('Hello UserProvider Provider');
   }
 
@@ -69,6 +71,8 @@ Outputs - Promise.
     profile.photoURL = url;
     var promise = new Promise((resolve, reject) => {
 
+      console.log("XXXX", this.afireauth.auth.currentUser.uid)
+
       this.firedata.child(this.afireauth.auth.currentUser.uid).set({
         uid: this.afireauth.auth.currentUser.uid,
         // target: profile.target,
@@ -101,6 +105,81 @@ Outputs - Promise.
     })
     return promise;
   }
+
+  //Function 2 with 3 argument
+  addfulluser2(profile: Profile, url: string, uid: any) {
+    profile.photoURL = url;
+    var promise = new Promise((resolve, reject) => {
+      
+      this.firedata.child(uid).set({
+        //uid: this.afireauth.auth.currentUser.uid,
+        uid: uid,
+        displayName: profile.username,
+        photoURL: profile.photoURL,
+        profile: profile
+
+      }).then(() => {
+        resolve({ success: true });
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    return promise;
+  }
+
+  /**This is create user profile using social account Facebook */
+
+    //Function 2 with 3 argument
+    addfulluserFromFacebook(profile: Profile, url: string, uid: any) {
+      profile.photoURL = url;
+      var promise = new Promise((resolve, reject) => {
+        
+        this.firedata.child(uid).set({
+          //uid: this.afireauth.auth.currentUser.uid,
+          uid: uid,
+          displayName: profile.username,
+          photoURL: profile.photoURL,
+          profile: profile
+  
+        }).then(() => {
+          resolve({ success: true });
+        }).catch((err) => {
+          reject(err);
+        })
+      })
+      return promise;
+    }
+
+
+  
+  /**
+  Add new user with full of details of information
+  Called from - login.ts
+  Inputs - no input
+  Outputs - promise
+
+   */
+
+  getUidFacebook(){
+
+    var promise = new Promise((resolve, reject) => {
+
+
+
+     this.facebook.login(["email"]).then((loginResponse) =>{
+   
+
+      let credential = firebase.auth.FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
+      firebase.auth().signInWithCredential(credential).then((info) =>{
+        alert(JSON.stringify(info));
+        resolve(info.uid);          
+      }) 
+
+    })  })
+    
+    return promise;
+  }
+  
 
 
   /*
@@ -295,24 +374,41 @@ Outputs - Promise.
     return promise;
   }
 
-  // Use for load all user on social network
+  /**Function for  load all user on social network 
+   * Called from home.ts
+   * input: no
+   * output: all user on social network
+   * 
+  */
 
-  getallusers() {
+  getallusers(my_profile?: Profile) {
     var promise = new Promise((resolve, reject) => {
       this.firedata.orderByChild('uid').once('value', (snapshot) => {
         let userdata = snapshot.val();
         let temparr = [];
         let temparr2 = [];
+
+        let temp_dis = [];
+
+
         console.log("in ra userdata", userdata);
         //let t ={} as Profile;
         for (var key in userdata) {
           temparr.push(userdata[key]);
           //t = userdata[key].profile; 
           temparr2.push(userdata[key].profile);
+
+
+          // add array contain distance from each user to original user
+          if (my_profile !== undefined)
+            {temp_dis.push({id: userdata[key].uid , value: Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude, my_profile.latitude, my_profile.longtitude, 'K'))})}
+          
          // console.log("in ra profile", userdata[key].profile);
-         console.log("in ra userkey", userdata[key]);
+         //console.log("in ra temp_dis", userdata[key]);
         }
-        resolve(temparr);
+        console.log("in ra temp_dis", temp_dis);
+       // resolve(temparr);// 
+        resolve([temparr, temp_dis]);
       }).catch((err) => {
         reject(err);
       })
@@ -320,16 +416,69 @@ Outputs - Promise.
     return promise;
   }
 
-  // use for filter user using input search
+  
+    /**Function for  load user given the filter parametters such: target, hometown 
+   * Called from home.ts
+   * input: target, city
+   * output: users with matching feature
+   * 
+  */
 
-  // Use for load all user on social network
+ filterUserOnDist(ref: number, my_profile?:Profile) {
+  var promise = new Promise((resolve, reject) => {
+    this.firedata.orderByChild('uid').once('value', (snapshot) => {
+      let userdata = snapshot.val();
+      let temparr = [];
+      let temparr2 = [];
 
-  filterUsers(f1: string, f2: string) {
+      let temp_dis = [];
+
+
+      console.log("in ra userdata", userdata);
+      //let t ={} as Profile;
+      for (var key in userdata) {
+
+        var cal_dis: number = Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude, my_profile.latitude, my_profile.longtitude, 'K'));
+
+        if (ref == 0) {
+
+          temparr.push(userdata[key]);
+          temp_dis.push({id: userdata[key].uid , value: cal_dis})
+          
+        } else {
+          if ( cal_dis <= 1000*ref) {
+            temparr.push(userdata[key]);
+            temp_dis.push({id: userdata[key].uid , value: cal_dis})
+            
+          } 
+          
+        }
+
+        
+        
+        
+       // console.log("in ra profile", userdata[key].profile);
+       //console.log("in ra temp_dis", userdata[key]);
+      }
+      console.log("in ra temp_dis", temp_dis);
+      //resolve(temparr);// resolve([temparr, temp_dis]);
+      resolve([temparr, temp_dis]);
+    }).catch((err) => {
+      reject(err);
+    })
+  })
+  return promise;
+}
+
+ 
+
+  filterUsers(f1: string, f2: string, my_profile?: Profile) {
    
       var promise = new Promise((resolve, reject) => {
         this.firedata.orderByChild('uid').once('value', (snapshot) => {
           let userdata = snapshot.val();
           let temparr = [];
+          let temp_dis = [];
 
           console.log("in ra userdata", userdata);
           //let t ={} as Profile;
@@ -337,11 +486,13 @@ Outputs - Promise.
 
             if ( f1 == 'all' && f2 == 'all') {
               temparr.push(userdata[key]);
+              temp_dis.push({id: userdata[key].uid , value: Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude, my_profile.latitude, my_profile.longtitude, 'K')) })
               
             } 
             else if (f1 == 'all') {
               if (userdata[key].profile.city.name == f2) {
                 temparr.push(userdata[key]);
+                temp_dis.push({id: userdata[key].uid , value: Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude,my_profile.latitude, my_profile.longtitude, 'K')) })
               } 
               
               
@@ -350,6 +501,7 @@ Outputs - Promise.
             else if (f2 == 'all') {
               if (userdata[key].profile.target == f1) {
                 temparr.push(userdata[key]);
+                temp_dis.push({id: userdata[key].uid , value:Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude, my_profile.latitude, my_profile.longtitude, 'K')) })
               } 
               
               
@@ -359,12 +511,14 @@ Outputs - Promise.
             {
               if (userdata[key].profile.target == f1 && userdata[key].profile.city.name == f2) {
                   temparr.push(userdata[key]);
+                  temp_dis.push({id: userdata[key].uid , value: Math.round(1000*this.distance(userdata[key].profile.latitude, userdata[key].profile.longtitude, my_profile.latitude, my_profile.longtitude, 'K')) })
                 } 
                 
             }
 
           }
-          resolve(temparr);
+          //resolve(temparr); // resolve([temparr, temp_dis]);
+          resolve([temparr, temp_dis]);
         }).catch((err) => {
           reject(err);
         })
@@ -458,6 +612,45 @@ Outputs - Promise.
     return zodiac;
   }
 
+
+  /**function to calculate distance */
+
+  distance(lat1, lon1, lat2, lon2, unit) {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
+  }
+
+
+  /**calculate the number of photo of each user */
+
+  updatenoPhoto_Provider(uid: string){
+
+   
+  //   var promise = new Promise((resolve, reject) => {
+  //     this.firestore.child(uid).('value', (snapshot) => {
+  //       let photoURL = snapshot.val();
+  //       let temp = 0;
+  //       for (var key in photoURL) {
+  //         temp= temp+1;
+  //       }
+  //       resolve(temp);
+  //     })
+  //   })
+  //   return promise;
+
+  // }
+  return 6;
+
+  }
 
 
 }

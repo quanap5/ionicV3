@@ -1,0 +1,106 @@
+<!--
+  Generated template for the PreferenceSub3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Availability</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="closeModal()">Close</button>
+        </ion-buttons>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-card>
+
+        <ion-list>
+          <ion-list-header>
+            Show me
+          </ion-list-header>
+    
+          <ion-item>
+              <ion-label>Man</ion-label>
+              <ion-toggle [(ngModel)]="showme.man"></ion-toggle>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>Woman</ion-label>
+              <ion-toggle [(ngModel)]="showme.woman"></ion-toggle>
+            </ion-item>
+    
+        </ion-list>
+    
+      </ion-card>
+
+      <ion-card>
+
+          <ion-list>
+            <ion-list-header>
+              Status
+            </ion-list-header>
+      
+            <ion-item>
+                <ion-label>Single</ion-label>
+                <ion-toggle [(ngModel)]="showme.single"></ion-toggle>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Not Single</ion-label>
+                <ion-toggle [(ngModel)]="showme.notSingle"></ion-toggle>
+              </ion-item>
+      
+          </ion-list>
+      
+        </ion-card>
+
+        <ion-card>
+
+            <ion-list>
+              <ion-list-header>
+                Have Children
+              </ion-list-header>
+        
+              <ion-item>
+                  <ion-label>Children</ion-label>
+                  <ion-toggle [(ngModel)]="showme.haveChildren"></ion-toggle>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label>No Children</ion-label>
+                  <ion-toggle [(ngModel)]="showme.haveNoChildren"></ion-toggle>
+                </ion-item>
+        
+            </ion-list>
+        
+          </ion-card>
+
+          <ion-card>
+
+              <ion-list>
+                <ion-list-header>
+                  Pets
+                </ion-list-header>
+          
+                <ion-item>
+                    <ion-label>Cats</ion-label>
+                    <ion-toggle [(ngModel)]="showme.petCat"></ion-toggle>
+                  </ion-item>
+              
+                  <ion-item>
+                    <ion-label>Dogs</ion-label>
+                    <ion-toggle [(ngModel)]="showme.petDog"></ion-toggle>
+                  </ion-item>
+          
+              </ion-list>
+          
+            </ion-card>
+    
+
+</ion-content>

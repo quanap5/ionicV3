@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Modal, ViewController } from 'ionic-angular';
 import { Profile } from "../../models/profile";
-import { PreferenceSub1Page} from "../../pages/preference-sub1/preference-sub1";
-import  { Preference } from "../../models/preference";
+import { PreferenceSub1Page } from "../../pages/preference-sub1/preference-sub1";
+import { Preference } from "../../models/preference";
+import { PreferenceSub2Page } from '../preference-sub2/preference-sub2';
+import { PreferenceSub3Page } from '../preference-sub3/preference-sub3';
+import { PreferenceSub4Page } from '../preference-sub4/preference-sub4';
+import { PreferenceSub5Page } from '../preference-sub5/preference-sub5';
 
 /**
  * Generated class for the PreferencePage page.
@@ -17,17 +21,17 @@ import  { Preference } from "../../models/preference";
   templateUrl: 'preference.html',
 })
 export class PreferencePage {
-	items=[];
-	data1: Preference;
-	
+  items = [];
+  data1: Preference;
+
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modal: ModalController,
-  	private view: ViewController) {
-  	this.data1= navParams.get('data1')
+    private view: ViewController) {
+    this.data1 = navParams.get('data1')
 
-  	 this.items = [
+    this.items = [
       {
         'title': 'Look',
         'icon': 'aperture',
@@ -78,27 +82,81 @@ export class PreferencePage {
   }
 
 
-  closeModal(){
-  	const data = {
-  		name: 'John John',
-  		occupation: 'teacher teacher'
-  	};
+  closeModal() {
+    const data = {
+      name: 'John John',
+      occupation: 'teacher teacher'
+    };
 
-  	this.view.dismiss(this.data1);
+    this.view.dismiss(this.data1);
 
   }
 
   openNavDetailsPage(item) {
     //this.navCtrl.push(NavigationDetailsPage, { item: item });
     // this.navCtrl.push(PreferenceSub1Page, {data2: this.myProfile_})
+    // Tab preference look
+    if (item.title == 'Look') {
+      const myData: Preference = { height: { min: 0, max: 1 }, weight: { min: 0, max: 1 } };
+      const myModal2 = this.modal.create(PreferenceSub1Page, { data2: myData });
+      myModal2.present();
+      myModal2.onDidDismiss((data) => {
+        console.log(data);
+        this.data1 = data;
+      })
 
-    const myData: Preference = {height: {min:0, max: 1}, weight: {min: 0, max: 1}};
-     const myModal2 = this.modal.create(PreferenceSub1Page, {data2: myData});
- 	 myModal2.present();
- 	 myModal2.onDidDismiss((data)=>{
- 	 	console.log(data);
- 	 	this.data1= data;
- 	 })
+    }
+    // Tab preference background
+    else if (item.title == 'Background') {
+      const myData: Preference = { height: { min: 0, max: 1 }, weight: { min: 0, max: 1 } };
+      const myModal2 = this.modal.create(PreferenceSub2Page, { data2: myData });
+      myModal2.present();
+      myModal2.onDidDismiss((data) => {
+        console.log(data);
+        this.data1 = data;
+      })
+      
+    }
+    // Tab preference availability
+    else if (item.title == 'Availability') {
+      const myData: Preference = { height: { min: 0, max: 1 }, weight: { min: 0, max: 1 } };
+      const myModal2 = this.modal.create(PreferenceSub3Page, { data2: myData });
+      myModal2.present();
+      myModal2.onDidDismiss((data) => {
+        console.log(data);
+        this.data1 = data;
+      })
+      
+    }
+
+        // Tab preference Personality
+        else if (item.title == 'Personality') {
+          const myData: Preference = { height: { min: 0, max: 1 }, weight: { min: 0, max: 1 } };
+          const myModal2 = this.modal.create(PreferenceSub4Page, { data2: myData });
+          myModal2.present();
+          myModal2.onDidDismiss((data) => {
+            console.log(data);
+            this.data1 = data;
+          })
+          
+        }
+
+            // Tab preference Vices
+    else if (item.title == 'Vices') {
+      const myData: Preference = { height: { min: 0, max: 1 }, weight: { min: 0, max: 1 } };
+      const myModal2 = this.modal.create(PreferenceSub5Page, { data2: myData });
+      myModal2.present();
+      myModal2.onDidDismiss((data) => {
+        console.log(data);
+        this.data1 = data;
+      })
+      
+    }
+
+    
+
+
+
   }
 
 }

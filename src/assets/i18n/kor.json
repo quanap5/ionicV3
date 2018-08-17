@@ -6,11 +6,204 @@
         "Forgot_login_details": "로그인 정보 분실",
         "Get_Help": "도움",
         "email": "이메일",
-        "Password": "비밀번호"
+        "Password": "비밀번호",
+        "LANGUAGE": "언어",
+        "Romeo_Juliet_Nobless_Matching_have": "Romeo Juliet Nobless Matching 있다",
+        "users": "사용자",
+        "while_users": "사용자",
+        "have": "있다",
+        "and_couple": "부부",
+        "descriptionSNS": "SNS 계정을 이용한 등록"
+
     },
     "register": {
         "Email": "이메일",
         "Password": "비밀번호",
-        "Register": "레지스터"
+        "Register": "레지스터",
+        "descriptionSNS": "SNS 계정을 이용한 등록"
+
+    },
+
+    "passwordreset": {
+        "Password_reset": "비밀번호 초기화",
+        "Email": "이메일",
+        "RESET_MY_PASSWORD": "내 비밀번호 재설정",
+        "GO_BACK": "뒤로"
+    },
+
+    "my":{
+        "Male": "남성",
+        "Female": "여성",
+        "Ages": "나이",
+        "Preference": "우선권",
+        "EditProfile": "프로필 수정",
+        "PersonalDetails": "정보",
+
+        "Name": "이름",
+        "Age": "나이",
+        "DateOfBirth": "생년월일",
+        "Education": "학력",
+        "Hometown": "고향",
+        "Distance": "거리",
+        "Job": "직업",
+        "Salary": "연봉",
+        "Property": "보유재산",
+        "StudyExperience": "유학경험",
+        "Vehicle": "차량",
+        "Religion": "종교",
+
+        "Appearance": "외모/취미/기타",
+        "HeightWeight": "키/ 체중",
+        "Smoking": "흡연 경력",
+        "Drinking": "음주량",
+        "Style": "스타일",
+        "FashionStyle": "패션스타일",
+        "Blood": "혈액형",
+        "Characteristic": "성격",
+        "FavoriteFood": "선호음식",
+        "Hobbies": "취미",
+
+
+        "YourParents": "부모님?",
+        "AreyouParentAlive": "부모님은 살아계십니까?",
+        "Spouse": "배우자로서 나는 몇점 인가요?",
+        "WhenMarry": "언제 결혼할 계획이세요?",
+        "Iplan": "나는 앞으로 ",
+        "IntheFuture": "결혼 할 계획이다",
+        "SelfIntroduction": "자기소개글",
+        "FamilyIntroduction": "가족소개글",
+        "Photo": "본인소개사진",
+        "Voice": "목소리",
+        "Video": "비디오",
+        "Logout": "로그 아웃"
+
+
+    },
+
+    "profile":{
+        "Destination": "목적지",
+        "Marrige": "결혼",
+        "ReMarriage": "재혼",
+
+        "Personal": "개인의",
+        "UserName": "사용자 이름",
+        "FisrtName": "이름",
+        "LastName": "성",
+        "Bithday": "생일",
+        "Gender": "성별",
+        "SelectYourCity": "당신의 도시를 선택하십시오",
+        
+        "JobProfession": "직업",
+        "SelectyourCurrentJob": "현재 작업 선택",
+
+        "StudyExperience": "유학경험",
+        "HaveYouOversea": "해외에서 공부 했습니까?",
+
+        "Education": "학력",
+        "YourLevelEducation": "교육 수준?",
+
+        "Financial": "재정",
+        "YourBalance": "보유재산",
+        "YourSalary": "연봉",
+
+        "Style": "스타일",
+        "YourStyle": "너의 스타일",
+
+        "FashionStyle": "패션 스타일",
+        "YoucanSelectMultiple": "여러 항목을 선택할 수 있습니다",
+
+        "Appearance": "외관",
+        "UnderAverage": "평균 이하",
+        "Average": "평균",
+        "AboveAverage": "평균 이상",
+        "Hot": "미남",
+
+        "HeightandWeight": "키/ 몸무게",
+        "Height": "키",
+        "Weight": "몸무게",
+
+        "Smoking": "흡연 경력",
+        "DoYouSmoke": "담배를 피우십니까?",
+        "Frequency1": "회수",
+
+        "Drinking": "음주량",
+        "DoYouDrink": "당신은 마십니까?",
+        "Frequency2": "회수",
+
+        "Blood": "유형의 혈액 / 종교",
+        "WhatisYourBlood": "당신의 피는 무엇입니까?",
+        "WhatisYourReligion": "당신의 종교는 무엇입니까?",
+
+        "Vehicle": "차량 정보",
+        "YourCar": "너의 차",
+
+        "Characteristic": "성격",
+        "SelectMultiple1": "여러 항목 선택",
+
+        "Hobby": "취미",
+        "SelectMultiple2": "여러 항목 선택",
+
+        "FavoriteFood": "선호음식",
+        "SelectMultiple3": "여러 항목 선택",
+
+        "Family": "가족",
+        "BothAlive": "둘 다 살아있다",
+        "FatherOnly": "아버지 만",
+        "MotherOnly": "어머니 전용",
+
+        "Divorce": "이혼",
+        "Yes": "예",
+        "NotReport": "나는 결혼 생활을보고하지 않았다",
+        "Bereavement": "여읨",
+
+        "SelfIntroduction": "자기소개글",
+        "FamilyIntroduction": "가족소개글",
+
+        "WhenMarry": "언제 결혼할 계획이세요?",
+        "With3month": "3 개월 이내",
+        "With6month": "6 개월 이내",
+        "With1year": "1 년 이내",
+        "AnyTime": "언제든지",
+
+        "CreateProfile": "프로필 작성"
+
+
+    },
+
+     "home":{
+        "ViewAll": "전체보기",
+        "Target": "목표",
+        "Region": "고향",
+        "Distance": "거리 만",
+        "AdditionalSearch": "추가 검색",
+        "Nick": "Nick",
+        "Name": "이름",
+        "Birthday": "생일",
+        "Introduction": "소개",
+        "Like": "좋아요",
+        "View": "조회수",
+
+        "NotificationSetting": "푸시알림 설정",
+        "ContactUs": "문의 답변모음",
+        "Inquiry": "문의",
+        "MyProfile": "내프로필",
+        "WriteandUp": "움짤등록",
+        "Purchase": "결제문의",
+
+        "Menu": "메뉴",
+        "Message": "메시지",
+        "Secret": "비밀",
+        "ViewMy": "내 프로필 열람회원",
+        "InterestedMe": "나를 관심 등록한 회원",
+        "NewMember": "신규가입회원",
+        "Notice": "공지사항",
+        "Thanks": "Thanks",
+        "ViewMore": "더보기"
     }
+
+
+
+
+
+
 }

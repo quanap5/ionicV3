@@ -14,7 +14,7 @@ import firebase from 'firebase';
 @Injectable()
 export class RequestsProvider {
 
- firereq = firebase.database().ref('/requests');
+  firereq = firebase.database().ref('/requests');
   firefriends = firebase.database().ref('/friends');
   
   userdetails;
@@ -46,7 +46,7 @@ export class RequestsProvider {
         myrequests.push(allmyrequests[i].sender);
       }
       this.userservice.getallusers().then((res) => {
-        var allusers = res;
+        var allusers = res[0]; //resolve now are 2 array quan index 0
         this.userdetails = [];
         for (var j in myrequests)
           for (var key in allusers) {
@@ -110,8 +110,9 @@ export class RequestsProvider {
       for (var i in allfriends)
         friendsuid.push(allfriends[i].uid);
         
-      this.userservice.getallusers().then((users) => {
+      this.userservice.getallusers().then((users_) => {
         this.myfriends = [];
+        let users =users_[0];
         for (var j in friendsuid)
           for (var key in users) {
             if (friendsuid[j] === users[key].uid) {

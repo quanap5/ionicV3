@@ -197,66 +197,97 @@ export class ProfileEditPage {
   }
 
   // Khai bao cac quan li
-  initializeDistrict(){
+  initializeDistrict() {
     this.districts = [
-    //  list of districts of Seoul https://en.wikipedia.org/wiki/List_of_districts_of_Seoul
-    {id: 1, name: 'Gangnam-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 2, name: 'Gangdong-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 3, name: 'Gangbuk-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 4, name: 'Gangseo-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 5, name: 'Gwanak-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 6, name: 'Gwangjin-gu ', city_id: 1, city_name: 'Seoul'},
-    {id: 7, name: 'Guro-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 8, name: 'Geumcheon-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 9, name: 'Nowon-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 10, name: 'Dobong-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 11, name: 'Dongdaemun-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 12, name: 'Dongjak-gu ', city_id: 1, city_name: 'Seoul'},
-    {id: 13, name: 'Mapo-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 14, name: 'Seodaemun-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 15, name: 'Seocho-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 16, name: 'Seongdong-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 17, name: 'Seongbuk-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 18, name: 'Songpa-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 19, name: 'Yangcheon-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 20, name: 'Yeongdeungpo-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 21, name: 'Yongsan-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 22, name: 'Eunpyeong-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 23, name: 'Jongno-gu ', city_id: 1, city_name: 'Seoul'},
-    {id: 24, name: 'Jung-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 25, name: 'Jungnang-gu', city_id: 1, city_name: 'Seoul'},
-    {id: 26, name: 'Others', city_id: 1, city_name: 'Seoul'},
+      //  list of districts of Seoul https://en.wikipedia.org/wiki/List_of_districts_of_Seoul
+      { id: 1, name: 'Gangnam-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 2, name: 'Gangdong-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 3, name: 'Gangbuk-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 4, name: 'Gangseo-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 5, name: 'Gwanak-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 6, name: 'Gwangjin-gu ', city_id: 1, city_name: 'Seoul' },
+      { id: 7, name: 'Guro-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 8, name: 'Geumcheon-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 9, name: 'Nowon-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 10, name: 'Dobong-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 11, name: 'Dongdaemun-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 12, name: 'Dongjak-gu ', city_id: 1, city_name: 'Seoul' },
+      { id: 13, name: 'Mapo-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 14, name: 'Seodaemun-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 15, name: 'Seocho-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 16, name: 'Seongdong-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 17, name: 'Seongbuk-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 18, name: 'Songpa-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 19, name: 'Yangcheon-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 20, name: 'Yeongdeungpo-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 21, name: 'Yongsan-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 22, name: 'Eunpyeong-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 23, name: 'Jongno-gu ', city_id: 1, city_name: 'Seoul' },
+      { id: 24, name: 'Jung-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 25, name: 'Jungnang-gu', city_id: 1, city_name: 'Seoul' },
+      { id: 26, name: 'Others', city_id: 1, city_name: 'Seoul' },
 
-    // List of disticts of 
+      // List of disticts of 
 
-    // List of districts of Gwangju https://en.wikipedia.org/wiki/List_of_districts_of_Gwangju
-    {id: 27, name: 'Gwangsan-gu', city_id: 7, city_name: 'Gwangju'},
-    {id: 28, name: 'Nam-gu', city_id: 7, city_name: 'Gwangju'},
-    {id: 29, name: 'Dong-gu', city_id: 7, city_name: 'Gwangju'},
-    {id: 30, name: 'Buk-gu', city_id: 7, city_name: 'Gwangju'},
-    {id: 31, name: 'Seo-gu', city_id: 7, city_name: 'Gwangju'},
-    {id: 31, name: 'Others', city_id: 7, city_name: 'Gwangju'},
+      // List of districts of Gwangju https://en.wikipedia.org/wiki/List_of_districts_of_Gwangju
+      { id: 27, name: 'Gwangsan-gu', city_id: 7, city_name: 'Gwangju' },
+      { id: 28, name: 'Nam-gu', city_id: 7, city_name: 'Gwangju' },
+      { id: 29, name: 'Dong-gu', city_id: 7, city_name: 'Gwangju' },
+      { id: 30, name: 'Buk-gu', city_id: 7, city_name: 'Gwangju' },
+      { id: 31, name: 'Seo-gu', city_id: 7, city_name: 'Gwangju' },
+      { id: 31, name: 'Others', city_id: 7, city_name: 'Gwangju' },
 
 
-    // List of districts of Busan https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+      // List of districts of Busan https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
 
-    {id: 32, name: 'Gangseo-gu', city_id: 6, city_name: 'Busan'},
-    {id: 33, name: 'Geumjeong-gu', city_id: 6, city_name: 'Busan'},
-    {id: 34, name: 'Gijang-gu', city_id: 6, city_name: 'Busan'},
-    {id: 35, name: 'Nam-gu', city_id: 6, city_name: 'Busan'},
-    {id: 36, name: 'Dong-gu', city_id: 6, city_name: 'Busan'},
-    {id: 37, name: 'Dongnae-gu', city_id: 6, city_name: 'Busan'},
-    {id: 38, name: 'Busanjin-gu', city_id: 6, city_name: 'Busan'},
-    {id: 39, name: 'Buk-gu', city_id: 6, city_name: 'Busan'},
-    {id: 40, name: 'Sasang-gu', city_id: 6, city_name: 'Busan'},
-    {id: 41, name: 'Saha-gu', city_id: 6, city_name: 'Busan'},
-    {id: 42, name: 'Seo-gu', city_id: 6, city_name: 'Busan'},
-    {id: 43, name: 'Suyeong-gu', city_id: 6, city_name: 'Busan'},
-    {id: 44, name: 'Yeonje-gu', city_id: 6, city_name: 'Busan'},
-    {id: 45, name: 'Yeongdo-gu', city_id: 6, city_name: 'Busan'},
-    {id: 46, name: 'Jung-gu', city_id: 6, city_name: 'Busan'},
-    {id: 47, name: 'Haeundae-gu', city_id: 6, city_name: 'Busan'},
-    {id: 48, name: 'Others', city_id: 6, city_name: 'Busan'},
+      { id: 32, name: 'Gangseo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 33, name: 'Geumjeong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 34, name: 'Gijang-gu', city_id: 3, city_name: 'Busan' },
+      { id: 35, name: 'Nam-gu', city_id: 3, city_name: 'Busan' },
+      { id: 36, name: 'Dong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 37, name: 'Dongnae-gu', city_id: 3, city_name: 'Busan' },
+      { id: 38, name: 'Busanjin-gu', city_id: 3, city_name: 'Busan' },
+      { id: 39, name: 'Buk-gu', city_id: 3, city_name: 'Busan' },
+      { id: 40, name: 'Sasang-gu', city_id: 3, city_name: 'Busan' },
+      { id: 41, name: 'Saha-gu', city_id: 3, city_name: 'Busan' },
+      { id: 42, name: 'Seo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 43, name: 'Suyeong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 44, name: 'Yeonje-gu', city_id: 3, city_name: 'Busan' },
+      { id: 45, name: 'Yeongdo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 46, name: 'Jung-gu', city_id: 3, city_name: 'Busan' },
+      { id: 47, name: 'Haeundae-gu', city_id: 3, city_name: 'Busan' },
+      { id: 48, name: 'Others', city_id: 3, city_name: 'Busan' },
+
+      // List of districts of Incheon https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 49, name: 'Bupyeong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 50, name: 'Dong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 51, name: 'Gyeyang-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 52, name: 'Jung-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 53, name: 'Name-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 54, name: 'Namdong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 55, name: 'Seo-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 56, name: 'Yeonsu-gu', city_id: 6, city_name: 'Incheon' },
+
+      // List of districts of Daegu https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 57, name: 'Jung-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 58, name: 'Dong-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 59, name: 'Seo-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 60, name: 'Nam-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 61, name: 'Buk-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 62, name: 'Suseong-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 63, name: 'Dalseo-gu', city_id: 5, city_name: 'Daegu' },
+
+      // List of districts of Daejeon https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 64, name: 'Daedeok-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 65, name: 'Dong-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 66, name: 'Jung-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 67, name: 'Seo-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 68, name: 'Yuseong-gu', city_id: 4, city_name: 'Daejeon' },
+       
+
 
     ];
 

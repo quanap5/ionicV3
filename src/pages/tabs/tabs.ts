@@ -29,7 +29,7 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.currentProfile=this.navParams.get('my');
-    console.log(this.currentProfile);
+    //console.log(this.currentProfile);
 
   }
 

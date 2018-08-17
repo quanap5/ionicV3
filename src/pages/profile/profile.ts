@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Profile } from "../../models/profile";
+import { Profile, Report } from "../../models/profile";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { UserProvider } from '../../providers/user/user';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { TabsPage } from '../tabs/tabs';
+import { ReportProvider } from '../../providers/report/report';
 
 /**
  * Generated class for the ProfilePage page.
@@ -43,12 +44,19 @@ export class ProfilePage {
 
   rangeWeight: number[] = new Array(20);
 
+  report = {} as Report;
+
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private toastCrt: ToastController,
-    public navCtrl: NavController, public navParams: NavParams, public userservice: UserProvider, 
-    public geolocation: Geolocation) {
+    public navCtrl: NavController, public navParams: NavParams, public userservice: UserProvider,
+    public geolocation: Geolocation,
+    public reportservice: ReportProvider) {
 
     this.initial_photoURL();
     this.getGPS();
+    this.profile.coin = 50;
+    this.profile.beviewed = 0;
+    this.profile.beliked = 0;
+    this.profile.noPhoto = 0;
 
 
     let init_height = { height: { min: 0, max: 1 } }
@@ -73,6 +81,8 @@ export class ProfilePage {
       //this.selectedmax_Weight.push(this.weight[i]);
     }
 
+    this.loadreport();
+
 
   }
 
@@ -84,16 +94,16 @@ export class ProfilePage {
 
   }
 
-  getGPS(){
+  getGPS() {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.profile.latitude = resp.coords.latitude;
       this.profile.longtitude = resp.coords.longitude;
-       // this.profile.latitude = resp.coords.latitude;
+      // this.profile.latitude = resp.coords.latitude;
       // this.profile.longtitude = resp.coords.longitude;
       console.log(this.profile.longtitude);
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
   createProfile() {
@@ -133,11 +143,13 @@ export class ProfilePage {
       // }) // add profile object to firebasee
 
       // Call userservice to add profile that use one parameter transfered from previous page (profilepic)
-
-      this.userservice.addfulluser(this.profile, this.navParams.get('url')).then((res: any) => {
+      
+      /*Fire base user for general case*/
+      if (this.navParams.get('uid') == undefined) {
+        this.userservice.addfulluser(this.profile, this.navParams.get('url')).then((res: any) => {
 
         if (res.success)
-        this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.setRoot(TabsPage);
         //  this.navCtrl.setRoot('TabsPage', { my: this.profile });
         // this.navCtrl.setRoot('ProfilePage');
 
@@ -145,22 +157,61 @@ export class ProfilePage {
           alert('Error' + res);
       })
 
+        
+      } else {
+
+        /*Fire base user for Facebook case*/ 
+
+      this.userservice.addfulluser2(this.profile, this.navParams.get('url'), this.navParams.get('uid') ).then((res: any) => {
+
+        if (res.success) {
+          this.navCtrl.setRoot(TabsPage);
+          alert(this.navParams.get('uid'));}
+        //  this.navCtrl.setRoot('TabsPage', { my: this.profile });
+        // this.navCtrl.setRoot('ProfilePage');
+
+        else
+          alert('Error' + res);
+      })
+        
+      }
+
+       /* update the report increace 1 user to respective user (male or female) and sumuser */
+
+      if (this.profile.gender == 'male') {
+        this.report.maleUser = this.report.maleUser + 1;
+        this.report.sumUser = this.report.sumUser + 1;
+
+      }
+      else if(this.profile.gender == 'female'){
+        this.report.femaleUser = this.report.femaleUser + 1;
+        this.report.sumUser = this.report.sumUser + 1;
+      }
+
+      this.reportservice.updateReport(this.report).then((res: any) => {
+
+        if (res.success)
+        this.toastCrt.create({
+          message: `Update REPORT sucessfully`,
+          duration: 2000
+        }).present();
+
+        else
+          alert('Error' + res);
+      })
+
     }
-
-
 
   }
 
-  // <!-- <ion-option value="seoul">Seoul</ion-option>
-  //  <ion-option value="busan">Busan</ion-option>
-  //  <ion-option value="incheon">Incheon</ion-option>
-  //  <ion-option value="daegu">Daegu</ion-option>
-  //  <ion-option value="daejeon">Daejeon</ion-option>
-  //  <ion-option value="gwangju">Gwangjiu</ion-option>
-  //  <ion-option value="ulsan">Ulsan</ion-option>
-  //  <ion-option value="suwon">Suwon</ion-option>
-  //  <ion-option value="goyangsi">GoyangSi</ion-option>
-  //  <ion-option value="seongnamsi">SeongnamSi</ion-option> -->
+
+  // This code for load report of number of user from social network
+
+  loadreport() {
+    this.reportservice.report().then((res: any) => {
+      this.report = res;
+    })
+  }
 
   //Khai bao cac thanh pho
   initializeCity() {
@@ -176,14 +227,14 @@ export class ProfilePage {
       { id: 9, name: 'Ulsan' },
       { id: 10, name: 'Chungbuk' },
       { id: 11, name: 'Chungnam' },
-      { id: 11, name: 'Cheonbuk' },
-      { id: 11, name: 'Chonnam' },
-      { id: 11, name: 'Gyungbuk' },
-      { id: 11, name: 'Gyungnam' },
-      { id: 11, name: 'Gangwon' },
-      { id: 11, name: 'Jeju' },
-      { id: 11, name: 'NorthKorea' },
-      { id: 11, name: 'Foreigner' },];
+      { id: 12, name: 'Cheonbuk' },
+      { id: 13, name: 'Chonnam' },
+      { id: 14, name: 'Gyungbuk' },
+      { id: 15, name: 'Gyungnam' },
+      { id: 16, name: 'Gangwon' },
+      { id: 17, name: 'Jeju' },
+      { id: 18, name: 'NorthKorea' },
+      { id: 19, name: 'Foreigner' },];
 
   }
 
@@ -231,23 +282,62 @@ export class ProfilePage {
 
       // List of districts of Busan https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
 
-      { id: 32, name: 'Gangseo-gu', city_id: 6, city_name: 'Busan' },
-      { id: 33, name: 'Geumjeong-gu', city_id: 6, city_name: 'Busan' },
-      { id: 34, name: 'Gijang-gu', city_id: 6, city_name: 'Busan' },
-      { id: 35, name: 'Nam-gu', city_id: 6, city_name: 'Busan' },
-      { id: 36, name: 'Dong-gu', city_id: 6, city_name: 'Busan' },
-      { id: 37, name: 'Dongnae-gu', city_id: 6, city_name: 'Busan' },
-      { id: 38, name: 'Busanjin-gu', city_id: 6, city_name: 'Busan' },
-      { id: 39, name: 'Buk-gu', city_id: 6, city_name: 'Busan' },
-      { id: 40, name: 'Sasang-gu', city_id: 6, city_name: 'Busan' },
-      { id: 41, name: 'Saha-gu', city_id: 6, city_name: 'Busan' },
-      { id: 42, name: 'Seo-gu', city_id: 6, city_name: 'Busan' },
-      { id: 43, name: 'Suyeong-gu', city_id: 6, city_name: 'Busan' },
-      { id: 44, name: 'Yeonje-gu', city_id: 6, city_name: 'Busan' },
-      { id: 45, name: 'Yeongdo-gu', city_id: 6, city_name: 'Busan' },
-      { id: 46, name: 'Jung-gu', city_id: 6, city_name: 'Busan' },
-      { id: 47, name: 'Haeundae-gu', city_id: 6, city_name: 'Busan' },
-      { id: 48, name: 'Others', city_id: 6, city_name: 'Busan' },
+      { id: 32, name: 'Gangseo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 33, name: 'Geumjeong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 34, name: 'Gijang-gu', city_id: 3, city_name: 'Busan' },
+      { id: 35, name: 'Nam-gu', city_id: 3, city_name: 'Busan' },
+      { id: 36, name: 'Dong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 37, name: 'Dongnae-gu', city_id: 3, city_name: 'Busan' },
+      { id: 38, name: 'Busanjin-gu', city_id: 3, city_name: 'Busan' },
+      { id: 39, name: 'Buk-gu', city_id: 3, city_name: 'Busan' },
+      { id: 40, name: 'Sasang-gu', city_id: 3, city_name: 'Busan' },
+      { id: 41, name: 'Saha-gu', city_id: 3, city_name: 'Busan' },
+      { id: 42, name: 'Seo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 43, name: 'Suyeong-gu', city_id: 3, city_name: 'Busan' },
+      { id: 44, name: 'Yeonje-gu', city_id: 3, city_name: 'Busan' },
+      { id: 45, name: 'Yeongdo-gu', city_id: 3, city_name: 'Busan' },
+      { id: 46, name: 'Jung-gu', city_id: 3, city_name: 'Busan' },
+      { id: 47, name: 'Haeundae-gu', city_id: 3, city_name: 'Busan' },
+      { id: 48, name: 'Others', city_id: 3, city_name: 'Busan' },
+
+      // List of districts of Incheon https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 49, name: 'Bupyeong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 50, name: 'Dong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 51, name: 'Gyeyang-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 52, name: 'Jung-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 53, name: 'Name-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 54, name: 'Namdong-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 55, name: 'Seo-gu', city_id: 6, city_name: 'Incheon' },
+      { id: 56, name: 'Yeonsu-gu', city_id: 6, city_name: 'Incheon' },
+
+      // List of districts of Daegu https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 57, name: 'Jung-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 58, name: 'Dong-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 59, name: 'Seo-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 60, name: 'Nam-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 61, name: 'Buk-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 62, name: 'Suseong-gu', city_id: 5, city_name: 'Daegu' },
+      { id: 63, name: 'Dalseo-gu', city_id: 5, city_name: 'Daegu' },
+
+      // List of districts of Daejeon https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 64, name: 'Daedeok-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 65, name: 'Dong-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 66, name: 'Jung-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 67, name: 'Seo-gu', city_id: 4, city_name: 'Daejeon' },
+      { id: 68, name: 'Yuseong-gu', city_id: 4, city_name: 'Daejeon' },
+
+      // List of districts of { id: 19, name: 'Foreigner' }, https://en.wikipedia.org/wiki/List_of_districts_in_South_Korea
+
+      { id: 69, name: 'Vietnam', city_id: 19, city_name: 'Foreigner' },
+      { id: 70, name: 'France', city_id: 19, city_name: 'Foreigner' },
+      { id: 71, name: 'USA', city_id: 19, city_name: 'Foreigner' },
+      { id: 72, name: 'Taiwan', city_id: 19, city_name: 'Foreigner' },
+      { id: 73, name: 'Russia', city_id: 19, city_name: 'Foreigner' },
+       
+
 
     ];
 
@@ -311,7 +401,7 @@ export class ProfilePage {
       this.profile.zodiac = this.userservice.birth2zodiac(this.profile.age);
     }
 
-    }
+  }
 
   // birth2zodiac(): string {
 
@@ -322,50 +412,50 @@ export class ProfilePage {
   //       if (120 <= tempt && tempt <= 218 ) {
 
   //         zodiac = './assets/imgs/horoscope/aquarius-zodiac-sign-symbol256.png';
-          
+
   //       } else if (219 <= tempt && tempt <= 320) {
 
   //         zodiac = './assets/imgs/horoscope/pisces-zodiac-sign256.png';
-          
+
   //       } else if (321 <= tempt && tempt <= 419) {
 
   //         zodiac = './assets/imgs/horoscope/aries-bull-head-front-shape-symbol256.png';
-          
+
   //       } else if (420 <= tempt && tempt <= 520) {
 
   //         zodiac = './assets/imgs/horoscope/taurus-bull-head-symbol-for-zodiac256.png';
-          
+
   //       } else if (521 <= tempt && tempt <= 620) {
 
   //         zodiac = './assets/imgs/horoscope/gemini-twins-symbol256.png';
-          
+
   //       } else if (621 <= tempt && tempt <= 722) {
 
   //         zodiac = './assets/imgs/horoscope/cancer256.png';
-          
+
   //       } else if (723 <= tempt && tempt <= 822) {
 
   //         zodiac = './assets/imgs/horoscope/leo-astrological-sign256.png';
-          
+
   //       } else if (823 <= tempt && tempt <= 922) {
 
   //         zodiac = './assets/imgs/horoscope/virgo-woman-head-shape-symbol256.png';
-          
+
   //       } else if (923 <= tempt && tempt <= 1022) {
 
   //         zodiac = './assets/imgs/horoscope/libra-balanced-scale-symbol256.png';
-          
+
   //       } else if (1023 <= tempt && tempt <= 1121) {
 
   //         zodiac = './assets/imgs/horoscope/scorpion-shape256.png';
-          
+
   //       } else if (1122 <= tempt && tempt <= 1221) {
 
   //         zodiac = './assets/imgs/horoscope/sagittarius-sign256.png';
   //       } else {
 
   //         zodiac = './assets/imgs/horoscope/capricorn-astrological-sign-of-head-black-silhouette-with-horns256.png';      
-      
+
   //       } 
 
   //       return zodiac;

@@ -5,6 +5,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { UserProvider } from '../../providers/user/user';
 import { TranslateService } from '@ngx-translate/core';
 import { ProfilepicPage } from '../profilepic/profilepic';
+import { ProfilePage } from '../profile/profile';
 
 
 /**
@@ -60,8 +61,8 @@ export class RegisterPage {
   	  	  try {
 	  	const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email+'@'+user.type, user.password);
 	  	console.log(result);
-	  	this.navCtrl.setRoot('ProfilePage');// code version1
-      //this.navCtrl.setRoot('ProfilepicPage'); // new code
+	  	//this.navCtrl.setRoot(ProfilePage);// code version1
+      this.navCtrl.setRoot(ProfilepicPage); // code version2
 	  }
 	  catch (e) {
 	  	console.error(e);

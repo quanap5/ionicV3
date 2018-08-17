@@ -67,7 +67,8 @@ chooseimage() {
       loader.dismiss();
       if (res.success) {
         //this.navCtrl.setRoot('TabsPage');
-        this.navCtrl.setRoot(ProfilePage, {url: this.imgurl })
+        this.navCtrl.setRoot(ProfilePage, {uid: this.navParams.get('uid'),  url: this.imgurl})
+        // alert(this.navParams.get('uid'));
       }
       else {
         alert(res);
@@ -81,7 +82,9 @@ chooseimage() {
 
   proceed() {
     //this.navCtrl.setRoot('TabsPage');
-    this.navCtrl.setRoot(ProfilePage, {url: this.imgurl })
+    //this.navCtrl.setRoot(ProfilePage, {url: this.imgurl })
+    this.navCtrl.setRoot(ProfilePage, {uid: this.navParams.get('uid'),  url: this.imgurl})
+    // alert(this.navParams.get('uid'));
   }
 
 /*

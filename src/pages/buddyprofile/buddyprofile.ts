@@ -11,6 +11,7 @@ import { Fullprofile } from '../../models/fullprofile';
 import firebase from 'firebase';
 import { UserProvider } from '../../providers/user/user';
 import { City } from "../../models/profile";
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the BuddyprofilePage page.
@@ -76,6 +77,9 @@ export class BuddyprofilePage {
     console.log('ionViewDidLoad MyPage');
     //  this.loadbuddyfromUid(this.buddyuid);
 
+
+
+
   }
 
   loaduserdetails(uid: string) {
@@ -89,9 +93,34 @@ export class BuddyprofilePage {
         this.my_Profile = res.profile;
         this.my_City = this.my_Profile.city;
         console.log(this.myUser.profile.city);
+
+        this.my_Profile.beviewed = this.my_Profile.beviewed + 1;
+
+        this.userservice.addfulluser2(this.my_Profile, this.my_Profile.photoURL, uid).then((res: any) => {
+
+          if (res.success)
+
+            this.toast.create({
+              message: `Update beviewed sucessfully`,
+              duration: 2000
+            }).present();
+
+          else
+            alert('Error' + res);
+        })
+
+
       })
     })
   }
+
+      /**
+  Loading profile of user when we click on avatar on the Home page
+  Called from - buddyprofile.ts
+  Inputs - uid : ID of user
+  Outputs - Profile of specificed user
+
+   */
 
 
   loadbuddyfromUid(uid: string) {
@@ -119,10 +148,61 @@ export class BuddyprofilePage {
 
   }
 
-  clickAvarOfBuddy(){
+      /**
+  This function for visible or hidden the horoscope
+  Called from - buddyprofile.ts
+  Inputs - NULL
+  Outputs - Visualization
+
+   */
+
+  clickAvarOfBuddy() {
     this.hiddenHoroscope = !this.hiddenHoroscope;
 
   }
+
+      /**
+  Close function
+  Called from - buddyprofile.ts
+  Inputs - NULL
+  Outputs - returen the Tab Page
+
+   */
+
+  closeModal(){
+  
+    this.navCtrl.setRoot(TabsPage);
+    //this.navCtrl.parent.select(2);
+
+  }
+
+    /**
+  Update the number of like for user
+  Called from - buddyprofile.ts
+  Inputs - NULL
+  Outputs - promise
+
+   */
+
+  setLike(){
+    this.my_Profile.beliked = this.my_Profile.beliked + 1;
+
+    this.userservice.addfulluser2(this.my_Profile, this.my_Profile.photoURL, this.buddyuid).then((res: any) => {
+
+      if (res.success)
+
+        this.toast.create({
+          message: `Update beLiked sucessfully`,
+          duration: 2000
+        }).present();
+
+      else
+        alert('Error' + res);
+    })
+
+
+  }
+
 
 
 }

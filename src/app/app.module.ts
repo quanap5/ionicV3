@@ -12,7 +12,7 @@ import { MyApp } from './app.component';
 
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+//import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 
@@ -55,6 +55,25 @@ import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
 import { LoadmapPage } from '../pages/loadmap/loadmap';
 
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { PreferenceSub2Page } from '../pages/preference-sub2/preference-sub2';
+import { PreferenceSub3Page } from '../pages/preference-sub3/preference-sub3';
+import { PreferenceSub4Page } from '../pages/preference-sub4/preference-sub4';
+import { PreferenceSub5Page } from '../pages/preference-sub5/preference-sub5';
+import { BuddyprofilePage } from '../pages/buddyprofile/buddyprofile';
+import { ReportProvider } from '../providers/report/report';
+
+import {YoutubeVideoPlayer} from '@ionic-native/youtube-video-player'
+import { ViewmorePage } from '../pages/viewmore/viewmore';
+import { ComingsoonPage } from '../pages/comingsoon/comingsoon';
+import { AdditionalSearchPage } from '../pages/additional-search/additional-search';
+import { Facebook } from '@ionic-native/facebook';
+import { StripeNativePage } from '../pages/stripe-native/stripe-native';
+
+import { Stripe} from '@ionic-native/stripe' // for payment
+import { BuddychatPage } from '../pages/buddychat/buddychat';
+import { PaymentProvider } from '../providers/payment/payment';
+
 
 
 
@@ -77,12 +96,27 @@ import { LoadmapPage } from '../pages/loadmap/loadmap';
     HomePage,
     ChatPage,
     LoadmapPage,
+    BuddyprofilePage,
+    BuddychatPage,
 
 
 
 
     // PreferencePage,
-    PreferenceSub1Page
+    PreferenceSub1Page,
+    PreferenceSub2Page,
+    PreferenceSub3Page,
+    PreferenceSub4Page,
+    PreferenceSub5Page,
+
+
+    // ViewAll button
+    ViewmorePage,
+    ComingsoonPage,
+    AdditionalSearchPage,
+
+    // Payment
+    StripeNativePage,
 
 
   ],
@@ -123,9 +157,24 @@ import { LoadmapPage } from '../pages/loadmap/loadmap';
     HomePage,
     ChatPage,
     LoadmapPage,
+    BuddyprofilePage,
+    BuddychatPage,
 
     // PreferencePage,
-    PreferenceSub1Page
+    PreferenceSub1Page,
+    PreferenceSub2Page,
+    PreferenceSub3Page,
+    PreferenceSub4Page,
+    PreferenceSub5Page,
+
+    // viewall button
+    ViewmorePage,
+    ComingsoonPage,
+    AdditionalSearchPage,
+
+    // payment
+    StripeNativePage
+
 
 
   ],
@@ -136,6 +185,7 @@ import { LoadmapPage } from '../pages/loadmap/loadmap';
     File,
     FilePath,
     FileChooser,
+    Push,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AngularFireAuth,
     AuthProvider,
@@ -144,6 +194,18 @@ import { LoadmapPage } from '../pages/loadmap/loadmap';
     RequestsProvider,
     ChatProvider,
     Geolocation,
+    ReportProvider,
+
+    YoutubeVideoPlayer,
+    Facebook,
+
+    Stripe,
+    PaymentProvider
+
+    
+
+
+   
 
 
   ]

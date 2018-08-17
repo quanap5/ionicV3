@@ -1,0 +1,251 @@
+<!--
+  Generated template for the AdditionalSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="pink">
+    <ion-title>additionalSearch</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- Setting parametters for additional setting -->
+  <ion-card>
+
+
+    <ion-card-content>
+      <ion-row>
+
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Religion</ion-label>
+
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_religion" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Salary</ion-label>
+
+            <!--   <ion-label stacked>Select your District</ion-label> -->
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_salary" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+      <!-- row2 -->
+      <ion-row>
+
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Property</ion-label>
+
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_property" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Blood</ion-label>
+
+            <!--   <ion-label stacked>Select your District</ion-label> -->
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_blood" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+      <!-- row3 -->
+
+      <ion-row>
+
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Education</ion-label>
+
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_education" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Smoking</ion-label>
+
+            <!--   <ion-label stacked>Select your District</ion-label> -->
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_smoking" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+      <!-- row4 -->
+
+      <ion-row>
+
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Children</ion-label>
+
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_children" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label col-3>Drinking</ion-label>
+
+            <!--   <ion-label stacked>Select your District</ion-label> -->
+            <ion-select col-8 style="width: 100%; border-radius: 15px; background-color: rgb(238, 88, 145); border: 2px solid black;"
+              [(ngModel)]="Search_drinking" placeholder="all" interface="popover">
+              <ion-option value="A">A</ion-option>
+              <ion-option value="B">B</ion-option>
+              <ion-option value="C">C</ion-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+
+      <!-- Grid of button -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button id="1" #first style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor1"
+              outline (click)="btnActivate('1')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+                <br> Registered your profile photo
+              </div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button id="2" #second style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor2"
+              outline (click)="btnActivate('2')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+                <br> Proof member
+              </div>
+
+            </button>
+          </ion-col>
+          <ion-col>
+            <button id="3" #third style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor3"
+              outline (click)="btnActivate('3')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+                <br> Registered voice profile
+              </div>
+
+            </button>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <button id="4" #forth style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor4"
+              outline (click)="btnActivate('4')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+
+                <br> Registered job information
+              </div>
+
+            </button>
+          </ion-col>
+          <ion-col>
+            <button id="5" #fifth style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor5"
+              outline (click)="btnActivate('5')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+                <br> Registered salary
+              </div>
+
+            </button>
+          </ion-col>
+          <ion-col>
+            <button id="6" #sixth style="height: 100px; width: 100%; background-color:dimgray;" [style.backgroundColor]="buttonColor6"
+              outline (click)="btnActivate('6')">
+              <div>
+                <ion-icon name="finger-print"></ion-icon>
+                <br> Registered education
+              </div>
+
+            </button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button style="height: 100px; width: 100%;" block round outline (click)="reset()">
+        RESET
+
+      </button>
+    </ion-col>
+
+    <ion-col>
+      <button ion-button style="height: 100px; width: 100%;" block round outline (click)="search()">
+        SEARCH
+
+      </button>
+    </ion-col>
+
+
+  </ion-row>
+
+</ion-content>

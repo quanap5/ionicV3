@@ -6,11 +6,201 @@
         "Forgot_login_details": "Forgot login details",
         "Get_Help": "Get Help",
         "email": "Email",
-        "Password": "Password"
+        "Password": "Password",
+        "LANGUAGE": "Language",
+        "Romeo_Juliet_Nobless_Matching_have": "Romeo Juliet Nobless Matching have",
+        "users": "users",
+        "while_users": "while user",
+        "have": "have",
+        "and_couple": "and couple",
+        "descriptionSNS": "Registration using SNS account"
+
+
     },
     "register": {
         "Email": "Email",
         "Password": "Password",
-        "Register": "Register"
+        "Register": "Register",
+        "descriptionSNS": "Registration using SNS account"
+
+    },
+
+    "passwordreset": {
+        "Password_reset": "Password reset",
+        "Email": "Email",
+        "RESET_MY_PASSWORD": "RESET MY PASSWORD",
+        "GO_BACK": "GO BACK"
+    },
+
+    "my":{
+        "Male": "male",
+        "Female": "female",
+        "Ages": "ages",
+        "Preference": "preference",
+        "EditProfile": "Edit Profile",
+        "PersonalDetails": " Personal Details",
+
+        "Name": "Name",
+        "Age": "Age",
+        "DateOfBirth": "Date of birth",
+        "Education": "Education",
+        "Hometown": "Hometown",
+        "Distance": "Distance",
+        "Job": "Job",
+        "Salary": "Salary",
+        "Property": "Peroperty",
+        "StudyExperience": "Studying experience",
+        "Vehicle": "Vehicle",
+        "Religion": "Religion",
+
+        "Appearance": "Appearance/ Hobby/ Others",
+        "HeightWeight": "Height/ Weight",
+        "Smoking": "Smoking",
+        "Drinking": "Drinking",
+        "Style": "Style",
+        "FashionStyle": "Fashion style",
+        "Blood": "Blood",
+        "Characteristic": "Characteristic",
+        "FavoriteFood": "Favorite food",
+        "Hobbies": "Hobbies",
+
+
+        "YourParents": "Your parents?",
+        "AreyouParentAlive": "Are your parent alive?",
+        "Spouse": "How many spouses do I have?",
+        "WhenMarry": "When are you planing to get married?",
+        "Iplan": " I plan to marry",
+        "IntheFuture": "in the future",
+        "SelfIntroduction": "Self introduction",
+        "FamilyIntroduction": " Family introduction",
+        "Photo": "Photos",
+        "Voice": "Voices",
+        "Video": "Videos",
+        "Logout": "Logout"
+    },
+
+
+
+    "profile":{
+        "Destination": "Destination",
+        "Marrige": "Marriage",
+        "ReMarriage": "Re-Marriage",
+
+        "Personal": "personal",
+        "UserName": "User Name",
+        "FisrtName": "First Name",
+        "LastName": "Last Name",
+        "Bithday": "Birthday",
+        "Gender": "Gender",
+        "SelectYourCity": " Select your City",
+        
+        "JobProfession": "Job/ Profession",
+        "SelectyourCurrentJob": "Select your current job",
+
+        "StudyExperience": "Study Experience",
+        "HaveYouOversea": "Have you studied oversea?",
+
+        "Education": "Education",
+        "YourLevelEducation": " Your level in education?",
+
+        "Financial": "Financial",
+        "YourBalance": "Your balance",
+        "YourSalary": "Your salary per month",
+
+        "Style": "Style",
+        "YourStyle": "Your style",
+
+        "FashionStyle": "Fashion style",
+        "YoucanSelectMultiple": "You can select multiple",
+
+        "Appearance": "Appearance",
+        "UnderAverage": "Under Average",
+        "Average": "Average",
+        "AboveAverage": "Above Average",
+        "Hot": "Hot",
+
+        "HeightandWeight": "Height & Weight",
+        "Height": "height",
+        "Weight": "weight",
+
+        "Smoking": "Smoking",
+        "DoYouSmoke": "Do you smoke?",
+        "Frequency1": "Frequency",
+
+        "Drinking": "Drinking",
+        "DoYouDrink": "Do you drink?",
+        "Frequency2": "Frequency",
+
+        "Blood": " Type of Blood/ Religion",
+        "WhatisYourBlood": "What is your type of blood?",
+        "WhatisYourReligion": "What is your religion?",
+
+        "Vehicle": "Vehicle information",
+        "YourCar": "Your Car",
+
+        "Characteristic": "Characteristic",
+        "SelectMultiple1": "Select multiple",
+
+        "Hobby": "Hobbies",
+        "SelectMultiple2": "Select multiple",
+
+        "FavoriteFood": "Favorite food",
+        "SelectMultiple3": "Select multiple",
+
+        "Family": "Family",
+        "BothAlive": "Both Alive",
+        "FatherOnly": "Father Only",
+        "MotherOnly": "Mother Only",
+
+        "Divorce": "Divorce",
+        "Yes": "Yes",
+        "NotReport": "I did not report my marriage",
+        "Bereavement": "Bereavement",
+
+        "SelfIntroduction": "Self Introduction",
+        "FamilyIntroduction": "Introduction about Family",
+
+        "WhenMarry": "When will get marriage",
+        "With3month": "Within 3 months",
+        "With6month": "Within 6 months",
+        "With1year": "Within a year",
+        "AnyTime": "Any time",
+
+        "CreateProfile": "Create Profile"
+
+
+    },
+
+    "home":{
+        "ViewAll": "View All",
+        "Target": "Target",
+        "Region": "Region",
+        "Distance": "Distance Only",
+        "AdditionalSearch": "Additional Search",
+        "Nick": "Nick",
+        "Name": "Name",
+        "Birthday": "Birthday",
+        "Introduction": "Introduction",
+        "Like": "Likes",
+        "View": "Views",
+
+        "NotificationSetting": "Notification setting",
+        "ContactUs": "Contact Us",
+        "Inquiry": "Inquiry",
+        "MyProfile": "My profile",
+        "WriteandUp": "Write/ Up",
+        "Purchase": "Item Management/ Purchase",
+
+        "Menu": "Menu",
+        "Message": "Message",
+        "Secret": "Secret",
+        "ViewMy": "View my profile member",
+        "InterestedMe": "People interested me",
+        "NewMember": "New member",
+        "Notice": "Notices",
+        "Thanks": "Thanks",
+        "ViewMore": "View More"
     }
+
+
 }

@@ -6,153 +6,412 @@
 -->
 <ion-header>
 
-		<ion-navbar color="primary">
-			<ion-title>My</ion-title>
-		</ion-navbar>
-	
-	</ion-header>
-	
-	
-	<ion-content>
-	
-		<ion-card class="ion-card">
-			<img [src]="'./assets/imgs/covers/'+ my_City.name + '.png'" />
-			<div class="card-name">{{my_Profile.lastName}} {{my_Profile.firstName}}</div>
-			<div class="card-username" (click)="editname()">{{myUser.displayName}}</div>
-			<div class="card-sex">
-				<ion-icon [name]= "(my_Profile.gender == 'male') ? 'male': 'female'"></ion-icon>
-	
-				{{my_Profile.gender}}</div>
-			<div class="card-age">
-				<ion-icon name="calendar"></ion-icon>
-				{{my_Profile.birth}} ages</div>
-	
-	
-	
-		</ion-card>
-	
-		<!-- Row for edit profile and prefer -->
-		<!-- <ion-card class="ion-card2"> -->
-		<ion-row>
-			<ion-col col-6>
-				<button ion-button block color="light" style="width:100%;  border-radius: 20px" float-center (click)="x()">
-					<div>Book Mark</div>
-				</button>
-	
-			</ion-col>
-	
-			<ion-col col-6>
-				<button ion-button block color="light" style="width:100%; border-radius: 20px" float-center (click)="xx()">
-					<div>Messages</div>
-				</button>
-	
-			</ion-col>
-	
-		</ion-row>
-		<!-- </ion-card> -->
-	
-	
-		<ion-card>
-	
-			<ion-item class="card-avatar">
-				<ion-avatar>
-					<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
-					<img src={{my_Profile.photoURL}} (click)="clickAvarOfBuddy()">
-				</ion-avatar>
-			</ion-item>
+	<ion-navbar color="primary">
+		<ion-title>BuddyProfile</ion-title>
+		<ion-buttons end>
+			<button ion-button (click)="closeModal()">Close</button>
+		</ion-buttons>
+	</ion-navbar>
 
-			<ion-item class="card-avatar">
-				<ion-avatar>
-					<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
-					<img [src]="(hiddenHoroscope)? my_Profile.zodiac :''"  (click)="clickAvarOfBuddy()">
-					
-				</ion-avatar>
-			</ion-item>
-	
-		</ion-card>
-	
-		<!-- Display personal information of user -->
-	
-		<ion-card>
-			<ion-card-header>
-				Personal Detals
-			</ion-card-header>
-			<ion-card-content>
-				<h2>
-					<ion-icon name="contact"> full name: {{my_Profile.firstName}} {{my_Profile.lastName}}</ion-icon>
-				</h2>
-				<h2>
-					<ion-icon name="bowtie"> birthday: {{my_Profile.age}}</ion-icon>
-				</h2>
-				<h2>
-					<ion-icon name="bookmarks"> {{my_Profile.education}}</ion-icon>
-				</h2>
-				<h2>
-					<ion-icon name="locate"> {{my_City.name}}</ion-icon>
-				</h2>
-	
-			</ion-card-content>
-	
-		</ion-card>
-	
-		<!-- card for displaying profile image. Always be 4 picture in our application
-	Idea - user can upload video or animation for payment version -->
-	
-		<ion-card>
-			<ion-card-header>
-				Gallery
-			</ion-card-header>
-			<ion-slides class="image-slide">
-				<ion-slide>
-					<img src={{my_Profile.profileURL1}} class="thumb-img" imageViewer/>
-					<div class="upload_image">
-						<ion-icon name="add-circle"></ion-icon>
-					</div>
-	
-					<div class="capture_image">
-						<ion-icon name="camera"></ion-icon>
-					</div>
-	
-				</ion-slide>
-	
-				<ion-slide>
-					<img src={{my_Profile.profileURL2}} class="thumb-img" imageViewer/>
-					<div class="upload_image">
-						<ion-icon name="add-circle"></ion-icon>
-					</div>
-	
-					<div class="capture_image">
-						<ion-icon name="camera"></ion-icon>
-					</div>
-	
-				</ion-slide>
-	
-				<ion-slide>
-					<img src={{my_Profile.profileURL3}} class="thumb-img" imageViewer/>
-					<div class="upload_image">
-						<ion-icon name="add-circle"></ion-icon>
-					</div>
-	
-					<div class="capture_image">
-						<ion-icon name="camera"></ion-icon>
-					</div>
-	
-				</ion-slide>
-	
-				<ion-slide>
-					<img src={{my_Profile.profileURL4}} class="thumb-img" imageViewer/>
-					<div class="upload_image">
-						<ion-icon name="add-circle"></ion-icon>
-					</div>
-	
-					<div class="capture_image">
-						<ion-icon name="camera"></ion-icon>
-					</div>
-	
-				</ion-slide>
-			</ion-slides>
-		</ion-card>
-	
-		
-	
-	</ion-content>
+</ion-header>
+
+
+<ion-content>
+
+	<ion-card class="ion-card">
+		<img [src]="'./assets/imgs/covers/'+ my_City.name + '.png'" />
+		<div class="card-name">{{my_Profile.lastName}} {{my_Profile.firstName}}</div>
+		<div class="card-username" (click)="editname()">{{myUser.displayName}}</div>
+		<div class="card-sex">
+			<ion-icon [name]="(my_Profile.gender == 'male') ? 'male': 'female'"></ion-icon>
+
+			{{my_Profile.gender}}</div>
+		<div class="card-age">
+			<ion-icon name="calendar"></ion-icon>
+			{{my_Profile.birth}} ages</div>
+
+
+
+	</ion-card>
+
+	<!-- Row for edit profile and prefer -->
+	<!-- <ion-card class="ion-card2"> -->
+	<ion-row>
+		<ion-col col-6>
+			<button ion-button large  block color="pink" style="width:100%;  border-radius: 20px" float-center (click)="setLike()">
+					<ion-icon name="heart-outline"></ion-icon>
+				<div>Like</div>
+			</button>
+
+		</ion-col>
+
+		<ion-col col-6>
+			<button ion-button large block color="pink" style="width:100%; border-radius: 20px" float-center (click)="xx()">
+					<ion-icon name="chatboxes"></ion-icon>
+				<div>Messages</div>
+			</button>
+
+		</ion-col>
+
+	</ion-row>
+	<!-- </ion-card> -->
+
+
+	<ion-card>
+
+		<ion-item class="card-avatar">
+			<ion-avatar>
+				<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
+				<img src={{my_Profile.photoURL}} (click)="clickAvarOfBuddy()">
+			</ion-avatar>
+		</ion-item>
+
+		<ion-item class="card-avatar">
+			<ion-avatar>
+				<!-- <img src={{my_Profile.photoURL}} (click)="takephoto()"> -->
+				<img [src]="(hiddenHoroscope)? my_Profile.zodiac :''" (click)="clickAvarOfBuddy()">
+
+			</ion-avatar>
+		</ion-item>
+
+	</ion-card>
+
+	<!-- Display personal information of user -->
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="contact"> Personal Details</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+				<ion-col col-4>Name</ion-col>
+				<ion-col col-8> {{my_Profile.firstName}} {{my_Profile.lastName}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Age</ion-col>
+				<ion-col col-8> {{my_Profile.birth}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Date of birth</ion-col>
+				<ion-col col-8> {{my_Profile.age}}</ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Education</ion-col>
+				<ion-col col-8> {{my_Profile.education}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Hometown</ion-col>
+				<ion-col col-8> {{my_City.name}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Distance</ion-col>
+				<ion-col col-8> {{dis_FromSeoul}} KM </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Job</ion-col>
+				<ion-col col-8> {{my_Profile.job}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Salary</ion-col>
+				<ion-col col-8> {{my_Profile.salary}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Property</ion-col>
+				<ion-col col-8> {{my_Profile.balance}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Studying experience</ion-col>
+				<ion-col col-8> {{my_Profile.studyExperience}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Vehicle</ion-col>
+				<ion-col col-8> {{my_Profile.car}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Religion</ion-col>
+				<ion-col col-8> {{my_Profile.religion}} </ion-col>
+			</ion-row>
+
+
+		</ion-card-content>
+
+	</ion-card>
+
+
+	<!-- Display Appreance/ hobby/ others -->
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="color-wand"> Apperance/ Hobby/ Others</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+				<ion-col col-4>Height/Weight</ion-col>
+				<ion-col col-4> {{my_Profile.height}} cm </ion-col>
+				<ion-col col-4> {{my_Profile.weight}} kg </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Smoking</ion-col>
+				<ion-col col-8> {{my_Profile.smoking}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Drinking</ion-col>
+				<ion-col col-8> {{my_Profile.drinking}}</ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Style</ion-col>
+				<ion-col col-8> {{my_Profile.style}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Fashion style</ion-col>
+				<ion-col col-8> {{my_Profile.fashionStyle}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Blood</ion-col>
+				<ion-col col-8> {{my_Profile.blood}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Characteristic</ion-col>
+				<ion-col col-8> {{my_Profile.characteristic}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Favorite food</ion-col>
+				<ion-col col-8> {{my_Profile.favoriteFood}} </ion-col>
+			</ion-row>
+
+			<ion-row>
+
+				<ion-col col-4>Hobblies</ion-col>
+				<ion-col col-8> {{my_Profile.hobby}} </ion-col>
+			</ion-row>
+
+
+
+		</ion-card-content>
+
+	</ion-card>
+
+	<!-- are your parent alive? -->
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="flower"> Your parents?</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+				<ion-col col-4> Are your parent alive? </ion-col>
+				<ion-col col-4> </ion-col>
+				<ion-col col-4> {{my_Profile.parents}} </ion-col>
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+	<!-- Howmany spouses do I have -->
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="medal"> How many spouses do I have?</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+				<ion-col col-4> </ion-col>
+				<ion-col col-4> </ion-col>
+				<ion-col col-4> </ion-col>
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+
+	<!-- When are you planing to get married? -->
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="trophy"> When are you planing to get married?</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+				<ion-col col-4> I plan to marry </ion-col>
+				<ion-col col-4> {{my_Profile.when_marriage}} </ion-col>
+				<ion-col col-4> in the future </ion-col>
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+	<!-- Self introduction -->
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="text"> Self introduction</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+
+				{{my_Profile.introduction1}}
+
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="people"> Family introduction</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+
+				{{my_Profile.introduction2}}
+
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+
+	<!-- card for displaying profile image. Always be 4 picture in our application
+		Idea - user can upload video or animation for payment version -->
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="images"> Photos</ion-icon>
+		</ion-card-header>
+		<ion-slides class="image-slide">
+			<ion-slide>
+				<img src={{my_Profile.profileURL1}} class="thumb-img" imageViewer/>
+				<div class="upload_image">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL2}} class="thumb-img" imageViewer/>
+				<div class="upload_image">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL3}} class="thumb-img" imageViewer/>
+				<div class="upload_image">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+
+			<ion-slide>
+				<img src={{my_Profile.profileURL4}} class="thumb-img" imageViewer/>
+				<div class="upload_image">
+					<ion-icon name="add-circle"></ion-icon>
+				</div>
+
+				<div class="capture_image">
+					<ion-icon name="camera"></ion-icon>
+				</div>
+
+			</ion-slide>
+		</ion-slides>
+	</ion-card>
+
+	<!-- Display my preference -->
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="microphone"> Voices</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header style="background-color: gainsboro;">
+			<ion-icon name="film"> Videos</ion-icon>
+		</ion-card-header>
+		<ion-card-content class="my">
+
+			<ion-row>
+
+
+			</ion-row>
+
+		</ion-card-content>
+
+	</ion-card>
+
+	<button ion-button large color="dark" round full (click)="block()">BLOCKED</button>
+
+</ion-content>

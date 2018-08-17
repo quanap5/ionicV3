@@ -1,0 +1,111 @@
+<!--
+  Generated template for the ViewmorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>viewmore</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openBasicInfoSetting()">
+          <div>
+            <ion-icon name="contact"></ion-icon>
+            <br> Basic information setting
+          </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="backspace"></ion-icon>
+            <br> Block membership management
+          </div>
+
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openPaymentManagement()">
+          <div>
+            <ion-icon name="basket"></ion-icon>
+            <br> Management my items/charge coins
+          </div>
+
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="color-filter"></ion-icon>
+
+            <br> Service center
+          </div>
+
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="megaphone"></ion-icon>
+
+            <br> Notice
+          </div>
+
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="microphone"></ion-icon>
+            <br> Talk board
+          </div>
+
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="construct"></ion-icon>
+
+            <br> Receive notification settings
+          </div>
+
+        </button>
+      </ion-col>
+      <ion-col>
+        <button style="height: 100px; width: 100%;" block color="light" outline (click)="openComingsoon()">
+          <div>
+            <ion-icon name="star"></ion-icon>
+            <br> Leave the network
+          </div>
+
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- This is for iframe youtube -->
+
+  <div class="videowrapper">
+    <iframe src="https://www.youtube.com/embed/JeypuymuaD8" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+  </div>
+  <button (click)="watch_on_youtube(video_id)" ion-button small color="danger">
+    <ion-icon name="logo-youtube"></ion-icon>
+    Or Watch On Youtube
+  </button>
+
+
+</ion-content>
