@@ -16,526 +16,1150 @@
 </ion-header>
 
 
+
 <ion-content class="background" padding>
-	
-
-	<!-- <ion-grid>
-  		<ion-row>
-    		<ion-col>
-        		<ion-label item-left>Marriage</ion-label>
-	  			<ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
-    		</ion-col>
-    		
-    		<ion-col>
-          		<ion-label item-left>Re-marriage</ion-label>
-	  			<ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
-    		</ion-col>
-  		</ion-row>
-	</ion-grid>
--->
-
-<!--  	<ion-list radio-group>
-  		<ion-list-header>
-   			 Desire
-  		</ion-list-header>
-
-  		<ion-item>
-    		<ion-label>Marriage</ion-label>
-    		<ion-radio checked="true" value="marriage"></ion-radio>
-  		</ion-item>
-
-  		<ion-item>
-    		<ion-label>Re-marriage</ion-label>
-    		<ion-radio value="re-marriage"></ion-radio>
-  		</ion-item>
-
-   </ion-list> -->
 
 
-
-
-
-   <ion-card>
-    <ion-card-header>
-      DESTINATION
-    </ion-card-header>
-
-    <ion-card-content>
-    <!--   <ion-row radio-group [(ngModel)]="profile.target">
-
+    <!-- <ion-grid>
+        <ion-row>
+          <ion-col>
+              <ion-label item-left>Marriage</ion-label>
+            <ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
+          </ion-col>
+          
+          <ion-col>
+                <ion-label item-left>Re-marriage</ion-label>
+            <ion-checkbox item-right color="secondary" checked="true"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  -->
+  
+    <!--  	<ion-list radio-group>
+        <ion-list-header>
+            Desire
+        </ion-list-header>
+  
+        <ion-item>
+          <ion-label>Marriage</ion-label>
+          <ion-radio checked="true" value="marriage"></ion-radio>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Re-marriage</ion-label>
+          <ion-radio value="re-marriage"></ion-radio>
+        </ion-item>
+  
+     </ion-list> -->
+  
+  
+    <!-- <ion-card>
+        <ion-card-content>
+            <ion-img src='./assets/imgs/login.png'></ion-img>
+        </ion-card-content>
+        
+     </ion-card> -->
+  
+    <img style="align-items: center;" src='./assets/imgs/img_login4.png'>
+  
+  
+    <ion-card>
+  
+      <ion-card-header>
+          {{ 'profile.Destination' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <!--   <ion-row radio-group [(ngModel)]="profile.target">
+  
+         <ion-col>
+          <ion-item [style.background-color]="selectedBackground? '#32db64' : null ">
+           <ion-label>Marriage</ion-label>
+           <ion-radio value="marriage" (ionSelect)="togleBackgroundFrom1()"></ion-radio>
+         </ion-item>
+  
+       </ion-col>
+  
        <ion-col>
-        <ion-item [style.background-color]="selectedBackground? '#32db64' : null ">
-         <ion-label>Marriage</ion-label>
-         <ion-radio value="marriage" (ionSelect)="togleBackgroundFrom1()"></ion-radio>
+        <ion-item [style.background-color]="selectedBackground? null: '#32db64' ">
+         <ion-label>Re-marriage</ion-label>
+         <ion-radio value="re-marriage" (ionSelect)="togleBackgroundFrom2()"></ion-radio>
        </ion-item>
-
+  
      </ion-col>
-
-     <ion-col>
-      <ion-item [style.background-color]="selectedBackground? null: '#32db64' ">
-       <ion-label>Re-marriage</ion-label>
-       <ion-radio value="re-marriage" (ionSelect)="togleBackgroundFrom2()"></ion-radio>
-     </ion-item>
-
-   </ion-col>
-
-
- </ion-row> -->
-
-<ion-row>
-<ion-col col-6>
-  <button class="container" ion-button outline color="light" style="width:100%;  border-radius: 10px" float-center (click)="selectTarget(1)">
-    <ion-img class="full_img" [src]="profile.target == 'marriage'? './assets/imgs/target.png': './assets/imgs/target_gray.png'"></ion-img>
-    <div class="centered">Marriage</div>
-  </button>
-
-</ion-col>
-
-<ion-col col-6>
-  <button class="container" ion-button outline color="light" style="width:100%; border-radius: 10px" float-center (click)="selectTarget(0)">
-    <ion-img  class="full_img" [src]="!(profile.target == 'marriage')? './assets/imgs/target.png':'./assets/imgs/target_gray.png'"></ion-img>
-    <div class="centered">Re-marriage</div>
-  </button>
-
-
-
-</ion-col>
-
-</ion-row>
-
-
-</ion-card-content>
-
-</ion-card>
-
-
-
-
-
-<ion-card>
-  <ion-card-header>
-    PERSONAL
-  </ion-card-header>
-  <ion-card-content>
-
-  	<ion-row>
-  		<ion-col>
-  			<ion-item>
-          <!-- <ion-label fixed>Username</ion-label> -->
-          <ion-input [(ngModel)]="profile.username" type="text" value={{profile.username}} placeholder = "User Name"></ion-input>
-        </ion-item>
-
-      </ion-col>
-      <ion-col>
-       <ion-item>
-        <!-- <ion-label fixed>First Name</ion-label> -->
-        <ion-input [(ngModel)]="profile.firstName" value={{profile.firstName}} placeholder = "First Name"></ion-input>
-      </ion-item>
-
-
-    </ion-col>
-    <ion-col>
-     <ion-item>
-      <!-- <ion-label fixed>Last Name</ion-label> -->
-      <ion-input [(ngModel)]="profile.lastName" type="text" value={{profile.lastName}} placeholder = "Last Name"></ion-input>
-    </ion-item>
-
-
-  </ion-col>
-
-</ion-row>
-
-<ion-row>
-  <ion-col>
-    <ion-item>
-      <ion-label>Birthday</ion-label>
-      <!-- <ion-datetime displayFormat="MMMM YYYY" min="1950" max="2018" [(ngModel)]="profile.age" ></ion-datetime> -->
-      <ion-datetime displayFormat="YYYY-MMMM-DDDD" min="1950" max="2018" [(ngModel)]="profile.age"></ion-datetime>
-    </ion-item>
-  </ion-col>
-</ion-row>
-
-<!-- <ion-item>
-  <ion-label>Gender</ion-label>
-  <ion-select [(ngModel)]="profile.gender">
-    <ion-option value="female">Female</ion-option>
-    <ion-option value="male">Male</ion-option>
-  </ion-select>
-</ion-item> -->
-
-<!-- Gioi tinh -->
-
-
-<ion-row radio-group> 
-  <ion-col col-6>
-    <ion-item style="background: rgba(255, 255, 255, 0);">
-     <ion-label>Gender</ion-label>
-   </ion-item>
- </ion-col>
- <ion-col col-3>
-  <button ion-button outline color="light" style="width:70%" float-right (click)="selectGender(1)">
-    <img [src]="selectedMale? './assets/imgs/male_color.png': './assets/imgs/male_gray.png'">
-  </button>
-
-</ion-col>
-
-<ion-col col-3>
-  <button ion-button outline color="light" style="width:70%" float-right (click)="selectGender(0)">
-    <img [src]="selectedFemale? './assets/imgs/female_color.png':'./assets/imgs/female_gray.png'">
-  </button>
-
-
-
-</ion-col>
-
-
-</ion-row>
-
-
-<ion-row>
-
-  <ion-col>
-    <ion-item>
-      <ion-label>Select your City</ion-label>
-
-      <ion-select [(ngModel)]="_load_City" [placeholder]="profile.city.name" (ionChange)="setDistrictValues(_load_City)" interface="popover">
-        <ion-option [value]="sCity" *ngFor = "let sCity of citys">{{sCity.name}}</ion-option>
-    <!-- <ion-option value="seoul">Seoul</ion-option>
-    <ion-option value="busan">Busan</ion-option>
-    <ion-option value="incheon">Incheon</ion-option>
-    <ion-option value="daegu">Daegu</ion-option>
-    <ion-option value="daejeon">Daejeon</ion-option>
-    <ion-option value="gwangju">Gwangjiu</ion-option>
-    <ion-option value="ulsan">Ulsan</ion-option>
-    <ion-option value="suwon">Suwon</ion-option>
-    <ion-option value="goyangsi">GoyangSi</ion-option>
-    <ion-option value="seongnamsi">SeongnamSi</ion-option> -->
-
-
-  </ion-select>
-</ion-item>
-</ion-col>
-<ion-col>
-  <ion-item>
-    <!--   <ion-label stacked>Select your District</ion-label> -->
-    <ion-select [(ngModel)]="district" [placeholder]="profile.district.name" interface="popover">
-      <ion-option [value]="sDistrict" *ngFor = "let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option>
-
+  
+  
+   </ion-row> -->
+  
+        <ion-row>
+          <ion-col col-6>
+            <button class="container" ion-button outline color="light" style="width:100%;  border-radius: 10px" float-center (click)="selectTarget(1)">
+              <ion-img class="full_img" [src]="profile.target == 'marriage'? './assets/imgs/target.png': './assets/imgs/target_gray.png'"></ion-img>
+              <div class="centered">{{ 'profile.Marrige' | translate }}</div>
+            </button>
+  
+          </ion-col>
+  
+          <ion-col col-6>
+            <button class="container" ion-button outline color="light" style="width:100%; border-radius: 10px" float-center (click)="selectTarget(0)">
+              <ion-img class="full_img" [src]="!(profile.target == 'marriage')? './assets/imgs/target.png':'./assets/imgs/target_gray.png'"></ion-img>
+              <div class="centered">{{ 'profile.ReMarriage' | translate }}</div>
+            </button>
+  
+  
+  
+          </ion-col>
+  
+        </ion-row>
+  
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+  
+  
+  
+  
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Personal' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <!-- <ion-label fixed>Username</ion-label> -->
+              <ion-input [(ngModel)]="profile.username" placeholder="{{ 'profile.UserName' | translate }}"></ion-input>
+            </ion-item>
+  
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <!-- <ion-label fixed>First Name</ion-label> -->
+              <ion-input [(ngModel)]="profile.firstName" placeholder="{{ 'profile.FisrtName' | translate }}"></ion-input>
+            </ion-item>
+  
+  
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <!-- <ion-label fixed>Last Name</ion-label> -->
+              <ion-input [(ngModel)]="profile.lastName" placeholder="{{ 'profile.LastName' | translate }}"></ion-input>
+            </ion-item>
+  
+  
+          </ion-col>
+  
+        </ion-row>
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.Bithday' | translate }}</ion-label>
+              <ion-datetime displayFormat="YYYY-MMMM-DDDD" min="1950" max="2018" [(ngModel)]="profile.age"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <!-- <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select [(ngModel)]="profile.gender">
+      <ion-option value="female">Female</ion-option>
+      <ion-option value="male">Male</ion-option>
     </ion-select>
-  </ion-item>
-</ion-col>
-
-</ion-row>
-
-</ion-card-content>
-
-</ion-card>
-
-<ion-card>
-  <ion-card-header>
-    EDUCATION
-  </ion-card-header>
-  <ion-card-content>
-
-    <ion-list radio-group [(ngModel)]="profile.education">
-
-      <ion-item>
-        <ion-label>HighSchool</ion-label>
-        <ion-radio checked="true" value="highschool"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>University</ion-label>
-        <ion-radio value="university"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Master</ion-label>
-        <ion-radio value="master"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>PhD</ion-label>
-        <ion-radio value="phd"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Postdoc</ion-label>
-        <ion-radio value="postdoc"></ion-radio>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label>Professor</ion-label>
-        <ion-radio value="professor"></ion-radio>
-      </ion-item>
-    </ion-list>
-
-  </ion-card-content>
-
-</ion-card>
-
-
-
-<!-- JOB -->
-
-<ion-card>
-  <ion-card-header>
-    JOB
-  </ion-card-header>
-  <ion-card-content>
-
-    <ion-list radio-group [(ngModel)]="job">
-
-      <ion-item>
-        <ion-label>Artist</ion-label>
-        <ion-radio value="Artist"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Engineering</ion-label>
-        <ion-radio value="engineering"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Bussiness</ion-label>
-        <ion-radio value="bussiness"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Officer</ion-label>
-        <ion-radio value="officer"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Other</ion-label>
-        <ion-radio value="other"></ion-radio>
-      </ion-item>
-
-
-    </ion-list>
-
-  </ion-card-content>
-
-</ion-card>
-
-
-<!--  -->
-
-
-
-<ion-card>
-  <ion-card-header>
-    FINANCIAL
-  </ion-card-header>
-  <ion-card-content>
-
-
-    <ion-row>
-
-      <ion-col>
-        <ion-item>
-          <ion-label>Your balance</ion-label>
-
-          <ion-select [(ngModel)]="balance" placeholder="milion won" interface="popover">
-            <!-- <ion-option [value]="sCity" *ngFor = "let sCity of citys">{{sCity.name}}</ion-option> -->
-            <ion-option value="20">20 milions</ion-option>
-            <ion-option value="50">50 milions</ion-option>
-            <ion-option value="100">100 milions</ion-option>
-            <ion-option value="200">200 milions</ion-option>
-            <ion-option value="500">500 milions</ion-option>
-            <ion-option value="1000">1000 milions</ion-option>
-            <ion-option value="2000">2000 milions</ion-option>
-            <ion-option value="5000">5000 milions</ion-option>
-
-
-          </ion-select>
-        </ion-item>
-      </ion-col>
-
-      <ion-col>
-        <ion-item>
-          <ion-label>Your salary per month</ion-label>
-          <ion-select [(ngModel)]="salary" placeholder="milion" interface="popover">
-            <!--  <ion-option [value]="sDistrict" *ngFor = "let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option> -->
-            <ion-option value="<2">less 2 milions/month</ion-option>
-            <ion-option value="2">more 2 milions/month</ion-option>
-            <ion-option value="3">more 3 milions/month</ion-option>
-            <ion-option value="4">more 4 milions/month</ion-option>
-            <ion-option value="10">more 10 milions</ion-option>
-
-
-          </ion-select>
-        </ion-item>
-      </ion-col>
-
-    </ion-row>
-
-  </ion-card-content>
-
-</ion-card>
-
-
-<!-- CHARACTERISTIC -->
-
-<ion-card>
-  <ion-card-header>
-    CHARACTERISTICS
-  </ion-card-header>
-  <ion-card-content>
-
-
-    <ion-list>
-      <ion-item>
-        <ion-label>Select multiple</ion-label>
-        <ion-select multiple="true" cancelText="NO" okText="OK!">
-          <ion-option value="Clumsy">Clumsy</ion-option>
-          <ion-option value="Diligent">Diligent</ion-option>
-          <ion-option value="Lazy">Lazy</ion-option>
-          <ion-option value="Strong">Strong</ion-option>
-          <ion-option value="Active">Active</ion-option>
-          <ion-option value="Polite">Polite</ion-option>
-          <ion-option value="Careful">Careful</ion-option>
-          <ion-option value="Generous">Generous</ion-option>
-          <ion-option value="Brave">Brave</ion-option>
-          <ion-option value="Kind">Kind</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-
-
-
-  </ion-card-content>
-
-</ion-card>
-
-<!-- ////////////////////////////////////////// -->
-<ion-card>
-  <ion-card-header>
-    APPEARANCE
-  </ion-card-header>
-
-  <ion-card-content>
-    <ion-row radio-group [(ngModel)]="appearance">
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Under Average</ion-label>
-          <ion-radio value="under_average"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Average</ion-label>
-          <ion-radio value="average"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Above Average</ion-label>
-          <ion-radio value="above_average"></ion-radio>
-        </ion-item>
-      </ion-col>
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Hot</ion-label>
-          <ion-radio value="hot"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-
-    </ion-row>
-  </ion-card-content>
-
-</ion-card>
-
-
-
-<ion-card>
-
-  <ion-card-header>
-    HEIGHT & WEIGHT
-  </ion-card-header>
-
-  <ion-card-content>
-    <ion-row>
-
-      <ion-col>
-        <ion-item>
-          <ion-label>height</ion-label>
-
-          <ion-select [(ngModel)]="height" placeholder="cm" interface="popover">
-            <ion-option [value]="sHeight" *ngFor="let sHeight of rangeHeight">{{sHeight}} cm</ion-option>
-
-
-
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label>weight</ion-label>
-
-          <!--   <ion-label stacked>Select your District</ion-label> -->
-          <ion-select [(ngModel)]="weight" placeholder="kg" interface="popover">
-            <ion-option [value]="sWeight" *ngFor="let sWeight of rangeWeight">{{sWeight}} Kg</ion-option>
-
-          </ion-select>
-        </ion-item>
-      </ion-col>
-
-    </ion-row>
-  </ion-card-content>
-
-</ion-card>
-
-
-
-<!-- about Family -->
-
-<ion-card>
-  <ion-card-header>
-    FAMILY
-  </ion-card-header>
-
-  <ion-card-content>
-    <ion-row radio-group [(ngModel)]="parents">
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Both Alive</ion-label>
-          <ion-radio checked="true" value="bothalive"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Father Only</ion-label>
-          <ion-radio value="fatheronly"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-      <ion-col>
-        <ion-item style="border-radius: 10px">
-          <ion-label>Mother Only</ion-label>
-          <ion-radio value="motheronly"></ion-radio>
-        </ion-item>
-
-      </ion-col>
-
-
-    </ion-row>
-  </ion-card-content>
-
-</ion-card>
+  </ion-item> -->
+  
+        <!-- Gioi tinh -->
+  
+  
+        <ion-row radio-group>
+          <ion-col col-6>
+            <ion-item style="background: rgba(255, 255, 255, 0);">
+              <ion-label>{{ 'profile.Gender' | translate }}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button outline color="light" style="width:70%" float-right (click)="selectGender(1)">
+              <img [src]="selectedMale? './assets/imgs/male_color.png': './assets/imgs/male_gray.png'">
+            </button>
+  
+          </ion-col>
+  
+          <ion-col col-3>
+            <button ion-button outline color="light" style="width:70%" float-right (click)="selectGender(0)">
+              <img [src]="selectedFemale? './assets/imgs/female_color.png':'./assets/imgs/female_gray.png'">
+            </button>
+  
+  
+  
+          </ion-col>
+  
+  
+        </ion-row>
+  
+  
+        <ion-row>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.SelectYourCity' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.city" placeholder="city" (ionChange)="setDistrictValues(profile.city)" interface="popover">
+                <ion-option [value]="sCity" *ngFor="let sCity of citys" checked="(sCity.name == my_City.name)? 'true':'false'">{{sCity.name}}</ion-option>
+                <!-- <ion-option value="seoul">Seoul</ion-option>
+      <ion-option value="busan">Busan</ion-option>
+      <ion-option value="incheon">Incheon</ion-option>
+      <ion-option value="daegu">Daegu</ion-option>
+      <ion-option value="daejeon">Daejeon</ion-option>
+      <ion-option value="gwangju">Gwangjiu</ion-option>
+      <ion-option value="ulsan">Ulsan</ion-option>
+      <ion-option value="suwon">Suwon</ion-option>
+      <ion-option value="goyangsi">GoyangSi</ion-option>
+      <ion-option value="seongnamsi">SeongnamSi</ion-option> -->
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <!--   <ion-label stacked>Select your District</ion-label> -->
+              <ion-select [(ngModel)]="profile.district" placeholder="district" interface="popover">
+                <ion-option [value]="sDistrict" *ngFor="let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+  
+    <!-- JOB NEW -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.JobProfession' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+  
+            <ion-item>
+              <ion-label>{{ 'profile.SelectyourCurrentJob' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.job" placeholder="select" interface="popover">
+                <ion-option value="Operation">Operation</ion-option>
+                <ion-option value="Office/ Management">Office/Management</ion-option>
+                <ion-option value="Marketing">Marketing</ion-option>
+                <ion-option value="PR/ Advertising">PR/ Advertising</ion-option>
+                <ion-option value="Goverment Administration">Goverment Administration</ion-option>
+                <ion-option value="Public corporation/ institution">Public corporation/ institution</ion-option>
+                <ion-option value="Law">Law</ion-option>
+                <ion-option value="Trade">Trade</ion-option>
+                <ion-option value="Circulation">Circulation</ion-option>
+                <ion-option value="Research/ Development">Research/ Development</ion-option>
+                <ion-option value="Transportation">Transportation (buses/ railway, etc)</ion-option>
+                <ion-option value="Logistics/ Shipping">Logistics/ Shipping</ion-option>
+                <ion-option value="Install">Install</ion-option>
+                <ion-option value="Maintenance/ AS">Maintenance/ AS</ion-option>
+                <ion-option value="Foreign language/ translation">Foreign language/ translation</ion-option>
+                <ion-option value="Security">Security</ion-option>
+                <ion-option value="Beauty">Beauty</ion-option>
+                <ion-option value="Ceremony">Ceremony</ion-option>
+                <ion-option value="Funeral">Funeral</ion-option>
+                <ion-option value="Eat out">Eat out</ion-option>
+                <ion-option value="Franchise">Franchise</ion-option>
+                <ion-option value="Lodgement">Lodgement</ion-option>
+                <ion-option value="Travel">Travel</ion-option>
+                <ion-option value="Machine">Machine</ion-option>
+                <ion-option value="Production/ Manufacturing">Production/ Manufacturing</ion-option>
+                <ion-option value="Electric">Electric</ion-option>
+                <ion-option value="Electronic">Electronic</ion-option>
+                <ion-option value="Gas/ Water">Gas/ Water</ion-option>
+                <ion-option value="Car">Car</ion-option>
+                <ion-option value="Shipbuilding">Shipbuilding</ion-option>
+                <ion-option value="Metal/ Material">Metal/ Material</ion-option>
+                <ion-option value="Textile chemistry">Textile chemistry</ion-option>
+                <ion-option value="Petrochemical">Petrochemical</ion-option>
+                <ion-option value="Essential oil">Essential oil</ion-option>
+                <ion-option value="Food engineering">Food engineering</ion-option>
+                <ion-option value="Food processing/ Manufacturing">Food processing/ Manufacturing</ion-option>
+                <ion-option value="Sale">Sale</ion-option>
+                <ion-option value="Service">Service</ion-option>
+                <ion-option value="Clothing">Clothing</ion-option>
+                <ion-option value="Toys and Game">Toys and Game</ion-option>
+                <ion-option value="Education">Education</ion-option>
+                <ion-option value="Finance">Finance</ion-option>
+                <ion-option value="Stock">Stock</ion-option>
+                <ion-option value="Invest">Invest</ion-option>
+                <ion-option value="Insurance">Insurance</ion-option>
+                <ion-option value="Accounting/ Taxation">Accounting/ Taxation</ion-option>
+                <ion-option value="Sales">Sales</ion-option>
+                <ion-option value="Customer consultation">Customer consultation</ion-option>
+                <ion-option value="Culture/ Art">Culture/ Art</ion-option>
+                <ion-option value="Show">Show</ion-option>
+                <ion-option value="Crafts">Crafts</ion-option>
+                <ion-option value="Broadcast">Broadcast</ion-option>
+                <ion-option value="Newspapers/ Maganizes">Newspapers/ Maganizes</ion-option>
+                <ion-option value="Books/ Publishing">Books/ Publishing</ion-option>
+                <ion-option value="Photo">Photo</ion-option>
+                <ion-option value="Print">Print</ion-option>
+                <ion-option value="Music/ Musical instruments">Music/ Musical instruments</ion-option>
+                <ion-option value="Theater/ Film">Theater/ Film</ion-option>
+                <ion-option value="Entertaiment">Entertaiment</ion-option>
+                <ion-option value="Game">Game</ion-option>
+                <ion-option value="Comic/Webtoon">Comic/Webtoon</ion-option>
+                <ion-option value="IT (Information technology)">IT (Information technology)</ion-option>
+                <ion-option value="Communication">Communication</ion-option>
+                <ion-option value="ICT">ICT</ion-option>
+                <ion-option value="Semiconductor">Semiconductor</ion-option>
+                <ion-option value="LED/ Mining industry"></ion-option>
+                <ion-option value="Environment"></ion-option>
+                <ion-option value="Internet">Internet</ion-option>
+                <ion-option value="Mobile">Mobile</ion-option>
+                <ion-option value="Bigdata">Bigdata</ion-option>
+                <ion-option value="Robot">Robot</ion-option>
+                <ion-option value="Nano">Nano</ion-option>
+                <ion-option value="Bio">Bio</ion-option>
+                <ion-option value="New materials">New materials</ion-option>
+                <ion-option value="Renewable Energy">Renewable Energy</ion-option>
+                <ion-option value="Space/ aviation">Space/ aviation</ion-option>
+                <ion-option value="Design">Design</ion-option>
+                <ion-option value="Interior">Interior</ion-option>
+                <ion-option value="Erection">Erection</ion-option>
+                <ion-option value="Civil engineering">Civil engineering</ion-option>
+                <ion-option value="Property for rent">Property for rent</ion-option>
+                <ion-option value="Medical/ Health">Medical/ Health</ion-option>
+                <ion-option value="Restriction">Restriction</ion-option>
+                <ion-option value="Religion">Religion</ion-option>
+                <ion-option value="Agriculture">Agriculture</ion-option>
+                <ion-option value="Fishing">Fishing</ion-option>
+                <ion-option value="Livestock Industry">Livestock Industry</ion-option>
+                <ion-option value="Dairy industry">Dairy industry</ion-option>
+                <ion-option value="Forestry">Forestry</ion-option>
+                <ion-option value="Mining industry">Mining industry</ion-option>
+                <ion-option value="Self-employment">Self-employment</ion-option>
+                <ion-option value="Professional">Professional</ion-option>
+                <ion-option value="Solider">Solider</ion-option>
+                <ion-option value="Sports">Sports</ion-option>
+                <ion-option value="Social welfare">Social welfare</ion-option>
+                <ion-option value="Freelancer">Freelancer</ion-option>
+                <ion-option value="Prepare for employment">Prepare for employment</ion-option>
+                <ion-option value="Start-up preparation">Start-up preparation</ion-option>
+                <ion-option value="Part-time job">Part-time job</ion-option>
+                <ion-option value="Student">Student</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Study experience -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.StudyExperience' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.HaveYouOversea' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.studyExperience" placeholder="select" interface="popover">
+                <ion-option value="I have experience studying abroad">I have experience studying abroad</ion-option>
+                <ion-option value="No oversea studying experience">No oversea studying experience</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  
+    <!-- education -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Education' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YourLevelEducation' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.education" placeholder="select" interface="popover">
+                <ion-option value="Secondary School">Secondary School</ion-option>
+                <ion-option value="High school graduation">High school graduation</ion-option>
+                <ion-option value="Colleage(2 years)">Colleage(2 years)</ion-option>
+                <ion-option value="Colleage(4 years)">Colleage(4 years)</ion-option>
+                <ion-option value="Colleage student">Colleage student</ion-option>
+                <ion-option value="College dropout">College dropout</ion-option>
+                <ion-option value="Graduation school">Graduation school</ion-option>
+                <ion-option value="Graduation withdrawal">Graduation withdrawal</ion-option>
+                <ion-option value="Doctoral degree">Doctoral degree</ion-option>
+                <ion-option value="PhD">PhD</ion-option>
+                <ion-option value="Others">Others</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- financial -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Financial' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YourBalance' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.balance" placeholder="milion won" interface="popover">
+                <!-- <ion-option [value]="sCity" *ngFor = "let sCity of citys">{{sCity.name}}</ion-option> -->
+                <ion-option value="30">less than 30 milion won</ion-option>
+                <ion-option value="70">less than 70 milion won</ion-option>
+                <ion-option value="100">less than 100 milion won</ion-option>
+                <ion-option value="300">less than 300 milion won</ion-option>
+                <ion-option value="500">less than 500 milion won</ion-option>
+                <ion-option value="1000">less than 1 bilion won</ion-option>
+                <ion-option value="1001">more than 1 bilion won</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YourSalary' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.salary" placeholder="milion" interface="popover">
+                <!--  <ion-option [value]="sDistrict" *ngFor = "let sDistrict of selectedDistricts">{{sDistrict.name}}</ion-option> -->
+                <ion-option value="less 2 milions/month">less 2 milions/month</ion-option>
+                <ion-option value="more 2 milions/month">more 2 milions/month</ion-option>
+                <ion-option value="more 3 milions/month">more 3 milions/month</ion-option>
+                <ion-option value="more 4 milions/month">more 4 milions/month</ion-option>
+                <ion-option value="more 10 milions">more 10 milions</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- style -->
+  
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Style' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YourStyle' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.style" placeholder="select" interface="popover">
+                <ion-option value="Mediorce">Mediorce</ion-option>
+                <ion-option value="Cuteness">Cuteness</ion-option>
+                <ion-option value="Sexy">Sexy</ion-option>
+                <ion-option value="Handsome">Handsome</ion-option>
+                <ion-option value="Delicacy">Delicacy</ion-option>
+                <ion-option value="Goodness">Goodness</ion-option>
+                <ion-option value="Fatness">Fatness</ion-option>
+                <ion-option value="Neatness">Neatness</ion-option>
+                <ion-option value="Dullness">Dullness</ion-option>
+                <ion-option value="Fashion King">Fashion King</ion-option>
+                <ion-option value="Chic">Chic</ion-option>
+                <ion-option value="Brain suture">Brain suture</ion-option>
+                <ion-option value="Brain Sedan">Brain Sedan</ion-option>
+                <ion-option value="Muscular">Muscular</ion-option>
+                <ion-option value="Sturdy">Sturdy</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Fashion style -->
+  
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.FashionStyle' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YoucanSelectMultiple' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.fashionStyle" multiple="true" cancelText="NO" okText="OK!">
+                <ion-option value="The gentleman">The gentleman</ion-option>
+                <ion-option value="Fashion semi-formal">Fashion semi-formal</ion-option>
+                <ion-option value="Quality luxury style">Quality luxury style</ion-option>
+                <ion-option value="Whitey jeans casual">Whitey jeans casual</ion-option>
+                <ion-option value="Trendy casual">Trendy casual</ion-option>
+                <ion-option value="Unique Bonded style">Unique Bonded style</ion-option>
+                <ion-option value="Active outdoor">Active outdoor</ion-option>
+                <ion-option value="Pisse Hip-hop styple">Pisse Hip-hop styple</ion-option>
+                <ion-option value="Comfortable training suit">Comfortable training suit</ion-option>
+                <ion-option value="The usual daily look">The usual daily look</ion-option>
+                <ion-option value="Butina Golf wear">Butina Golf wear</ion-option>
+                <ion-option value="Charismatic uniform costume">Charismatic uniform costume</ion-option>
+                <ion-option value="Seung-kun's look">Seung-kun's look</ion-option>
+                <ion-option value="Free bohemian look">Free bohemian look</ion-option>
+                <ion-option value="7080 retro style">7080 retro style</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+  
+    <!-- ////////////////////////////////////////// -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Appearance' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row radio-group [(ngModel)]="profile.appearance">
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.UnderAverage' | translate }}</ion-label>
+              <ion-radio value="under_average"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.Average' | translate }}</ion-label>
+              <ion-radio value="average"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.AboveAverage' | translate }}</ion-label>
+              <ion-radio value="above_average"></ion-radio>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.Hot' | translate }}</ion-label>
+              <ion-radio value="hot"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+  
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+  
+  
+    <ion-card>
+  
+      <ion-card-header>
+          {{ 'profile.HeightandWeight' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.Height' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.height" placeholder="cm" interface="popover">
+                <ion-option [value]="sHeight" *ngFor="let sHeight of rangeHeight">{{sHeight}} cm</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.Weight' | translate }}</ion-label>
+  
+              <!--   <ion-label stacked>Select your District</ion-label> -->
+              <ion-select [(ngModel)]="profile.weight" placeholder="kg" interface="popover">
+                <ion-option [value]="sWeight" *ngFor="let sWeight of rangeWeight">{{sWeight}} Kg</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- smoking -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Smoking' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.DoYouSmoke' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.smoking" placeholder="select" interface="popover">
+  
+                <ion-option value="No experience">No experience</ion-option>
+                <ion-option value="No smoking">No smoking</ion-option>
+                <ion-option value="Smoking">Smoking</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.Frequency1' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.smoking_frequency" placeholder="select" interface="popover">
+  
+                <ion-option value="never">never</ion-option>
+                <ion-option value="sometimes">sometimes</ion-option>
+                <ion-option value="often">often</ion-option>
+                <ion-option value="addiction">addiction</ion-option>
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Drink -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Drinking' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.DoYouDrink' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.drinking" placeholder="select" interface="popover">
+  
+                <ion-option value="No drinking">No drinking</ion-option>
+                <ion-option value="1-2 times a month">1-2 times a month</ion-option>
+                <ion-option value="1 or 2 time a week">1 or 2 time a week</ion-option>
+                <ion-option value="more than 3 times a week">more than 3 times a week</ion-option>
+  
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.Frequency2' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.drinking_style" placeholder="select" interface="popover">
+  
+                <ion-option value="walking level">walking level</ion-option>
+                <ion-option value="jogging level">jogging level</ion-option>
+                <ion-option value="running level">running level</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Bllod type and relogion -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Blood' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.WhatisYourBlood' | translate }}</ion-label>
+  
+              <ion-select [(ngModel)]="profile.blood" placeholder="select" interface="popover">
+  
+                <ion-option value="Type A">Type A</ion-option>
+                <ion-option value="Type B">Type B</ion-option>
+                <ion-option value="Type O">Type O</ion-option>
+                <ion-option value="Type AB">Type AB</ion-option>
+  
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.WhatisYourReligion' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.religion" placeholder="select" interface="popover">
+  
+                <ion-option value="Agnostic">Agnostic</ion-option>
+                <ion-option value="Atheist">Atheist</ion-option>
+                <ion-option value="Buddhist">Buddhist</ion-option>
+                <ion-option value="Catholic">Catholic</ion-option>
+                <ion-option value="Christian">Christian</ion-option>
+                <ion-option value="Hindu">Hindu</ion-option>
+                <ion-option value="Jewish">Jewish</ion-option>
+                <ion-option value="Muslim">Muslim</ion-option>
+                <ion-option value="Sikh">Sikh</ion-option>
+                <ion-option value="Other">Other</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Vehicle information -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Vehicle' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.YourCar' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.car" placeholder="select" interface="popover">
+                <ion-option value="Small type">Small type</ion-option>
+                <ion-option value="Semi-solid type">Semi-solid type</ion-option>
+                <ion-option value="Medium">Medium</ion-option>
+                <ion-option value="Large">Large</ion-option>
+                <ion-option value="SUV">SUV</ion-option>
+                <ion-option value="Match">Match</ion-option>
+                <ion-option value="None">None</ion-option>
+                <ion-option value="Others">Others</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- CHARACTERISTIC -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Characteristic' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.SelectMultiple1' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.characteristic" multiple="true" cancelText="NO" okText="OK!">
+                <ion-option value="Clumsy">Clumsy</ion-option>
+                <ion-option value="Diligent">Diligent</ion-option>
+                <ion-option value="Lazy">Lazy</ion-option>
+                <ion-option value="Strong">Strong</ion-option>
+                <ion-option value="Active">Active</ion-option>
+                <ion-option value="Polite">Polite</ion-option>
+                <ion-option value="Careful">Careful</ion-option>
+                <ion-option value="Generous">Generous</ion-option>
+                <ion-option value="Brave">Brave</ion-option>
+                <ion-option value="Kind">Kind</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Interest -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.Hobby' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.SelectMultiple2' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.hobby" multiple="true" cancelText="NO" okText="OK!">
+                <ion-option value="Drinking">Drinking</ion-option>
+                <ion-option value="Pets">Pets</ion-option>
+                <ion-option value="Meetoing/Chat">Meetoing/Chat</ion-option>
+                <ion-option value="Game">Game</ion-option>
+                <ion-option value="Religion">Religion</ion-option>
+                <ion-option value="Shopping">Shopping</ion-option>
+                <ion-option value="Volunteer">Volunteer</ion-option>
+                <ion-option value="Epicurism">Epicurism</ion-option>
+                <ion-option value="Youth business">Youth business</ion-option>
+                <ion-option value="Fashion">Fashion</ion-option>
+                <ion-option value="Mountain climbing">Mountain climbing</ion-option>
+                <ion-option value="TV/ video">TV/ video</ion-option>
+                <ion-option value="Radio">Radio</ion-option>
+                <ion-option value="Amusement park">Amusement park</ion-option>
+                <ion-option value="Fashion">Fashion</ion-option>
+                <ion-option value="Travel">Travel</ion-option>
+                <ion-option value="Cooking">Cooking</ion-option>
+                <ion-option value="Fishing">Fishing</ion-option>
+                <ion-option value="Drive">Drive</ion-option>
+                <ion-option value="Interior">Interior</ion-option>
+                <ion-option value="Threater/ Film">Threater/ Film</ion-option>
+                <ion-option value="Beauty">Beauty</ion-option>
+                <ion-option value="Politics">Politics</ion-option>
+                <ion-option value="Music">Music</ion-option>
+                <ion-option value="Photo/ video">Photo/ video</ion-option>
+                <ion-option value="Entertainment industry">Entertainment industry</ion-option>
+                <ion-option value="Investment">Investment</ion-option>
+                <ion-option value="AV and Home threater">AV and Home threater</ion-option>
+                <ion-option value="Organ/ go">Organ/ go</ion-option>
+                <ion-option value="Chatter">Chatter</ion-option>
+                <ion-option value="Computer/ Internet">Computer/ Internet</ion-option>
+                <ion-option value="Performances">Performances</ion-option>
+                <ion-option value="SNS management">SNS management</ion-option>
+                <ion-option value="Blog management">Blog management</ion-option>
+                <ion-option value="Antique collection">Antique collection</ion-option>
+                <ion-option value="Other collectibles">Other collectibles</ion-option>
+                <ion-option value="Herb picking">Herb picking</ion-option>
+                <ion-option value="Play musical instrument">Play musical instrument</ion-option>
+                <ion-option value="Swimming">Swimming</ion-option>
+                <ion-option value="Golf">Golf</ion-option>
+                <ion-option value="Bowling">Bowling</ion-option>
+                <ion-option value="Bicycle">Bicycle</ion-option>
+                <ion-option value="Car tuning">Car tuning</ion-option>
+                <ion-option value="Others">Others</ion-option>
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Favorite food -->
+    <!-- Interest -->
+    <ion-card>
+      <ion-card-header>
+          {{ 'profile.FavoriteFood' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+  
+  
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>{{ 'profile.SelectMultiple3' | translate }}</ion-label>
+              <ion-select [(ngModel)]="profile.favoriteFood" multiple="true" cancelText="NO" okText="OK!">
+                <ion-option value="Risotto">Risotto</ion-option>
+                <ion-option value="Carbonara">Carbonara</ion-option>
+                <ion-option value="Aungol">Aungol</ion-option>
+                <ion-option value="Steak">Steak</ion-option>
+                <ion-option value="Sandwich">Sandwich</ion-option>
+                <ion-option value="King Crab">King Crab</ion-option>
+                <ion-option value="Lobster">Lobster</ion-option>
+                <ion-option value="Croissant">Croissant</ion-option>
+                <ion-option value="Waffle">Waffle</ion-option>
+                <ion-option value="Crepe">Crepe</ion-option>
+                <ion-option value="Bacon">Bacon</ion-option>
+                <ion-option value="Burger">Burger</ion-option>
+                <ion-option value="Fried chicken">Fried chicken</ion-option>
+                <ion-option value="Donut">Donut</ion-option>
+                <ion-option value="Hotdog">Hotdog</ion-option>
+                <ion-option value="California roll">California roll</ion-option>
+                <ion-option value="Pudding">Pudding</ion-option>
+                <ion-option value="Ramen">Ramen</ion-option>
+                <ion-option value="Cheese">Cheese</ion-option>
+                <ion-option value="Sushi">Sushi</ion-option>
+                <ion-option value="Donburi">Donburi</ion-option>
+                <ion-option value="Sashimi">Sashimi</ion-option>
+                <ion-option value="Soba">Soba</ion-option>
+                <ion-option value="Salmon sashimi">Salmon sashimi</ion-option>
+                <ion-option value="Tuna society">Tuna society</ion-option>
+                <ion-option value="Shabu">Shabu</ion-option>
+                <ion-option value="Dim sum">Dim sum</ion-option>
+                <ion-option value="Peking duck">Peking duck</ion-option>
+                <ion-option value="Sweet and sour pork">Sweet and sour pork</ion-option>
+                <ion-option value="jajangmyeon">jajangmyeon</ion-option>
+                <ion-option value="Razor">Razor</ion-option>
+                <ion-option value="Spring roll">Spring roll</ion-option>
+                <ion-option value="Fried rice">Fried rice</ion-option>
+                <ion-option value="Bulgogi">Bulgogi</ion-option>
+  
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+    <!-- Children you have -->
+    <ion-card>
+      <ion-card-header>
+        CHILDREN
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>Number of your son?</ion-label>
+  
+              <ion-select [(ngModel)]="profile.son" placeholder="select" interface="popover">
+                <ion-option value="None">None</ion-option>
+                <ion-option value="1 person">1 person</ion-option>
+                <ion-option value="2 people">2 people</ion-option>
+                <ion-option value="3 people">3 people</ion-option>
+                <ion-option value="4 people">4 people</ion-option>
+  
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>Number of your daughter?</ion-label>
+  
+              <ion-select [(ngModel)]="profile.daughter" placeholder="select" interface="popover">
+                <ion-option value="None">None</ion-option>
+                <ion-option value="1 person">1 person</ion-option>
+                <ion-option value="2 people">2 people</ion-option>
+                <ion-option value="3 people">3 people</ion-option>
+                <ion-option value="4 people">4 people</ion-option>
+  
+  
+  
+              </ion-select>
+            </ion-item>
+          </ion-col>
+  
+  
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- about Family -->
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="home"></ion-icon> 
+        {{ 'profile.Family' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row radio-group [(ngModel)]="profile.parents">
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.BothAlive' | translate }}</ion-label>
+              <ion-radio checked="true" value="bothalive"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.FatherOnly' | translate }}</ion-label>
+              <ion-radio value="fatheronly"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.MotherOnly' | translate }}</ion-label>
+              <ion-radio value="motheronly"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+  
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Divorce -->
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="warning"></ion-icon> 
+        {{ 'profile.Divorce' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row radio-group [(ngModel)]="profile.divorce">
+  
+          <ion-col col-2>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.Yes' | translate }}</ion-label>
+              <ion-radio checked="true" value="yes"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col col-6>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.NotReport' | translate }}</ion-label>
+              <ion-radio value="I did not report my marriage"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col col-4>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.Bereavement' | translate }}</ion-label>
+              <ion-radio value="Bereavement"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+  
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- Self introduction -->
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="person"></ion-icon> {{ 'profile.SelfIntroduction' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+  
+        <ion-row>
+          <ion-item>
+            <!-- <ion-label stacked color="dark">Notes</ion-label> -->
+            <ion-textarea [(ngModel)]="profile.introduction1"></ion-textarea>
+          </ion-item>
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- family introduction  -->
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="people"></ion-icon> {{ 'profile.FamilyIntroduction' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row>
+          <ion-item>
+            <!-- <ion-label stacked color="dark">Notes</ion-label> -->
+            <ion-textarea [(ngModel)]="profile.introduction2"></ion-textarea>
+          </ion-item>
+        </ion-row>
+  
+      </ion-card-content>
+  
+    </ion-card>
+  
+    <!-- When will get marrige? -->
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="contacts"></ion-icon> {{ 'profile.WhenMarry' | translate }}
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-row radio-group [(ngModel)]="profile.when_marriage">
+  
+          <ion-col col-3>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.With3month' | translate }}</ion-label>
+              <ion-radio checked="true" value="within 3 months"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col col-3>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.With6month' | translate }}</ion-label>
+              <ion-radio value="within 6 months"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col col-3>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.With1year' | translate }}</ion-label>
+              <ion-radio value="within a year"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+          <ion-col col-3>
+            <ion-item style="border-radius: 10px">
+              <ion-label>{{ 'profile.AnyTime' | translate }}</ion-label>
+              <ion-radio value="any time"></ion-radio>
+            </ion-item>
+  
+          </ion-col>
+  
+  
+        </ion-row>
+      </ion-card-content>
+  
+    </ion-card>
 
 
 <button ion-button color="secondary" round full (click)="updateProfile()">Update Profile</button>

@@ -46,6 +46,10 @@ export class ProfileEditPage {
 
   public year: number;
 
+  rangeHeight: number[] = new Array(20);
+
+  rangeWeight: number[] = new Array(20);
+
 
   loadUser = {} as Fullprofile;
   //load_Profile = {} as Profile;
@@ -84,6 +88,15 @@ export class ProfileEditPage {
       this.selectedFemale = true;
     }
     //console.log(this.profile);
+
+    
+    for (var i = 0; i < 30; ++i) {
+      // code...
+      this.rangeHeight[i] = 150 + i;
+      //this.selectedmax_Height.push(this.height[i]);
+      this.rangeWeight[i] = 40 + i * 2;
+      //this.selectedmax_Weight.push(this.weight[i]);
+    }
     
   }
 

@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MyPage } from '../my/my';
 import { ComingsoonPage } from '../comingsoon/comingsoon';
 import { StripeNativePage } from '../stripe-native/stripe-native';
+import { ManageChargePage } from '../manage-charge/manage-charge';
 
 
 /**
@@ -60,7 +61,8 @@ openComingsoon(){
 
 
 openPaymentManagement(){
-  this.navCtrl.push(StripeNativePage)
+  //this.navCtrl.push(StripeNativePage)
+  this.navCtrl.push(ManageChargePage)
 }
 
 

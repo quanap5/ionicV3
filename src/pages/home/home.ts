@@ -14,6 +14,8 @@ import { connreq } from '../../models/request';
 import firebase from 'firebase';
 import { BuddyprofilePage } from '../buddyprofile/buddyprofile';
 import { AdditionalSearchPage } from '../additional-search/additional-search';
+import { ManageChargePage } from '../manage-charge/manage-charge';
+import { MyPage } from '../my/my';
 
 /**
  * Generated class for the HomePage page.
@@ -263,10 +265,13 @@ export class HomePage {
 
 
 
-
-  ///////////////////////////////////////////////////
-
-
+/**
+ * this function when user want to make a request for chatting with friend
+ * input : object of user who is added by current user
+ * output: create database of request on database (Firebase)
+ * called from home page via provider
+ */
+  
   sendreq(recipient) {
     this.newrequest.sender = firebase.auth().currentUser.uid;
     this.newrequest.recipient = recipient.uid;
@@ -467,6 +472,17 @@ export class HomePage {
   openAdditionalSearch(){
     this.navCtrl.push(AdditionalSearchPage);
   }
+
+  // for Fab left
+
+  openPurchase(){
+    this.navCtrl.push(ManageChargePage)
+  }
+
+  openProfile(){
+    this.navCtrl.setRoot(MyPage)
+  }
+
 
 
 }

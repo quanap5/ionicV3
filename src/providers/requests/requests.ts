@@ -14,11 +14,19 @@ import firebase from 'firebase';
 @Injectable()
 export class RequestsProvider {
 
-  firereq = firebase.database().ref('/requests');
-  firefriends = firebase.database().ref('/friends');
+  firereq = firebase.database().ref('/requests'); //Database of request
+  firefriends = firebase.database().ref('/friends'); //Database of friends
+  fireinterest = firebase.database().ref('/interests'); //Database of tracking user interested in other
+  firelikes = firebase.database().ref('/likes'); //Database of tracking user like other user
+  firenews = firebase.database().ref('/news'); //Database of tracking user like other user
+  
+
   
   userdetails;
   myfriends;
+  myinterests: any[];
+  mylikes: any[];
+  mynews: any[];
   constructor(public userservice: UserProvider, public events: Events) {
     
   }
@@ -60,6 +68,14 @@ export class RequestsProvider {
   })
   }  
 
+
+  /**
+   * this is response function when user accept the request from another
+   * input: user requesting
+   * output: creat database using provider
+   * called from Chats page
+   */
+
   acceptrequest(buddy) {
     var promise = new Promise((resolve, reject) => {
       this.myfriends = [];
@@ -82,6 +98,47 @@ export class RequestsProvider {
     })
     return promise;
   }
+
+/**
+   * this is for tracking interested user 
+   * input: user who be clicked
+   * output: creat database using provider
+   * called from Home page
+   */
+  trackingView(buddyuid) {
+    var promise = new Promise((resolve, reject) => {
+      this.fireinterest.child(buddyuid).push().set({
+      viewer: firebase.auth().currentUser.uid
+      }).then(() => {
+        resolve({ success: true });
+        }).catch((err) => {
+          resolve(err);
+    })
+    })
+    return promise;  
+  }
+
+
+  /**
+   * this is for tracking user who liked current user
+   * input: user who be clicked Like button
+   * output: creat database using provider
+   * called from profileBuddy
+   */
+  trackingLike(buddyuid) {
+    var promise = new Promise((resolve, reject) => {
+      this.firelikes.child(buddyuid).push().set({
+      viewer: firebase.auth().currentUser.uid
+      }).then(() => {
+        resolve({ success: true });
+        }).catch((err) => {
+          resolve(err);
+    })
+    })
+    return promise;  
+  }
+
+  
 
   deleterequest(buddy) {
     var promise = new Promise((resolve, reject) => {
@@ -126,4 +183,101 @@ export class RequestsProvider {
     
     })
   }  
+
+
+
+   /*
+ 
+ For get information of user interseting me
+ Called from - myInterestedUser
+ Inputs - none
+ Outputs - Promise.
+ 
+ */
+
+getmyinterest() {
+  let interestsuid = [];
+  this.fireinterest.child(firebase.auth().currentUser.uid).on('value', (snapshot) => {
+    let allinterests = snapshot.val();
+    //this.myinterests = [];
+    //push all id of 
+    for (var i in allinterests)
+      interestsuid.push(allinterests[i].viewer);
+      
+    this.userservice.getallusers().then((users_) => {
+      this.myinterests = [];
+      let users =users_[0];
+      for (var j in interestsuid)
+        for (var key in users) {
+          if (interestsuid[j] === users[key].uid) {
+            this.myinterests.push(users[key]);
+          }
+        }
+     this.events.publish('interests');
+
+    }).catch((err) => {
+      alert(err);
+    })
+  
+  })
+}  
+
+
+getmylikes() {
+  let likesuid = [];
+  this.firelikes.child(firebase.auth().currentUser.uid).on('value', (snapshot) => {
+    let alllikes = snapshot.val();
+    //this.myinterests = [];
+    //push all id of 
+    for (var i in alllikes)
+      likesuid.push(alllikes[i].viewer);
+      
+    this.userservice.getallusers().then((users_) => {
+      this.mylikes = [];
+      let users =users_[0];
+      for (var j in likesuid)
+        for (var key in users) {
+          if (likesuid[j] === users[key].uid) {
+            this.mylikes.push(users[key]);
+          }
+        }
+     this.events.publish('likes');
+
+    }).catch((err) => {
+      alert(err);
+    })
+  
+  })
+}  
+
+
+getnews() {
+  let newsuid = [];
+  this.firenews.on('value', (snapshot) => {
+    let allnews = snapshot.val();
+    //this.myinterests = [];
+    //push all id of 
+    for (var i in allnews)
+    newsuid.push(allnews[i].viewer);
+      
+    this.userservice.getallusers().then((users_) => {
+      this.mynews = [];
+      let users =users_[0];
+      for (var j in newsuid)
+        for (var key in users) {
+          if (newsuid[j] === users[key].uid) {
+            this.mynews.push(users[key]);
+          }
+        }
+     this.events.publish('news');
+
+    }).catch((err) => {
+      alert(err);
+    })
+  
+  })
+}  
+
+
+
 }

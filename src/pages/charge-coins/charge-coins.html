@@ -1,0 +1,107 @@
+<!--
+  Generated template for the ChargeCoinsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ChargeCoins</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h3>Please select amount of payment You want</h3>
+
+    <ion-card>
+        
+        <ion-card-content>
+      
+          <ion-list radio-group [(ngModel)]="selectedAmount">
+      
+            <ion-item>
+              <ion-label>2500 coins</ion-label>
+              <ion-label>2500 Won</ion-label>
+              
+              <ion-radio value=2500></ion-radio>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>1500 coins</ion-label>
+              <ion-label>1500 Won</ion-label>
+              <ion-radio value=1500></ion-radio>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>500 coins</ion-label>
+              <ion-label>500 Won</ion-label>
+              <ion-radio value=500></ion-radio>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>400 coins</ion-label>
+              <ion-label>400 Won</ion-label>
+              <ion-radio value=400></ion-radio>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label>200 coins</ion-label>
+              <ion-label>200 Won</ion-label>
+              <ion-radio value=200></ion-radio>
+            </ion-item>
+      
+      
+            <ion-item>
+              <ion-label>100 coins</ion-label>
+              <ion-label>100 Won</ion-label>
+              <ion-radio checked="true" value=100></ion-radio>
+            </ion-item>
+          </ion-list>
+      
+        </ion-card-content>
+      
+      </ion-card>
+      
+
+  <h3>Please select the method of payments</h3>
+
+
+  <ion-list>
+
+    <button ion-item (click)="openPaymentBit()" icon-start>
+      <ion-icon name="logo-bitcoin"  item-start></ion-icon>
+      Bitcoins Payment
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+
+    </button>
+
+    <button ion-item (click)="openPayment()" icon-start>
+      <ion-icon name="card"  item-start></ion-icon>
+      Credit Card Payment
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+
+    </button>
+
+
+    <button ion-item (click)="openPaymentCash()" icon-start>
+      <ion-icon name="cash"  item-start></ion-icon>
+     Wire Transfer Billing
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+
+    </button>
+
+    <button ion-item (click)="openPaymentMobile()" icon-start>
+      <ion-icon name="phone-landscape" item-start></ion-icon>
+      Mobile Phone Billing
+      
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+
+    </button>
+
+
+  </ion-list>
+
+</ion-content>

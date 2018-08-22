@@ -1,0 +1,31 @@
+<!--
+  Generated template for the MyLikeUsersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>MyLikeUsers</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list-header>
+        This is list of user who gave you a LIKE
+      </ion-list-header>
+      <ion-list>
+      <ion-item *ngFor="let item of mylikes">
+        <ion-avatar item-left>
+          <img [src]= " item.profile.photoURL ">
+        </ion-avatar>
+        
+        <div>{{item.displayName}}</div>
+      </ion-item>
+    </ion-list>
+
+
+</ion-content>

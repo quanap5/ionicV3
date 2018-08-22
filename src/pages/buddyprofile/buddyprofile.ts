@@ -12,6 +12,8 @@ import firebase from 'firebase';
 import { UserProvider } from '../../providers/user/user';
 import { City } from "../../models/profile";
 import { TabsPage } from '../tabs/tabs';
+import { RequestsProvider } from '../../providers/requests/requests';
+import { MatchingPage } from '../matching/matching';
 
 /**
  * Generated class for the BuddyprofilePage page.
@@ -55,11 +57,16 @@ export class BuddyprofilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase,
-    public userservice: UserProvider, private toast: ToastController, public zone: NgZone) {
+    public userservice: UserProvider, private toast: ToastController, public zone: NgZone,
+    public requestservice: RequestsProvider) {
 
     this.buddyuid = this.navParams.get('buddyUid');
     //this.loaduserdetails(this.buddyuid);
+   
+    this.requestservice.trackingView(this.buddyuid);
+    //console.log("Da ghi ra user viewer");
 
+ 
 
   }
 
@@ -186,6 +193,7 @@ export class BuddyprofilePage {
 
   setLike(){
     this.my_Profile.beliked = this.my_Profile.beliked + 1;
+    this.requestservice.trackingLike(this.buddyuid);
 
     this.userservice.addfulluser2(this.my_Profile, this.my_Profile.photoURL, this.buddyuid).then((res: any) => {
 
@@ -201,6 +209,10 @@ export class BuddyprofilePage {
     })
 
 
+  }
+
+  analysis(){
+    this.navCtrl.push(MatchingPage, {avatar2: this.my_Profile});
   }
 
 

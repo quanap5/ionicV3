@@ -73,6 +73,12 @@ import { StripeNativePage } from '../pages/stripe-native/stripe-native';
 import { Stripe} from '@ionic-native/stripe' // for payment
 import { BuddychatPage } from '../pages/buddychat/buddychat';
 import { PaymentProvider } from '../providers/payment/payment';
+import { ManageChargePage } from '../pages/manage-charge/manage-charge';
+import { ChargeCoinsPage } from '../pages/charge-coins/charge-coins';
+import { MyInterestUsersPage } from '../pages/my-interest-users/my-interest-users';
+import { MyLikeUsersPage } from '../pages/my-like-users/my-like-users';
+import { NewUsersPage } from '../pages/new-users/new-users';
+import { MatchingPage } from '../pages/matching/matching';
 
 
 
@@ -117,6 +123,16 @@ import { PaymentProvider } from '../providers/payment/payment';
 
     // Payment
     StripeNativePage,
+    ManageChargePage,
+    ChargeCoinsPage,
+
+    // MyinterestUser
+    MyInterestUsersPage,
+    MyLikeUsersPage,
+    NewUsersPage,
+
+    //Maching
+    MatchingPage
 
 
   ],
@@ -173,7 +189,19 @@ import { PaymentProvider } from '../providers/payment/payment';
     AdditionalSearchPage,
 
     // payment
-    StripeNativePage
+    StripeNativePage,
+    ManageChargePage,
+    ChargeCoinsPage,
+
+    // MyinterestUser
+    MyInterestUsersPage,
+    MyLikeUsersPage,
+    NewUsersPage,
+
+    
+    //Maching
+    MatchingPage
+
 
 
 

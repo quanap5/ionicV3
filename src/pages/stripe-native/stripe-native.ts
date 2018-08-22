@@ -26,7 +26,7 @@ export class StripeNativePage {
   cardYear: number;
   cardCVC: string;
 
-  amount = 100;
+  amount = 0;
 
   data: Observable<any[]>;
   ref: AngularFireList<any>;
@@ -40,6 +40,8 @@ export class StripeNativePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public stripe: Stripe, private paymentSvc: PaymentProvider, private db: AngularFireDatabase) {
+
+   this.amount= this.navParams.get('amount')
   }
 
   ionViewDidLoad() {

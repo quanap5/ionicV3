@@ -17,6 +17,7 @@ export class UserProvider {
   firedata = firebase.database().ref('/users');
   fireprofiles = firebase.database().ref('/profile');
   firestore = firebase.storage().ref('/profileimages');
+  firenews = firebase.database().ref('/news'); //Database of tracking new user who have joined in
   //fireprefers = firebase.database().ref('/prefer');
 
   constructor(public afireauth: AngularFireAuth, private facebook: Facebook) {
@@ -71,7 +72,8 @@ Outputs - Promise.
     profile.photoURL = url;
     var promise = new Promise((resolve, reject) => {
 
-      console.log("XXXX", this.afireauth.auth.currentUser.uid)
+      //console.log("XXXX", this.afireauth.auth.currentUser.uid)
+      this.trackingNew(this.afireauth.auth.currentUser.uid); // update newuswer id to Firebase
 
       this.firedata.child(this.afireauth.auth.currentUser.uid).set({
         uid: this.afireauth.auth.currentUser.uid,
@@ -327,7 +329,7 @@ Outputs - Promise.
     var promise = new Promise((resolve, reject) => {
       this.firedata.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
         resolve(snapshot.val());
-        console.log("cai deo chi day: ",snapshot.val())
+        console.log("Get my profile: ",snapshot.val())
       }).catch((err) => {
         reject(err);
       })
@@ -650,6 +652,25 @@ Outputs - Promise.
   // }
   return 6;
 
+  }
+
+  /**
+   * this is for tracking new user
+   * input: id of new user
+   * output: creat database on Firebase
+   * called from profileBuddy
+   */
+  trackingNew(buddyuid) {
+    var promise = new Promise((resolve, reject) => {
+      this.firenews.push().set({
+      viewer: buddyuid
+      }).then(() => {
+        resolve({ success: true });
+        }).catch((err) => {
+          resolve(err);
+    })
+    })
+    return promise;  
   }
 
 

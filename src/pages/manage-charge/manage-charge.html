@@ -1,0 +1,74 @@
+<!--
+  Generated template for the ManageChargePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ManageCharge</ion-title>
+  </ion-navbar>
+
+  <!--  Segment -->
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="appType">
+      <ion-segment-button value="Available Items">
+        Manage my items
+      </ion-segment-button>
+      
+      <ion-segment-button value="My Account">
+        My account
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list *ngIf="appType == 'Available Items'">
+        <ion-list-header>{{ appType }}</ion-list-header>
+        <ion-item *ngFor="let item of getItems(appType)">
+          You can have {{ item.price }} {{ item.name }} 
+        <button ion-button outline item-end (click)="openPaymentSelection()">Buy</button>
+        </ion-item>
+    </ion-list>
+
+
+    
+      <ion-card *ngIf="appType != 'Available Items'">
+        <ion-card-header>
+         <h1>YOUR BALANCE ARE {{ balanceCoin }} COINS</h1> 
+          <button ion-button block item-end (click)="openPaymentSelection()">Charge coins</button>
+
+        </ion-card-header>
+
+       
+
+       
+        <ion-card-content>
+          <ion-item>
+              <ion-row>
+                  <ion-col col-5>Date transaction</ion-col>
+                  <ion-col col-5>Status</ion-col>
+                  <ion-col col-2>Amount</ion-col>
+                    
+              </ion-row>
+          </ion-item>
+            
+
+            <ion-item *ngFor="let tran of historyofTrans">
+                {{ tran.token.created }} 
+              <button ion-button round item-middle color="pink">{{ tran.charge.status }}</button>
+              <button ion-button outline item-end>$ {{ tran.charge.amount }}</button>
+            </ion-item>
+          
+        </ion-card-content>
+      </ion-card>
+
+
+    </ion-content>
+    
+    

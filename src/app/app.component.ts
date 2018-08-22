@@ -9,6 +9,10 @@ import { Profile } from "../models/profile";
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { ViewmorePage } from '../pages/viewmore/viewmore';
 import { ChatPage } from '../pages/chat/chat';
+import { MyInterestUsersPage } from '../pages/my-interest-users/my-interest-users';
+import { MyLikeUsersPage } from '../pages/my-like-users/my-like-users';
+import { NewUsersPage } from '../pages/new-users/new-users';
+import { MatchingPage } from '../pages/matching/matching';
 
 
 
@@ -86,6 +90,21 @@ export class MyApp {
     this.navCtrl.push(ChatPage)
 
   }
+
+  openMyinterestUsers(){
+    this.navCtrl.push(MyInterestUsersPage)
+
+  }
+
+  openMylikeUsers(){
+    this.navCtrl.push(MyLikeUsersPage)
+
+  }
+
+  openNews(){
+    this.navCtrl.push(NewUsersPage)
+  }
+
 
 
 

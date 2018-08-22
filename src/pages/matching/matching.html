@@ -1,0 +1,463 @@
+<!--
+  Generated template for the MatchingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Matching</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="true">
+
+
+  <ion-card>
+
+    <ion-item class="card-avatar1">
+      <ion-avatar>
+        <img src={{avatar1.photoURL}}>
+      </ion-avatar>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-item class="card-avatar2">
+      <ion-avatar>
+        <img src={{avatar2.photoURL}}>
+      </ion-avatar>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card class="loginform">
+
+    <img style="align-items: center;" src='./assets/imgs/img_login4.png'>
+
+  </ion-card>
+
+
+  <ion-segment class="SwipedTabs-tabs">
+    <ion-segment-button *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)" [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i || (  tabs.length -1 === i&& this.SwipedTabsSlider.isEnd()))) }'>
+      {{tab}}
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- here is our dynamic line  "indicator"-->
+  <div id='indicator' class="SwipedTabs-indicatorSegment" [ngStyle]="{'width.%': (100/this.tabs.length)}"></div>
+
+  <ion-slides #SwipedTabsSlider (ionSlideDrag)="animateIndicator($event)" (ionSlideWillChange)="updateIndicatorPosition()"
+    (ionSlideDidChange)="updateIndicatorPosition()" (pan)="updateIndicatorPosition()" [pager]="false">
+
+
+
+    <!-- PAGE FOR TEXT DATA -->
+    <ion-slide>
+      <!-- For Matching Information Overview -->
+
+      <!-- Display personal information of user -->
+
+      <ion-card>
+        <ion-card-header style="background-color: gainsboro;">
+          <ion-icon name="contact"> {{ 'my.PersonalDetails' | translate }}</ion-icon>
+        </ion-card-header>
+
+        <ion-card-content class="my">
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Name' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.firstName}} {{avatar1.lastName}} </ion-col>
+            <ion-col col-4> {{avatar2.firstName}} {{avatar2.lastName}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Age' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.birth}} </ion-col>
+            <ion-col col-4> {{avatar2.birth}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.DateOfBirth' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.age}}</ion-col>
+            <ion-col col-4> {{avatar2.age}}</ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Education' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.education}} </ion-col>
+            <ion-col col-4> {{avatar2.education}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Hometown' | translate }}</ion-col>
+            <ion-col col-4> ? </ion-col>
+            <ion-col col-4> ? </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Job' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.job}} </ion-col>
+            <ion-col col-4> {{avatar2.job}} </ion-col>
+
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Salary' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.salary}} </ion-col>
+            <ion-col col-4> {{avatar2.salary}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Property' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.balance}} </ion-col>
+            <ion-col col-4> {{avatar2.balance}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.StudyExperience' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.studyExperience}} </ion-col>
+            <ion-col col-4> {{avatar2.studyExperience}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Vehicle' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.car}} </ion-col>
+            <ion-col col-4> {{avatar2.car}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Religion' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.religion}} </ion-col>
+            <ion-col col-4> {{avatar2.religion}} </ion-col>
+          </ion-row>
+
+
+        </ion-card-content>
+
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header style="background-color: gainsboro;">
+            <ion-icon name="contact"> {{ 'my.PersonalDetails' | translate }}</ion-icon>
+          </ion-card-header>
+  
+          <ion-card-content class="my">
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Name' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.firstName}} {{avatar1.lastName}} </ion-col>
+              <ion-col col-4> {{avatar2.firstName}} {{avatar2.lastName}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Age' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.birth}} </ion-col>
+              <ion-col col-4> {{avatar2.birth}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.DateOfBirth' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.age}}</ion-col>
+              <ion-col col-4> {{avatar2.age}}</ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Education' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.education}} </ion-col>
+              <ion-col col-4> {{avatar2.education}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Hometown' | translate }}</ion-col>
+              <ion-col col-4> ? </ion-col>
+              <ion-col col-4> ? </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Job' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.job}} </ion-col>
+              <ion-col col-4> {{avatar2.job}} </ion-col>
+  
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Salary' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.salary}} </ion-col>
+              <ion-col col-4> {{avatar2.salary}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Property' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.balance}} </ion-col>
+              <ion-col col-4> {{avatar2.balance}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.StudyExperience' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.studyExperience}} </ion-col>
+              <ion-col col-4> {{avatar2.studyExperience}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Vehicle' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.car}} </ion-col>
+              <ion-col col-4> {{avatar2.car}} </ion-col>
+            </ion-row>
+  
+            <ion-row>
+  
+              <ion-col col-4>{{ 'my.Religion' | translate }}</ion-col>
+              <ion-col col-4> {{avatar1.religion}} </ion-col>
+              <ion-col col-4> {{avatar2.religion}} </ion-col>
+            </ion-row>
+  
+  
+          </ion-card-content>
+  
+        </ion-card>
+  
+
+
+      <!-- Display Appreance/ hobby/ others -->
+
+      <ion-card>
+        <ion-card-header style="background-color: gainsboro;">
+          <ion-icon name="color-wand"> {{ 'my.Appearance' | translate }}</ion-icon>
+        </ion-card-header>
+        <ion-card-content class="my">
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.HeightWeight' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.height}} cm/ {{avatar1.weight}} kg </ion-col>
+            <ion-col col-4> {{avatar2.height}} cm/ {{avatar2.weight}} kg </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Smoking' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.smoking}} </ion-col>
+            <ion-col col-4> {{avatar2.smoking}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Drinking' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.drinking}}</ion-col>
+            <ion-col col-4> {{avatar2.drinking}}</ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Style' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.style}} </ion-col>
+            <ion-col col-4> {{avatar2.style}} </ion-col>
+
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.FashionStyle' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.fashionStyle}} </ion-col>
+            <ion-col col-4> {{avatar2.fashionStyle}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Blood' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.blood}} </ion-col>
+            <ion-col col-4> {{avatar2.blood}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Characteristic' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.characteristic}} </ion-col>
+            <ion-col col-4> {{avatar2.characteristic}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.FavoriteFood' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.favoriteFood}} </ion-col>
+            <ion-col col-4> {{avatar2.favoriteFood}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Hobbies' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.hobby}} </ion-col>
+            <ion-col col-4> {{avatar2.hobby}} </ion-col>
+          </ion-row>
+
+
+
+        </ion-card-content>
+
+      </ion-card>
+    </ion-slide>
+
+    <!-- PAGE FOR VISUALIZATION -->
+    <ion-slide>
+      <!-- Visualization using chart JS -->
+      <ion-card>
+        <ion-card-header style="background-color: gainsboro;">
+          <ion-icon name="eye">Bar Chart Visulization</ion-icon>
+        </ion-card-header>
+        <ion-card-content class="my">
+
+          <!-- <canvas #valueBarsCanvasMatch></canvas> -->
+
+          <canvas id="valueBarsCanvasMatch"></canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header style="background-color: gainsboro;">
+            <ion-icon name="eye">Horizontal Bar Chart Visulization</ion-icon>
+          </ion-card-header>
+          <ion-card-content class="my">
+  
+            <!-- <canvas #valueBarsCanvasMatch></canvas> -->
+  
+            <canvas id="valueBarsCanvasMatch2"></canvas>
+          </ion-card-content>
+        </ion-card>
+
+      <ion-card>
+        <ion-card-header style="background-color: gainsboro;">
+          <ion-icon name="eye">Radar Chart Visulization</ion-icon>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <canvas #valueRadarsCanvasMatch></canvas> -->
+          <canvas id="valueRadarsCanvasMatch"></canvas>
+
+        </ion-card-content>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-header style="background-color: gainsboro;">
+          <ion-icon name="contact">Page3</ion-icon>
+        </ion-card-header>
+
+        <ion-card-content class="my">
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Name' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.firstName}} {{avatar1.lastName}} </ion-col>
+            <ion-col col-4> {{avatar2.firstName}} {{avatar2.lastName}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Age' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.birth}} </ion-col>
+            <ion-col col-4> {{avatar2.birth}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.DateOfBirth' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.age}}</ion-col>
+            <ion-col col-4> {{avatar2.age}}</ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Education' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.education}} </ion-col>
+            <ion-col col-4> {{avatar2.education}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Hometown' | translate }}</ion-col>
+            <ion-col col-4> ? </ion-col>
+            <ion-col col-4> ? </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Job' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.job}} </ion-col>
+            <ion-col col-4> {{avatar2.job}} </ion-col>
+
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Salary' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.salary}} </ion-col>
+            <ion-col col-4> {{avatar2.salary}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Property' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.balance}} </ion-col>
+            <ion-col col-4> {{avatar2.balance}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.StudyExperience' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.studyExperience}} </ion-col>
+            <ion-col col-4> {{avatar2.studyExperience}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Vehicle' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.car}} </ion-col>
+            <ion-col col-4> {{avatar2.car}} </ion-col>
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col col-4>{{ 'my.Religion' | translate }}</ion-col>
+            <ion-col col-4> {{avatar1.religion}} </ion-col>
+            <ion-col col-4> {{avatar2.religion}} </ion-col>
+          </ion-row>
+
+
+        </ion-card-content>
+
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+
+
+</ion-content>

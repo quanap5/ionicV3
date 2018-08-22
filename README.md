@@ -3,11 +3,11 @@
 This is source code for application that used for dating between social users
 Some demo
 Login UI:
-<img src="">
+<img src="https://github.com/quanap5/NoblesAugustVersion/blob/master/demo/demo_login.PNG">
 Home UI:
-<img src="">
+<img src="https://github.com/quanap5/NoblesAugustVersion/blob/master/demo/demo_home.PNG">
 Myprofile UI:
-<img src="">
+<img src="https://github.com/quanap5/NoblesAugustVersion/blob/master/demo/demo_my.PNG">
 
 
 ----
@@ -18,7 +18,7 @@ Myprofile UI:
 - Angular
 - npm tool
 - Terminal
-- IDE or text editor ([Visual Studio code] https://code.visualstudio.com/)
+- IDE or text editor [Visual Studio code](https://code.visualstudio.com/)
 
 ----
 ## Hoiw to clone and run demo on simulator or real device

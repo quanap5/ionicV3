@@ -113,4 +113,14 @@ export class RegisterPage {
     }
   }  
 
+
+  // login using FaceBook account
+  
+  loginFacebook(){
+
+    this.userservice.getUidFacebook().then((uidString) => {
+      this.navCtrl.setRoot(ProfilepicPage, {uid: uidString});
+    })}
+
+
 }

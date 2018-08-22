@@ -20,6 +20,7 @@ export class ChatPage {
 
   myrequests;
   myfriends;
+  myinterests: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public requestservice: RequestsProvider,
               public events: Events, public alertCtrl: AlertController, public chatservice: ChatProvider) {
   }
@@ -28,15 +29,23 @@ export class ChatPage {
   ionViewWillEnter() {
     this.requestservice.getmyrequests();
     this.requestservice.getmyfriends();
+    //this.requestservice.getmyinterest();
+
     this.myfriends = [];
     this.events.subscribe('gotrequests', () => {
       this.myrequests = [];
       this.myrequests = this.requestservice.userdetails;
     })
+
     this.events.subscribe('friends', () => {
       this.myfriends = [];
       this.myfriends = this.requestservice.myfriends; 
     })
+
+    // this.events.subscribe('interests', () => {
+    //   this.myinterests = [];
+    //   this.myinterests = this.requestservice.myinterests; 
+    // })
   }
 
   ionViewDidLeave() {
