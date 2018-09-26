@@ -232,20 +232,29 @@
 
   <ion-row>
     <ion-col>
-      <button ion-button style="height: 100px; width: 100%;" block round outline (click)="reset()">
+      <button ion-button style="height: 50px; width: 100%;" block round outline (click)="reset()">
         RESET
 
       </button>
     </ion-col>
 
     <ion-col>
-      <button ion-button style="height: 100px; width: 100%;" block round outline (click)="search()">
+      <button ion-button style="height: 50px; width: 100%;" block round outline (click)="search()">
         SEARCH
 
       </button>
     </ion-col>
 
 
+  </ion-row>
+
+
+  <canvas id="canvas" height="400" width="400"></canvas>
+ 
+  <!-- <button block ion-button  clear (click)="setup()">{{disEnd}}</button> -->
+
+  <ion-row>
+    <button ion-button style="height: 50px; width: 100%;" block round outline (click)="setup()">{{disEnd}}</button>
   </ion-row>
 
 </ion-content>

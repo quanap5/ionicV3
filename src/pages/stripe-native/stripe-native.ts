@@ -55,15 +55,15 @@ export class StripeNativePage {
      this.ref = this.db.list('payments/1TxKcEatGab4isSEXwx9jCDcxh62', ref => ref.orderByChild('amount'));
 
      // Catch any update to draw the Chart
-     this.ref.valueChanges().subscribe(result => {
-       if (this.chartData){
-         this.updateCharts(result)
-         this.updateRadars(result);
-       }
-       else {
-         this.createCharts(result)
-       }
-     })
+    //  this.ref.valueChanges().subscribe(result => {
+    //    if (this.chartData){
+    //      this.updateCharts(result)
+    //      this.updateRadars(result);
+    //    }
+    //    else {
+    //      this.createCharts(result)
+    //    }
+    //  })
   }
 
   validateCard(){

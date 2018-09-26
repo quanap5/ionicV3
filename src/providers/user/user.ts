@@ -674,4 +674,49 @@ Outputs - Promise.
   }
 
 
+
+  /**Function for  load all user on social network 
+   * Called from home.ts
+   * input: no
+   * output: all user on social network
+   * 
+  */
+
+ covert4cluster() {
+  var promise = new Promise((resolve, reject) => {
+    this.firedata.orderByChild('uid').once('value', (snapshot) => {
+      let userdata = snapshot.val();
+      let temparr = [];
+      let temparr2 = [];
+
+      console.log("Print user Object", userdata);
+      //let t ={} as Profile;
+      for (var key in userdata) {
+        temparr.push(userdata[key]);
+        let item = {
+          id: String,
+          digitalData: []
+        }
+        
+        item.id = userdata[key].uid;
+        item.digitalData = [userdata[key].profile.birth, userdata[key].profile.birth]
+        temparr2.push(item);
+
+        console.log("item", item);
+        console.log("temparr2", temparr2);
+
+               
+    
+      }
+     
+     // resolve(temparr);// 
+      resolve(temparr2);
+    }).catch((err) => {
+      reject(err);
+    })
+  })
+  return promise;
+}
+
+
 }
